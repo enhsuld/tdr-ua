@@ -1,0 +1,114 @@
+<!--     <div id="top_bar" top-bar>
+        <div class="md-top-bar">
+            <div class="uk-width-large-8-10 uk-container-center">
+                <div class="uk-clearfix">
+                    <div class="md-top-bar-actions-left">
+                        САНАЛ ХҮСЭЛТҮҮД
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> -->
+
+    <div id="page_content">
+    	<div id="page_heading" data-uk-sticky="{ top: 48, media: 960 }">
+	        <!-- <div class="heading_actions">
+	            <a href="javascript:void(0)" data-uk-tooltip="{pos:'bottom'}" title="Archive"><i class="md-icon material-icons">&#xE149;</i></a>
+	            <a href="javascript:void(0)" data-uk-tooltip="{pos:'bottom'}" title="Print"><i class="md-icon material-icons">&#xE8AD;</i></a>            
+	        </div> -->
+	        <h1>Санал хүсэлтүүд</h1>
+	    </div>
+        <div id="page_content_inner">
+
+            <div class="md-card-list-wrapper" id="mailbox">
+                <div class="uk-width-large-9-10 uk-container-center">
+
+                    <div class="md-card-list">
+                        <div class="md-card-list-header heading_list">Бүх санал хүсэлтүүд</div>
+                        <div class="md-card-list-header md-card-list-header-combined heading_list" style="display: none">Бүх санал хүсэлтүүд</div>
+                        <ul class="hierarchical_slide" hierarchical-slide>
+                            <li ng-class="(message.lutFeedbacks.length > 0) ? 'md-bg-green-50' : ''" ng-repeat="message in messages" on-last-repeat>
+                                <span class="md-card-list-item-date">{{message.createdat}}</span>
+                                <div class="md-card-list-item-sender">
+                                    <span>{{message.username}}</span>
+                                </div>
+                                <div class="md-card-list-item-subject">
+                                    <div class="md-card-list-item-sender-small">
+                                        <span>{{message.username}}</span>
+                                    </div>
+                                    <span>{{message.description}}</span>
+                                </div>
+                                <div class="md-card-list-item-content-wrapper">
+                                	
+                                    <div class="md-card-list-item-content" style="white-space: pre-line;padding-top: 0px;">
+                                    	<h5 class="uk-text-muted">Ангилал: {{findRootCategoryById(findCategoryById(message.categoryid).parentid).text}} / {{findCategoryById(message.categoryid).text}}</h5>
+                                        {{message.description}}
+                                    </div>
+		                            
+		                            <table class="uk-table uk-table-striped" ng-show="message.lutFeedbacks.length > 0">
+			                            <thead>
+				                            <tr>
+				                                <th colspan="4">Шийдвэрлэлт</th>
+				                            </tr>
+				                            <tr>
+				                                <th>#</th>
+				                                <th>Бичсэн</th>
+				                                <th>Шийдвэр</th>
+				                                <th>Огноо</th>
+				                            </tr>
+			                            </thead>
+			                            <tbody>
+				                            <tr ng-repeat="reply in message.lutFeedbacks">
+				                                <td>{{$index + 1}}</td>
+				                                <td>{{reply.username}}</td>
+				                                <td>{{reply.description}}</td>
+				                                <td>{{reply.createdat}}</td>
+				                            </tr>
+			                            </tbody>
+			                        </table>
+                                    
+                                    <form class="md-card-list-item-reply" ng-submit="replyFeedback(message_reply,message.id,$index)" ng-if="checkPermission() > 0">
+                                        <label for="mailbox_reply_{{$index}}">Шийдвэрлэлт бичих</label>
+                                        <textarea class="md-input md-input-full" id="mailbox_reply_{{$index}}" cols="30" rows="4" md-input ng-model="message_reply"></textarea>
+                                        <button class="md-btn md-btn-flat md-btn-flat-primary">Илгээх</button>
+                                    </form>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="md-fab-wrapper">
+        <a class="md-fab md-fab-accent md-fab-wave-light" href="#mailbox_new_message" data-uk-modal="{center:true}">
+            <i class="material-icons">&#xE150;</i>
+        </a>
+    </div>
+
+    <div class="uk-modal" id="mailbox_new_message">
+        <div class="uk-modal-dialog">
+            <button class="uk-modal-close uk-close" type="button"></button>
+            <form ng-submit="submitFeedbackRequest()">
+                <div class="uk-modal-header">
+                    <h3 class="uk-modal-title">Санал хүсэлт бичих</h3>
+                </div>
+                
+                <div class="uk-margin-large-bottom">
+                    <label for="mail_new_message">Ангилал сонгох</label>
+                    <selectize ng-model="feedback.categoryid" config="feedbackSelectConfig" options="feedbackCategories" required=""></selectize>
+                </div>
+                
+                <div class="uk-margin-large-bottom">
+                    <label for="mail_new_message">Санал хүсэлт</label>
+                    <textarea required="" name="mail_new_message" id="mail_new_message" cols="30" rows="6" class="md-input" md-input ng-model="feedback.description"></textarea>
+                </div>
+                
+                <div class="uk-modal-footer">
+                    <button type="submit" class="uk-float-right md-btn md-btn-flat md-btn-flat-primary">Илгээх</button>
+                </div>
+            </form>
+        </div>
+    </div>

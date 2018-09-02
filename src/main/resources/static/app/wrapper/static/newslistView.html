@@ -1,0 +1,181 @@
+<div id="page_content">
+
+    <div id="page_heading" style="min-height:48px;" data-uk-sticky="{ top: 48, media: 960 }">        
+        <h1>Мэдээ, мэдээлэл</h1>
+    </div>
+
+    <div id="page_content_inner">
+        <div class="md-card">
+            <div class="md-card-content">
+                <div class="uk-grid uk-grid-divider" data-uk-grid-margin>
+                	   
+                	<div class="uk-width-medium-1-4">
+                        <h2 class="heading_c uk-margin-small-bottom">Ангилал</h2>
+                        <ul class="md-list">
+                            <li ng-repeat="item in ntype" data-uk-filter="{{item.value}}">
+                                <div class="md-list-content">
+                                    <a class="md-list-heading" ng-click="filter(item.value)">{{item.text}}</a>
+                                </div>
+                            </li>
+                        </ul>
+                        <div class="uk-grid" data-uk-grid-margin>			                   
+		                    <div class="uk-width-medium-1-1">
+		                        <label for="contact_list_search">Хайх</label>
+		                        <input class="md-input" type="text" id="contact_list_search" ng-model="q.newstitle" md-input />
+		                    </div>                 
+		                </div>
+                    </div>
+                    <div class="uk-width-medium-3-4">
+                        <div class="uk-margin-medium-bottom">
+                            <ul class="search_list">
+	                           <li ng-repeat="news in newslist | limitTo:5 | filter: q">
+	                                <img ng-src="{{ news.imgurl }}" alt="" class="search_list_thumb">
+	                                <div class="search_list_content">
+	                                    <h3 class="search_list_heading"><a ng-click="more(news.id)">{{ news.newstitle }}</a></h3>
+	                                    <span class="search_list_link">
+	                                    	Огноо: 
+	                                   		<!-- <a style="margin: 0 0 5px 5px;" class="uk-float-left uk-badge uk-badge-primary" ng-repeat="cats in news.cats"><div ng-repeat="item in ntype"><p style="margin-bottom: 0;" ng-if="item.value==cats.newstypeid">{{item.text}}</p></div></a> -->
+	                                    	<span class="md-color-grey-500 uk-text-small uk-margin-small-lef0"> {{news.newsdate}}</span>
+	                                    </span>
+	                                    <p ng-bind-html="news.newstext.substring(0,200)"></p>...
+	                                    <a ng-click="more(news.id)" class="md-btn md-btn-small md-btn-flat md-btn-flat-primary uk-float-right">Цааш унших</a>
+	                                </div>
+	                            </li>
+	                        </ul>
+	                  
+			                <div ng-repeat="item in items">Item {{item}}</div>
+            
+				            <!-- pager -->
+				            <ul ng-if="pager.pages.length" class="uk-pagination uk-margin-medium-top">
+				                <li ng-class="{disabled:pager.currentPage === 1}">
+				                    <a ng-click="setPage(1)"><i class="uk-icon-angle-double-left"></i></a>
+				                </li>
+				                <li ng-class="{disabled:pager.currentPage === 1}">
+				                    <a ng-click="setPage(pager.currentPage - 1)"><i class="uk-icon-angle-left"></i></a>
+				                </li>
+				                <li ng-repeat="page in pager.pages" ng-class="{active:pager.currentPage === page}">
+				                    <a ng-click="setPage(page)">{{page}}</a>
+				                </li>                
+				                <li ng-class="{disabled:pager.currentPage === pager.totalPages}">
+				                    <a ng-click="setPage(pager.currentPage + 1)"><i class="uk-icon-angle-right"></i></a>
+				                </li>
+				                <li ng-class="{disabled:pager.currentPage === pager.totalPages}">
+				                    <a ng-click="setPage(pager.totalPages)"><i class="uk-icon-angle-double-right"></i></a>
+				                </li>
+				            </ul>
+            
+                        </div>                      
+                    </div>                    
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<!-- 
+<div id="page_content">
+    <div id="page_content_inner">
+    
+         
+		<h3 class="heading_b uk-margin-bottom">Мэдээ, мэдээлэл</h3>
+        <div class="md-card uk-margin-medium-bottom">
+            <div class="md-card-content">
+                <div class="uk-grid" data-uk-grid-margin>
+                    <div class="uk-width-medium-1-2">
+                        <div class="uk-vertical-align">
+                            <div class="uk-vertical-align-middle">
+                                <ul id="contact_list_filter" class="uk-subnav uk-subnav-pill uk-margin-remove">
+                                    <li class="uk-active" ng-click="filter(0)" data-uk-filter="0"><a>Бүгд</a></li>
+                                    <li ng-repeat="item in ntype" data-uk-filter="{{item.value}}">
+                                        <a ng-click="filter(item.value)">{{item.text}}</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>  
+                    <div class="uk-width-medium-1-2">
+                        <label for="contact_list_search">Хайх</label>
+                        <input class="md-input" type="text" id="contact_list_search" ng-model="q.newstitle" md-input />
+                    </div>                 
+                </div>
+            </div>
+        </div>    
+       
+       		 <h3 class="heading_a uk-margin-bottom">Онцлох мэдээнүүд</h3>
+                <div style="margin-bottom: 50px;" class="uk-slidenav-position" data-uk-slider="{autoplay: true,autoplayInterval: '5000'}">
+
+                    <div class="uk-slider-container">
+                    <div class="md-card">
+                        <ul class="uk-slider uk-grid uk-grid-small uk-grid-width-medium-1-4 uk-grid-width-small-1-2">
+                            <li class="md-card-content" ng-repeat="item in snewslist | orderBy: '-newsdate'" ng-if="item.ishighlight==true">
+                            	 <img style="width: 520px; height: 200px;" src="{{item.imgurl}}" alt="">
+                            	 <div style="text-align: left; margin-top: 10px;" class="blog_list_teaser uk-margin-left uk-margin-right">
+		                            <a class="blog_list_teaser_title  uk-text-truncate" ng-click="more(item.id)">{{item.newstitle}}</a>      
+		                            <span style="margin-top: 9px;" class="uk-text-muted uk-text-small uk-float-left">{{item.newsdate}}</span>                       
+                        		</div>
+                            </li>                                                       
+                        </ul>
+                    </div>
+                    </div>
+
+                    <a href="#" class="uk-slidenav uk-slidenav-contrast uk-slidenav-previous" data-uk-slider-item="previous"></a>
+                    <a href="#" class="uk-slidenav uk-slidenav-contrast uk-slidenav-next" data-uk-slider-item="next"></a>
+
+                </div>
+
+
+       <div class="uk-grid-width-small-1-2 uk-grid-width-medium-1-3 uk-grid-width-large-1-4 hierarchical_show" data-uk-grid="{gutter: 20, controls: '#products_sort'}" id="contact_list" hierarchical-show>
+             <div ng-repeat="teaser in newslist | orderBy: '-id' | filter: q" data-uk-filter="{{teaser.newstitle}}" on-last-repeat">
+                <div class="md-card">
+                    <div style="text-align: center;" class="md-card-content small-padding">                    
+                        <img ng-src="{{teaser.imgurl}}" alt="" src="" class="blog_list_teaser_image">                        
+                        <div style="text-align: left;" class="blog_list_teaser uk-margin-left uk-margin-right">
+                            <h2 class="blog_list_teaser_title  uk-text-truncate">{{teaser.newstitle}}</h2>
+                            <p ng-bind-html="teaser.newstext.substring(0,170)"></p>
+                            </br>
+                            
+                        </div>
+                        <div class="blog_list_footer">
+	                        <div class="uk-float-left uk-width-1-1">
+	                        	                        
+	                        	<p class="uk-float-left" >Мэдээний төрөлүүд:</p><a style="margin: 0 0 5px 5px;" class="uk-float-left uk-badge uk-badge-primary" ng-repeat="cats in teaser.cats"><div ng-repeat="item in ntype"><p style="margin-bottom: 0;" ng-if="item.value==cats.newstypeid">{{item.text}}</p></div></a>
+	                        </div>    
+	                        <span style="margin-top: 9px;" class="uk-text-muted uk-text-small uk-float-left">{{teaser.newsdate}}</span>                        
+                            <a ng-click="more(teaser.id)" class="md-btn md-btn-small md-btn-flat md-btn-flat-primary uk-float-right">Цааш унших</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> 
+
+    </div>
+</div> -->
+
+<style>
+	.uk-pagination  > li.active > a {
+		  background: #7cb342;
+		  color: #fff;
+		  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.05);
+		  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.1);
+		}
+	.uk-pagination  > li.disabled > a {
+	     color: #777;
+	     cursor: not-allowed;
+	     background-color: #fff;
+	     border-color: #ddd;
+	}
+	.uk-pagination  > li > a {
+	    position: relative;
+	    float: left;
+	    padding: 6px 12px;
+	    margin-left: -1px;
+	    line-height: 1.42857143;
+	    color: #337ab7;
+	    text-decoration: none;
+	    background-color: #fff;
+	    border: 1px solid #ddd;
+	}
+	
+</style>

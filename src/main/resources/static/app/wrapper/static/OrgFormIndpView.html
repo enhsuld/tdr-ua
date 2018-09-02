@@ -1,0 +1,299 @@
+   <div id="page_content">   
+    <div id="page_content_inner">
+    <h2 class="heading_b uk-margin-bottom">Харилцагч байгууллага</h2>
+
+        <div class="md-card uk-margin-large-bottom">
+            <div class="md-card-content">            
+                <form id="wizard_advanced_form" class="uk-form-stacked">                
+                    <wizard on-finish="finishedWizard()" template="app/templates/wizard.tpl.html">
+                       
+                        <wz-step wz-title="Байгууллагын ерөнхий мэдээлэл" template="app/templates/wizard.step.tpl.html">
+                            <h2 class="heading_a">
+                                Байгууллагын ерөнхий мэдээлэл                                
+                            </h2>
+                            <hr class="md-hr"/>                            
+                         		<div class="uk-grid">  
+                            		<div class="uk-width-medium-1-3">
+                            		<div class="uk-input-group">
+                                             <span class="uk-input-group-addon">
+                                                 <i class="md-list-addon-icon md-24 material-icons">confirmation_number</i>
+                                             </span>
+                                    	<label>Регистрийн дугаар</label>
+                                    	<input type="text" class="md-input" ng-model="orgdata.regid" md-input />
+                                    	</div>
+                               	 	</div>
+                                	<div class="uk-width-medium-1-3">
+                                		<div class="uk-input-group">
+                                             <span class="uk-input-group-addon">
+                                                 <i class="md-list-addon-icon md-24 material-icons">more</i>
+                                             </span>
+                    					<label>Улсын бүртгэлийн гэрчилгээний дугаар</label>
+                                    	<input type="text" class="md-input" ng-model="orgdata.stateregid" md-input />
+                                    	</div>
+                                   	</div>
+                                   	<div class="uk-width-medium-1-3">
+                                   		<div class="uk-input-group">
+                                             <span class="uk-input-group-addon">
+                                                 <i class="md-list-addon-icon md-24 material-icons">date_range</i>
+                                             </span>
+                    					<label>Байгуулагдсан огноо</label>
+                                    	<input type="text" class="md-input" ng-model="orgdata.createdate" md-input />
+                                    	</div>
+                                   	</div>
+                               </div> 
+                               <div class="uk-grid">  
+                            		<div class="uk-width-medium-1-3">
+                            			<div class="uk-input-group">
+                                             <span class="uk-input-group-addon">
+                                                 <i class="md-list-addon-icon md-24 material-icons">business_center</i>
+                                             </span>
+                                    	<label>Санхүүгийн тайлан тушаадаг байгууллага</label>
+                                    	<input type="text" class="md-input" ng-model="orgdata.fsorg" md-input />
+                                    	</div>
+                               	 	</div>
+                                	<div class="uk-width-medium-1-3">
+                                		<div class="uk-input-group">
+                                             <span class="uk-input-group-addon">
+                                                 <i class="md-list-addon-icon md-24 material-icons">location_city</i>
+                                             </span>
+                    					<label>Харилцагч татварын байгууллага</label>
+                                    	<input type="text" class="md-input" ng-model="orgdata.taxorg" md-input />
+                                    	</div>
+                                   	</div>
+                                   	<div class="uk-width-medium-1-3">
+                                   		<div class="uk-input-group">
+                                             <span class="uk-input-group-addon">
+                                                 <i class="md-list-addon-icon md-24 material-icons">domain</i>
+                                             </span>
+                    					<label>Харилцагч нийгмийн даатгалын байгууллага</label>
+                                    	<input type="text" class="md-input" ng-model="orgdata.ndorg" md-input />
+                                    	</div>
+                                   	</div>
+                               </div> 
+                               <div class="uk-grid">  
+                            		<div class="uk-width-medium-1-3">
+                            			<div class="uk-input-group">
+                                             <span class="uk-input-group-addon">
+                                                 <i class="md-list-addon-icon md-24 material-icons">account_circle</i>
+                                             </span>
+                                    	<label>Удирдлагыг томилдог албан тушаал</label>
+                                    	<input type="text" class="md-input" ng-model="orgdata.headorder" md-input />
+                                    	</div>
+                               	 	</div>
+                                	<div class="uk-width-medium-1-3">
+                                		<div class="uk-input-group">
+                                             <span class="uk-input-group-addon">
+                                                 <i class="md-list-addon-icon md-24 material-icons">account_balance</i>
+                                             </span>
+                    					<label>Харилцагч арилжааны банк, дансны дугаар</label>
+                                    	<input type="text" class="md-input" ng-model="orgdata.banks" md-input />
+                                    	</div>
+                                   	</div>
+                                   	<div class="uk-width-medium-1-3">
+                                   		<div class="uk-input-group">
+                                             <span class="uk-input-group-addon">
+                                                 <i class="md-list-addon-icon md-24 material-icons">account_balance</i>
+                                             </span>
+                    					<label>Төрийн сан дахь харилцах дансны дугаар</label>
+                                    	<input type="text" class="md-input" ng-model="orgdata.statebanks" md-input />
+                                    	</div>
+                                   	</div>
+                               </div> 
+                                <div class="uk-grid">  
+                            		<div class="uk-width-medium-1-3">
+                            			<div class="uk-input-group">
+                                             <span class="uk-input-group-addon">
+                                                 <i class="md-list-addon-icon md-24 material-icons">public</i>
+                                             </span>
+                                    	<label>Цахим хуудас</label>
+                                    	<input type="text" class="md-input" ng-model="orgdata.web" md-input />
+                                    	</div>
+                               	 	</div>
+                                	<div class="uk-width-medium-1-3">
+                                		<div class="uk-input-group">
+                                             <span class="uk-input-group-addon">
+                                                 <i class="md-list-addon-icon md-24 material-icons">email</i>
+                                             </span>
+                    					<label>Цахим шуудангийн хаяг</label>
+                                    	<input type="text" class="md-input" ng-model="orgdata.email" md-input />
+                                    	</div>
+                                   	</div>
+                                   	<div class="uk-width-medium-1-3">
+                                   		<div class="uk-input-group">
+                                             <span class="uk-input-group-addon">
+                                                 <i class="md-list-addon-icon md-24 material-icons">settings_phone</i>
+                                             </span>
+                    					<label>Факс</label>
+                                    	<input type="text" class="md-input" ng-model="orgdata.fax" md-input />
+                                    	</div>
+                                   	</div>
+                               </div> 
+                                <div class="uk-grid">  
+                            		<div class="uk-width-medium-1-3">
+                            			<div class="uk-input-group">
+                                             <span class="uk-input-group-addon">
+                                                 <i class="md-list-addon-icon md-24 material-icons">phone</i>
+                                             </span>
+                                    	<label>Утасны дугаар</label>
+                                    	<input type="text" class="md-input" ng-model="orgdata.phone" md-input />
+                                    	</div>
+                               	 	</div>
+                                	<div class="uk-width-medium-2-3">
+                                		<div class="uk-input-group">
+                                             <span class="uk-input-group-addon">
+                                                 <i class="md-list-addon-icon md-24 material-icons">location_on</i>
+                                             </span>
+                    					<label>Албан ёсны хаяг</label>
+                                    	<input type="text" class="md-input" ng-model="orgdata.address" md-input />
+                                    	</div>
+                                   	</div>                                   
+                               </div> 
+                            <div class="uk-clearfix uk-margin-large-top">
+                                <button class="md-btn md-btn-flat md-btn-flat-primary uk-float-left" type="submit" wz-previous>өмнөх</button>
+                                <button class="md-btn md-btn-primary uk-float-right" type="submit" wz-next>Дараах</button>
+                            </div>
+                        </wz-step>
+                        <wz-step wz-title="Удирдлагын мэдээлэл" template="app/templates/wizard.step.tpl.html">
+                            <h2 class="heading_a">
+                               Удирдлагын мэдээлэл
+                            </h2>
+                            <hr class="md-hr"/>
+                            <div class="uk-grid">  
+                            		
+                                	<div class="uk-width-medium-1-3">
+                                		<div class="uk-input-group">
+                                             <span class="uk-input-group-addon">
+                                                 <i class="md-list-addon-icon md-24 material-icons">person_pin</i>
+                                             </span>
+                    					<label>Нэр</label>
+                                    	<input type="text" class="md-input" ng-model="orgdata.headfullname" md-input />
+                                    	</div>
+                                   	</div>
+                                   	<div class="uk-width-medium-1-3">
+                                   		<div class="uk-input-group">
+                                             <span class="uk-input-group-addon">
+                                                 <i class="md-list-addon-icon md-24 material-icons">person_outline</i>
+                                             </span>
+                    					<label>Регистерийн дугаар</label>
+                                    	<input type="text" class="md-input" ng-model="orgdata.headreg" md-input />
+                                    	</div>
+                                   	</div>
+                               </div> 
+                               <div class="uk-grid">  
+                            		<div class="uk-width-medium-1-3">
+                            			<div class="uk-input-group">
+                                             <span class="uk-input-group-addon">
+                                                 <i class="md-list-addon-icon md-24 material-icons">contact_phone</i>
+                                             </span>
+                                    	<label>Утас</label>
+                                    	<input type="text" class="md-input" ng-model="orgdata.headphone" md-input />
+                                    	</div>
+                               	 	</div>
+                                	<div class="uk-width-medium-1-3">
+                                		<div class="uk-input-group">
+                                             <span class="uk-input-group-addon">
+                                                 <i class="md-list-addon-icon md-24 material-icons">contact_mail</i>
+                                             </span>
+                    					<label>Цахим шуудангийн хаяг</label>
+                                    	<input type="text" class="md-input" ng-model="orgdata.heademail" md-input />
+                                    	</div>
+                                   	</div>                                                                	
+                               </div> 
+                               <div class="uk-grid">                              		
+                                	<div class="uk-width-medium-1-3">
+                                		<div class="uk-input-group">
+                                             <span class="uk-input-group-addon">
+                                                 <i class="md-list-addon-icon md-24 material-icons">account_balance</i>
+                                             </span>
+                    					<label>Мэргэжил</label>
+                                    	<input type="text" class="md-input" ng-model="orgdata.headprof" md-input />
+                                    	</div>
+                                   	</div>
+                                   
+                               </div> 
+                           <div class="uk-clearfix uk-margin-large-top">
+                                <button class="md-btn md-btn-flat md-btn-flat-primary uk-float-left" type="submit" wz-previous>өмнөх</button>
+                                <button class="md-btn md-btn-primary uk-float-right" type="submit" wz-next>Дараах</button>
+                            </div>
+                        </wz-step>
+                    	<wz-step wz-title="Нягтлан бодогчийн мэдээлэл" template="app/templates/wizard.step.tpl.html">
+                            <h2 class="heading_a">
+                               Нягтлан бодогчийн мэдээлэл
+                            </h2>
+                            <hr class="md-hr"/>
+                            <div class="uk-grid">  
+                            		
+                                	<div class="uk-width-medium-1-3">
+                                		<div class="uk-input-group">
+                                             <span class="uk-input-group-addon">
+                                                 <i class="md-list-addon-icon md-24 material-icons">person_pin</i>
+                                             </span>
+                    					<label>Нэр</label>
+                                    	<input type="text" class="md-input" ng-model="orgdata.accfullname" md-input />
+                                    	</div>
+                                   	</div>
+                                   	<div class="uk-width-medium-1-3">
+                                		<div class="uk-input-group">
+                                             <span class="uk-input-group-addon">
+                                                 <i class="md-list-addon-icon md-24 material-icons">contact_mail</i>
+                                             </span>
+                    					<label>Цахим шуудангийн хаяг</label>
+                                    	<input type="text" class="md-input" ng-model="orgdata.accemail" md-input />
+                                    	</div>
+                                   	</div>   
+                                  
+                               </div> 
+                               <div class="uk-grid">  
+                            		<div class="uk-width-medium-1-3">
+                            			<div class="uk-input-group">
+                                             <span class="uk-input-group-addon">
+                                                 <i class="md-list-addon-icon md-24 material-icons">contact_phone</i>
+                                             </span>
+                                    	<label>Утас</label>
+                                    	<input type="text" class="md-input" ng-model="orgdata.accphone" md-input />
+                                    	</div>
+                               	 	</div>
+                                	
+                                   	<div class="uk-width-medium-1-3">
+                            			<div class="uk-input-group">
+                                             <span class="uk-input-group-addon">
+                                                 <i class="md-list-addon-icon md-24 material-icons">account_circle</i>
+                                             </span>
+                                    	<label>Ажилласан жил</label>
+                                    	<input type="text" class="md-input" ng-model="orgdata.accwyear" md-input />
+                                    	</div>
+                               	 	</div>                                 	                               	
+                               </div> 
+                               <div class="uk-grid">                              		
+                                	<div class="uk-width-medium-1-3">
+                                		<div class="uk-input-group">
+                                             <span class="uk-input-group-addon">
+                                                 <i class="md-list-addon-icon md-24 material-icons">account_balance</i>
+                                             </span>
+                    					<label>Мэргэжил</label>
+                                    	<input type="text" class="md-input" ng-model="orgdata.accprof" md-input />
+                                    	</div>
+                                   	</div>
+                                   
+                               </div>
+                            <div class="uk-clearfix uk-margin-large-top">
+                                <button class="md-btn md-btn-flat md-btn-flat-primary uk-float-left" type="submit" wz-previous>Өмнөх</button>
+                                <button class="md-btn md-btn-success uk-float-right" ng-click="addOrg()" type="submit" wz-next>Хадгалах</button>
+                            </div>
+                        </wz-step>
+                   
+                    </wizard>
+
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>
+  
+	<footer id="footer">
+	    <span style="display:block;  text-align:right;">&copy; 2015-2016 <a href="www.staus.mn/sgt">Smart Green Technology LLC</a>, All rights reserved.</span>
+	</footer>
+		  
+	
+          

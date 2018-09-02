@@ -1,0 +1,436 @@
+<div id="page_content">
+    <div id="page_content_inner">
+    	<div class="md-card">
+               <div class="md-card-content">
+                   <div class="uk-grid" data-uk-grid-margin> 
+                   	   <div class="uk-width-medium-10-10">
+                   	   		<form id="form_validation" class="uk-form-stacked" ng-submit="loadOnSend()">
+	                	   		<div class="uk-grid" data-uk-grid-margin>
+	                	   			<div  class="uk-width-medium-5-10">
+	                	   				<h3 style="margin-top:12px;"> {{notes_data.formname}} </h3>
+	                	   			</div>
+				                    <div class="uk-width-medium-5-10" >
+				                    	<div class="uk-input-group">
+			                                <div class="md-input-wrapper">
+			                                <div  class="uk-grid" data-uk-grid-margin>
+			                                	 <div class="uk-width-medium-1-2" >
+			                                	 	<input type="text" config="managerConfig" required options="manager.options" ng-model="data.managerid" ng-disabled="disselect" name="managerid" selectize />
+			                                	 </div>
+			                                	 <div class="uk-width-medium-1-2" >
+			                                	 	<input type="text" config="expertConfig" required options="specialist.options" ng-disabled="disselect" ng-model="data.officerid" name="officerid" selectize />
+			                                	 </div>
+			                                </div>
+			                                
+			                                <span class="md-input-bar "></span></div>
+			                                
+			                                <div class="uk-input-group-addon uk-text-right">
+					                    		 <!-- <a class="md-btn md-btn-primary md-btn-wave-light" data-uk-modal="{target:'#modal_header_footer'}" href="javascript:void(0)" data-translate="Маягт"></a> -->
+			                           			 <button ng-show="xoff" class="md-btn md-btn-success md-btn-wave-light"  type="submit" data-translate="Илгээх"></button>
+					                    	</div>		
+			                            </div>			                    	
+				                    		                          
+			                       </div>
+				                </div>
+			                </form>
+                   	   </div>    
+                	  <!--  <div class="uk-width-medium-1-10">
+                   	   		<input type="text" config="selectize_a_config" options="selectize_a_data.options" ng-model="selectize_a" name="selectize_a" selectize />
+                   	   </div>                
+                   	   <div class="uk-width-medium-1-10">
+                   	   		<input type="text" config="selectize_a_config" options="selectize_a_data.options" ng-model="selectize_a" name="selectize_a" selectize />
+                   	   </div>        -->           
+                     
+                   </div>                    
+               </div>
+        </div>
+    	<div class="md-card uk-margin-medium-bottom">
+	    	<div class="md-card-content">
+		        <div class="uk-grid" data-uk-grid-margin>
+		            <div class="uk-width-1-1">
+		                <ul class="uk-tab" data-uk-tab="{connect:'#tabs_1'}">
+		                    <li class="uk-active"><a href="#">Ерөнхий мэдээлэл</a></li>
+		                    <li ng-repeat="item in form.eduFormTabs"><a href="#">{{item.tabname}}</a></li>	  
+		                    <li ng-if="notes_data.lnkMainComment.length>0"><a href="#">Шийдвэрлэлт</a></li>                     
+		                </ul>
+		                <ul id="tabs_1" class="uk-switcher">
+		                    <li>
+		                    	<h4 class="uk-margin-small-bottom full_width_in_card heading_c">Ерөнхий мэдээлэл</h4>
+                                <div class="uk-grid uk-margin-medium-top uk-margin-large-bottom" data-uk-grid-margin>
+                                	
+                                    <div class="uk-width-large-1-2">
+                                        <ul class="md-list md-list-addon">
+                                            <li>
+                                                <div class="md-list-addon-element">
+                                                    <i class="md-list-addon-icon material-icons">&#xE853;</i>
+                                                </div>
+                                                <div class="md-list-content">
+                                                    <span class="md-list-heading">{{user_data.lname}}</span>
+                                                    <span class="uk-text-small uk-text-muted">Овог</span>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="md-list-addon-element">
+                                                    <i class="md-list-addon-icon material-icons">&#xE853;</i>
+                                                </div>
+                                                <div class="md-list-content">
+                                                    <span class="md-list-heading">{{user_data.fname}}</span>
+                                                    <span class="uk-text-small uk-text-muted">Нэр</span>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="md-list-addon-element">
+                                                    <i class="md-list-addon-icon material-icons"> &#xE853; </i>
+                                                </div>
+                                                <div class="md-list-content">
+                                                    <span class="md-list-heading">{{user_data.age}}</span>
+                                                    <span class="uk-text-small uk-text-muted">Нас</span>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="md-list-addon-element">
+                                                    <i class="md-list-addon-icon material-icons">group</i>
+                                                </div>
+                                                <div class="md-list-content">
+                                                    <span class="md-list-heading">{{user_data.gender}}</span>
+                                                    <span class="uk-text-small uk-text-muted">Хүйс</span>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="md-list-addon-element">
+                                                    <i class="md-list-addon-icon material-icons">language</i>
+                                                </div>
+                                                 <div class="md-list-content">
+                                                    <span class="md-list-heading">{{user_data.nationality}}</span>
+                                                    <span class="uk-text-small uk-text-muted">Яс үндэс</span>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="md-list-addon-element">
+                                                    <i class="md-list-addon-icon material-icons">&#xE242;</i>
+                                                </div>
+                                                 <div class="md-list-content">
+                                                    <span class="md-list-heading">{{user_data.regnum}}</span>
+                                                    <span class="uk-text-small uk-text-muted">Регистерийн дугаар</span>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="uk-width-large-1-2">
+                                        
+                                        <ul class="md-list md-list-addon">
+                                            <li>
+                                                <div class="md-list-addon-element">
+                                                    <i class="md-list-addon-icon material-icons">&#xE0AF;</i>
+                                                </div>
+                                                <div class="md-list-content">
+                                                    <span class="md-list-heading">{{user_data.positionname}}</span>
+                                                    <span class="uk-text-small uk-text-muted">Албан тушаал</span>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="md-list-addon-element">
+                                                    <i class="md-list-addon-icon material-icons">&#xE0C8;</i>
+                                                </div>
+                                                <div class="md-list-content">
+                                                    <span class="md-list-heading">{{user_data.districtname}} {{user_data.lpname}}</span>
+                                                    <span class="uk-text-small uk-text-muted">Хаана ажилладаг</span>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="md-list-addon-element">
+                                                    <i class="md-list-addon-icon material-icons">&#xE851;</i>
+                                                </div>
+                                                <div class="md-list-content">
+                                                    <span class="md-list-heading">{{user_data.username}}</span>
+                                                    <span class="uk-text-small uk-text-muted">Системд нэвтрэх нэр</span>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="md-list-addon-element">
+                                                    <i class="md-list-addon-icon material-icons">&#xE0CD;</i>
+                                                </div>
+                                                 <div class="md-list-content">
+                                                    <span class="md-list-heading">{{user_data.phone}}</span>
+                                                    <span class="uk-text-small uk-text-muted">Утас</span>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="md-list-addon-element">
+                                                    <i class="md-list-addon-icon material-icons">&#xE0BE;</i>
+                                                </div>
+                                                 <div class="md-list-content">
+                                                    <span class="md-list-heading">{{user_data.email}}</span>
+                                                    <span class="uk-text-small uk-text-muted">И-мэйл хаяг</span>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="md-list-addon-element">
+                                                    <i class="md-list-addon-icon material-icons">&#xE55A;</i>
+                                                </div>
+                                                <div class="md-list-content">
+                                                    <span class="md-list-heading">{{user_data.address}}</span>
+                                                    <span class="uk-text-small uk-text-muted">Гэрийн хаяг</span>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                   
+                                </div>
+                                
+                                <div class="uk-grid uk-margin-medium-top uk-margin-large-bottom" data-uk-grid-margin>
+                                	<div class="uk-width-large-1-2">
+                                        <h4 class="full_width_in_card heading_c uk-margin-small-bottom">Боловсрол</h4>
+                                        <ul class="md-list md-list-addon">
+                                            <li>
+                                                <div class="md-list-addon-element">
+                                                    <i class="md-list-addon-icon material-icons">&#xE7F1;</i>
+                                                </div>
+                                                <div class="md-list-content">
+                                                    <span class="md-list-heading">{{user_data.graduni}}</span>
+                                                    <span class="uk-text-small uk-text-muted">Төгссөн сургууль</span>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="md-list-addon-element">
+                                                    <i class="md-list-addon-icon material-icons">&#xE80C;</i>
+                                                </div>
+                                                <div class="md-list-content">
+                                                    <span class="md-list-heading"> {{user_data.edulevelname}}, {{user_data.graddipnum}}</span>
+                                                    <span class="uk-text-small uk-text-muted">Боловсолын түвшин, Дипломын дугаар</span>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="md-list-addon-element">
+                                                    <i class="md-list-addon-icon material-icons">&#xE916;</i>
+                                                </div>
+                                                <div class="md-list-content">
+                                                    <span class="md-list-heading">{{user_data.gradyear}}</span>
+                                                    <span class="uk-text-small uk-text-muted">Төгссөн огноо</span>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="uk-width-large-1-2">
+                                        <h4 class="full_width_in_card heading_c uk-margin-small-bottom">Мэргэжлийн зэрэг болон шагнал</h4>
+                                        <ul class="md-list md-list-addon">
+                                            <li>
+                                                <div class="md-list-addon-element">
+                                                    <i class="md-list-addon-icon material-icons">&#xE838;</i>
+                                                </div>
+                                                <div class="md-list-content">
+                                                    <span class="md-list-heading">{{user_data.proflevel}}</span>
+                                                    <span class="uk-text-small uk-text-muted">Мэргэжлийн зэрэг, шагналын нэр</span>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="md-list-addon-element">
+                                                    <i class="md-list-addon-icon material-icons">&#xE80C;</i>
+                                                </div>
+                                                <div class="md-list-content">
+                                                    <span class="md-list-heading">{{user_data.graddipnum}}</span>
+                                                    <span class="uk-text-small uk-text-muted">Мэргэжлийн зэрэг, шагналын дугаар</span>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="md-list-addon-element">
+                                                    <i class="md-list-addon-icon material-icons">&#xE916;</i>
+                                                </div>
+                                                <div class="md-list-content">
+                                                    <span class="md-list-heading">{{user_data.profleveldate}}</span>
+                                                    <span class="uk-text-small uk-text-muted">Мэргэжлийн зэрэг, шагналын олгосон огноо</span>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+		                    </li>
+		                    <li ng-repeat="item in form.eduFormTabs">
+		                  		<div class="uk-width-medium-10-10 uk-container-center reset-print">
+						            <div class="uk-grid uk-grid-collapse" data-uk-grid-margin>
+						                <div class="uk-width-large-3-10 hidden-print uk-visible-large">
+						                    <div class="md-list-outside-wrapper" custom-scrollbar list-outside>
+						                        <ul class="md-list md-list-outside notes_list">
+						                            <li class="heading_list" ng-class="{ 'uk-text-danger': $index == 0}">Жагсаалт</li>
+						                            <li ng-repeat-end ng-repeat="note in item.eduFormNotes">
+						                                <a href="#" class="md-list-content note_link" ng-click="openNote($event,$parent.$index,$index,note)">
+						                                    <span class="md-list-heading" style="text-align:justify;">{{note.title}}</span>
+						                                    <span class="uk-text-small uk-text-muted">{{note.date}}</span>
+						                                </a>
+						                            </li>
+						                        </ul>
+						                    </div>
+						                </div>
+						                <div class="uk-width-large-7-10">
+						                    <div class="md-card md-card-single" single-card>
+						                        <div ng-if="!noteActive">
+						                           <div class="md-card-toolbar">
+						                                <h3 class="md-card-toolbar-heading-text">Илгээхэд анхаарах зүйлс</h3>
+						                            </div>
+						                            <div class="md-card-content">
+						                                <ul class="uk-text-large uk-margin-large-top uk-margin-large-bottom">	
+						                                	<li>						                                	
+						                                  		Зүүн хэсэгт байрлах жагсаалтаас сонгож ажлаа үргэлжлүүлнэ.
+						                                   </li>
+						                                   <li>						                                	
+						                                  		Файл хавсаргахдаа зөвхөн хавсрах боломжтой файлын төрлийг ашиглана.
+						                                   </li>
+						                                   <li>						                                	
+						                                  		Ажлаа дараа нь үргэлжлүүлэх бол заавал хадгалах товчийг дарж хадгална. 
+						                                   </li>
+						                                   <li>						                                	
+						                                  		Маягтуудыг заавал <strong class="md-color-red-600">PDF</strong>  файлаар хавсаргана.
+						                                   </li>
+						                                </ul>
+						                            </div>
+						                        </div>
+						                        <form  class="simple-form" action="" ng-show="noteActive">
+						                            <div class="md-card-toolbar hidden-print">
+						                                <div class="md-card-toolbar-actions" ng-show="xoff" >
+						                                	<button ng-click="saveNote($event,noteForm.id)" ng-show="!note_form.isfile" class="md-btn md-btn-primary md-btn-small md-btn-wave-light waves-effect waves-button waves-light">Хадгалах</button>
+														</div>
+														<div class="md-card-toolbar-actions" ng-show="xoff" >
+						                                	<button ng-click="saveAttach($event,noteForm.id)" ng-show="note_form.isfile" class="md-btn md-btn-primary md-btn-small md-btn-wave-light waves-effect waves-button waves-light">Хадгалах</button>
+														</div>
+														<!-- <span class=" md-card-toolbar-input" style="float:left; overflow:hidden; height:48px;     font: 400 18px/30px Roboto,sans-serif; width:85%;">{{note_form.title}}</span> -->
+						                                <input name="note_title" id="note_title" style="width:85%;" class="md-card-toolbar-input" type="text" ng-model="note_form.title" placeholder="Add title" />
+						                            </div>
+						                            <div class="md-card-content" ng-show="!note_form.isfile">
+						                            	<textarea  kendo-editor k-options="tooloptions" cols="30" rows="12" style="height:500px;" k-ng-model="note_form.content"></textarea>		
+						                                <input type="hidden" name="note_id" ng-model="noteForm.id">
+						                            </div>
+						                            <div class="md-card-content" ng-show="note_form.isfile">
+										                <div class="uk-grid">
+										                    <div class="uk-width-1-1" ng-show="xoff">
+										                        <input type="file" id="input-file-e" ng-files="getTheFiles($files)"  required ng-model="noteForm.atfile" class="dropify" data-max-file-size="30720K"  />	
+									                        </div>
+									                        <div class="uk-width-1-1">
+									                        	<div class="uk-overflow-container" ng-if="note_form.lnkAppAttachedFiles.length>0">
+											                        <table class="uk-table uk-table-striped">
+											                            <thead>
+											                            <tr>
+											                                <th></th>
+											                            </tr>
+											                            </thead>
+											                            <tbody>
+										                            	<tr ng-repeat="item in note_form.lnkAppAttachedFiles">
+									                                        <td>
+									                                            <div class="uk-grid" data-uk-grid-margin>
+									                                                <div class="uk-width-2-5 uk-width-small-1-5 uk-text-center">
+									                                                    <img class="md-user-image-large" style="border-radius:0%;" ng-src="/izr/{{item.fileurl}}" alt=""/>
+									                                                </div>
+									                                                <div class="uk-width-3-5 uk-width-small-4-5" style="padding:10px 0; ">
+									                                                    <h4 class="heading_a uk-margin-small-bottom">{{item.filename}}</h4>
+									                                                    <p class="uk-margin-remove">
+										                                                    <span class="uk-text-muted">Он сар: </span>{{item.atdate}}
+										                                                    <span class="uk-text-muted">Файл: </span> 
+									                                                    	 <a class="md-btn md-btn-primary md-btn-small md-btn-wave-light waves-effect waves-button waves-light" target="_blank" download="/izr/{{item.fileurl}}" href="/izr/{{item.fileurl}}">
+																                                Татах
+																                            </a>
+																                            <a ng-show="xoff" class="md-btn md-btn-danger md-btn-small md-btn-wave-light waves-effect waves-button waves-light" ng-click="delete(item)">
+																                                Устгах
+																                            </a>
+									                                                    </p>
+									                                                </div>
+									                                            </div>									                                            
+									                                        </td>
+									                                    </tr>									                                    
+											                            </tbody>											                           
+											                        </table>
+											                        
+											                    </div>
+											                    <div class="uk-overflow-container" ng-if="note_form.lnkAppAttachedFiles.length==0">
+											                    <table class="uk-table uk-table-striped">
+											                            <thead>
+											                            <tr>
+											                                <th></th>
+											                            </tr>
+											                            </thead>
+											                            <tbody>
+										                            	<tr>
+									                                        <td>
+									                                            <div class="uk-grid" data-uk-grid-margin>
+									                                                
+									                                                <p>Илгээсэн файл байхгүй байна.</p>
+									                                            </div>									                                            
+									                                        </td>
+									                                    </tr>									                                    
+											                            </tbody>											                           
+											                        </table>
+											                    </div>		
+									                        </div>
+										                </div>
+						                            </div>
+						                        </form>
+						                    </div>
+						                </div>
+						            </div>						
+						        </div>
+		                    </li>
+	                        <li>
+		                    	<div class="md-card">
+					                <div class="md-card-content">
+					                    <div class="uk-grid" data-uk-grid-margin="">					                        
+					                        <div class="uk-width-medium-1-1 uk-row-first">
+				                                <div class="timeline">
+			                                        <div class="timeline_item" ng-repeat="event in notes_data.lnkMainComment">
+			                                            <div class="timeline_icon timeline_icon_danger" ng-if="event.comdecid == 0"><i class="material-icons" ng-bind-html="event.icon"></i></div>
+			                                            <div class="timeline_icon timeline_icon_success" ng-if="event.comdecid == 'success'"><i class="material-icons" ng-bind-html="event.icon"></i></div>
+			                                            <div class="timeline_icon timeline_icon_warning" ng-if="event.comdecid == 'warning'"><i class="material-icons" ng-bind-html="event.icon"></i></div>
+			                                            <div class="timeline_icon timeline_icon_primary" ng-if="event.comdecid == 'primary'"><i class="material-icons" ng-bind-html="event.icon"></i></div>
+			                                            <div class="timeline_icon" ng-if="!event.status"><i class="material-icons" ng-bind-html="event.icon"></i></div>
+			                                            <div class="timeline_date">
+			                                                {{ event.comdate | momentDate:'MM-DD-YYYY':'DD' }}
+			                                                <span>{{ event.comdate | momentDate:'MM-DD-YYYY':'MMM' }}</span>
+			                                                <span>{{ event.comdate | momentDate:'MM-DD-YYYY:HH:MM':'HH:MM' }}</span>
+			                                            </div>
+			                                            <div class="timeline_content">		
+			                                            	<div ng-if="event.comdecid==2">
+			                                            		{{event.username}} <a href="javascript:void(0)"> <strong>Зөвшөөрсөн</strong></a>
+			                                            	</div>
+			                                            	<div ng-if="event.comdecid==3">
+			                                            		{{event.username}} <a href="javascript:void(0)"> <strong>Илгээсэн</strong></a>
+			                                            	</div>	  
+		                                            	 	<div ng-if="event.comdecid==4">
+			                                            		{{event.username}} <a href="javascript:void(0)"> <strong>Хэлэлцэх шатанд</strong></a>
+			                                            	</div>	
+		                                            		<div ng-if="event.comdecid==0">
+			                                            		{{event.username}} <a href="javascript:void(0)"> <strong>Багшруу буцсаав.</strong></a>
+			                                            	</div>	                                             
+			                                                <div class="timeline_content_addon" ng-if="event.image || event.post_excerpt || event.username">
+			                                                    <img ng-src="{{event.fileurl}}" alt="" ng-if="event.fileurl"/>
+			                                                    <blockquote>
+			                                                        {{event.commenttext}}&hellip; 
+			                                                    </blockquote>
+			                                                    <ul class="md-list md-list-addon" ng-if="event.user_name">
+			                                                        <li>
+			                                                            <div class="md-list-addon-element" ng-if="event.user_avatar">
+			                                                                <img class="md-user-image md-list-addon-avatar" ng-src="{{event.user_avatar}}" alt=""/>
+			                                                            </div>
+			                                                            <div class="md-list-content">
+			                                                                <span class="md-list-heading" ng-if="event.user_name">{{event.user_name}}</span>
+			                                                                <span class="uk-text-small uk-text-muted" ng-if="event.user_status">{{event.comdecid}}</span>
+			                                                            </div>
+			                                                        </li>
+			                                                    </ul>
+			                                                </div>			                                                
+			                                            </div>
+			                                        </div>
+			                                    </div>
+					                        </div>
+					                    </div>
+					                </div>
+					            </div>
+		                    </li>
+		                </ul>
+		            </div>
+		        </div>
+		    </div>
+	    </div>
+    </div>
+</div>    
+<style type="text/css">
+	.selectize-input>input{
+		width:100% !important;
+	}
+</style>   

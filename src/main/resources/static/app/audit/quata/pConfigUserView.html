@@ -1,0 +1,121 @@
+    <div id="page_content">
+        <div id="page_content_inner">
+        	<div class="md-card">
+               <div class="md-card-content">
+               				
+                   <div class="uk-grid" data-uk-grid-margin> 
+                   	   <div class="uk-width-medium-10-10">                   	   		
+                	   		<div class="uk-grid" data-uk-grid-margin>
+                	   			<div  class="uk-width-medium-8-10">
+                	   				<h3 style="margin-top:5px;"> {{orgdata.orgname}}, Код: {{orgdata.code}}, Ангилал: {{otype}} </h3>
+                	   			</div>
+			                    <div class="uk-width-medium-2-10" >
+			                    	<div class="uk-input-group">
+		                                <div class="md-input-wrapper">			                                
+		                                	<span class="md-input-bar "></span>
+		                                </div>			                                
+		                                <div class="uk-input-group-addon uk-text-right">		
+		                                 	 <button ng-show="terguulehBack" data-uk-modal="{target:'#modal_default'}" class="md-btn md-btn-danger md-btn-wave-light">Буцаах</button>	
+		                                 	 <button ng-show="terguuleh" data-uk-modal="{target:'#modal_default'}" class="md-btn md-btn-danger md-btn-wave-light">Буцаах</button>
+		                                	 <button ng-show="terguuleh" ng-click="loadOnSend()" class="md-btn md-btn-success md-btn-wave-light"  type="submit">Батлах</button>	                           			
+		                           			 <button ng-show="manager" ng-click="loadOnSend()" class="md-btn md-btn-success md-btn-wave-light" type="submit">Хувиарлах</button>
+		                           			 <!-- <button ng-show="manager" class="md-btn md-btn-danger md-btn-wave-light" data-uk-modal="{target:'#modal_header_footer'}"   type="submit">Шилжүүлэх</button> -->
+		                           			 <button ng-show="backed" data-uk-modal="{target:'#modal_default1'}" class="md-btn md-btn-primary md-btn-wave-light">Шалтгаан</button>
+		                           			 <button ng-show="backed" ng-click="loadOnSend()" class="md-btn md-btn-success md-btn-wave-light"  type="submit">Хувиарлах</button>
+				                    	</div>		
+		                            </div>			                    	
+			                    		                          
+		                       </div>
+			                </div>
+                   	   </div>    
+                   </div>                    
+               </div>
+        </div>
+             <div class="md-card">
+			     <div class="md-card-content">
+			        <!--  <h3 class="heading_a">Input fields</h3> -->
+			         <div class="uk-grid" data-uk-grid-margin>
+			             <div class="uk-width-medium-1-1 user ">    
+			             	 <kendo-grid options="puserGrid"></kendo-grid>                     	
+			                <!-- <div id="orgGrid"></div> -->
+			             </div> 			                       
+			         </div>               
+			     </div>
+			 </div> 
+        </div>
+    </div>
+	<footer id="footer">
+	    <span style="display:block;  text-align:right;">&copy; 2015-2018 <a href="www.staus.mn/sgt">Smart Green Technology LLC</a>, All rights reserved.</span>
+	</footer>
+	
+	<script type="x/kendo-template" id="page-template">
+      <div class="page-template">
+        <div class="header">
+          <div style="float: right">Page #: pageNum # of #: totalPages #</div>
+          Multi-page grid with automatic page breaking
+        </div>
+        <div class="watermark">KENDO UI</div>
+        <div class="footer">
+          Page #: pageNum # of #: totalPages #
+        </div>
+      </div>
+    </script>
+    
+<div class="uk-modal" id="modal_default">
+                                <div class="uk-modal-dialog">
+                                    <button type="button" class="uk-modal-close uk-close"></button>
+                                    <div class="uk-modal-header">
+                                        <h3 class="uk-modal-title">Хуваарь буцаах</h3>                                
+                                    </div>
+                                    <form id="form_validation" class="uk-form-stacked" >                                   
+					                <div class="uk-grid">
+					                    <div class="uk-width-1-1">
+					                        <div class="uk-form-row">
+					                            <label>Буцаах шалтгаан</label>
+					                            <textarea cols="30" rows="4" class="md-input" ng-model="back.text" md-input textarea-autosize></textarea>
+					                        </div>
+					                    </div>
+					                </div>
+					                <div class="uk-modal-footer uk-text-right">
+                                        <button type="button" class="md-btn md-btn-flat uk-modal-close">Хаах</button><button type="button" ng-click="loadOnBack()" class="md-btn md-btn-flat md-btn-flat-primary">Буцаах</button>
+                                    </div>
+                                    </form>
+                                 </div>
+                            </div>
+                            <div class="uk-modal" id="modal_default1">
+                                <div class="uk-modal-dialog">
+                                    <button type="button" class="uk-modal-close uk-close"></button>
+                                    <div class="uk-modal-header">
+                                        <h3 class="uk-modal-title">Хуваарь буцаасан шалтгаан</h3>                                
+                                    </div>                                                                  
+					                <div class="uk-grid">
+					                    <div class="uk-width-1-1">
+					                        <p style="border-bottom: 1px solid #444; padding-bottom: 5px;" ng-repeat="item in breason">Огноо: {{item.date}}</br>Аудитор: {{item.name}}</br>
+					                        {{item.text}}
+					                        </p>
+					                    </div>
+					                </div>
+					                <div class="uk-modal-footer uk-text-right">
+                                        <button type="button" class="md-btn md-btn-flat uk-modal-close">Хаах</button>
+                                    </div>
+                                 </div>
+                            </div>
+          <div class="uk-modal" id="modal_header_footer">
+              <div class="uk-modal-dialog">
+                  <div class="uk-modal-header">
+                      <h3 class="uk-modal-title">Headline <i class="material-icons" data-uk-tooltip="{pos:'top'}" title="headline tooltip">&#xE8FD;</i></h3>
+                  </div>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias, aliquid amet animi aspernatur aut blanditiis doloribus eligendi est fugiat iure iusto laborum modi mollitia nemo pariatur, rem tempore. Dolor, excepturi.</p>
+                  <div class="uk-modal-footer uk-text-right">
+                      <button type="button" class="md-btn md-btn-flat uk-modal-close">Close</button><button data-uk-modal="{target:'#modal_new'}" type="button" class="md-btn md-btn-flat md-btn-flat-primary">Open New Modal</button>
+                  </div>
+              </div>
+          </div>
+          <div class="uk-modal" id="modal_new">
+              <div class="uk-modal-dialog">
+                  <button type="button" class="uk-modal-close uk-close"></button>
+                  <p class="uk-text-bold">New modal triggered from other modal.</p>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias, aliquid amet animi aspernatur aut blanditiis doloribus eligendi est fugiat iure iusto laborum modi mollitia nemo pariatur, rem tempore. Dolor, excepturi.</p>
+              </div>
+          </div>
+ 

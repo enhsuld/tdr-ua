@@ -1,0 +1,38 @@
+    <div id="page_content">
+        <div id="page_content_inner">
+           
+			  <div class="md-card">
+			     <div class="md-card-content">
+			         <div class="uk-grid" data-uk-grid-margin>
+			             <div class="uk-width-medium-1-1">    
+			             	 <kendo-grid options="pmenuGrid"></kendo-grid>                     	
+			                <!-- <div id="orgGrid"></div> -->
+			             </div>                  
+			         </div>               
+			     </div>
+			 </div> 
+        </div>
+    </div>  
+    <script type="text/x-kendo-template" id="check">
+	<div id="details-container" style="text-align:center;">
+		#if (stepid == 3)  { #
+     		<button class="md-btn md-btn-small md-btn-primary" ng-click='update(dataItem)' ">Хянах</button>
+		# } else if (stepid == 4) {#
+			<button class="md-btn md-btn-small md-btn-primary" ng-click='update(dataItem)' ">Хянах</button>
+		# } #
+           
+         </div>
+     </script>     
+       <script type="text/x-kendo-template" id="statusid">
+		#if (statusid == 0)  { #
+     		<span class="uk-badge uk-badge-primary" data-translate="Хадгалсан"></span>
+		# } else if (statusid == 1) {#
+			<span class="uk-badge uk-badge-success" data-translate="Илгээсэн"></span>
+		# }  else if (statusid == 2) {#
+			<span class="uk-badge uk-badge-primary" data-translate="Засварт буцаасан"></span>
+		# } else if (statusid == 3) {#
+			<span class="uk-badge uk-badge-danger" data-translate="Татгалзсан"></span>
+		# } else if (statusid == 4) {#
+			<span class="uk-badge uk-badge-success" data-translate="Баталгаажуулсан"></span>
+		#}#
+</script>

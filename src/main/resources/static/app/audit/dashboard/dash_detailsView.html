@@ -1,0 +1,2296 @@
+<div id="page_content">
+
+    <div id="page_heading" data-uk-sticky="{ top: 48, media: 960 }">
+        <div class="heading_actions">
+            <a href="javascript:void(0)" data-uk-tooltip="{pos:'bottom'}" title="Archive"><i class="md-icon material-icons">&#xE149;</i></a>
+            <a href="javascript:void(0)" data-uk-tooltip="{pos:'bottom'}" title="Print"><i class="md-icon material-icons">&#xE8AD;</i></a>            
+        </div>
+        <h1>{{project.orgname}}</h1>
+        <span class="uk-text-upper uk-text-small">{{project.gencode}}</span>
+    </div>
+
+    <div id="page_content_inner">
+        <div class="md-card">
+            <div class="md-card-content uk-container-center reset-print">
+           	     <div class="uk-grid uk-grid-width-medium-1-1" data-uk-grid-margin>
+	                <div>
+	                    <div class="md-card" id="random_progress" card-progress="{{mainPercent}}">
+	                        <div class="md-card-toolbar md-bg-deep-orange-100">
+	                            <div class="md-card-toolbar-actions">
+	                                <card-fullscreen-activate></card-fullscreen-activate>
+	                                <i class="md-icon material-icons">&#xE5D5;</i>
+	                            </div>
+	                            <card-fullscreen-deactivate></card-fullscreen-deactivate>
+	                            <h3 class="md-card-toolbar-heading-text">
+	                               Ажлын нийт гүйцэтгэл {{mainPercent}} %
+	                            </h3>
+	                        </div>
+	                        <div class="md-card-content">	 
+	                                   
+	                           	<div class="uk-grid uk-grid-collapse" data-uk-grid-margin>         			
+				             	    <div class="uk-width-medium-1-1">
+					                    <ul class="uk-tab" data-uk-tab="{connect:'#tabs_anim5', animation:'slide-right'}">
+					                  		<li ng-click="openClose()" ng-repeat="item in tabs" ng-class="{true: 'uk-active', false: 'uk-disabled1'}[item.id == stepid]"><a href="#">{{item.name}}</a></li>                            
+				                         </ul>
+				                        <ul id="tabs_anim5" class="uk-switcher uk-margin">
+				                            <li ng-repeat="item in tabs">
+			                            	  	<div class="uk-grid uk-grid-collapse">
+								                    <div class="uk-width-medium-1-3 uk-row-first">
+								                    	<div ng-if="item.id==3" class="md-card" id="random_progress" card-progress="{{project.aper}}">
+									                        <div class="md-card-toolbar md-bg-light-green-A700">
+									                            <h3 class="md-card-toolbar-heading-text">
+									                               Аудиторын гүйцэтгэл {{project.aper}} %
+									                            </h3>
+									                        </div>
+								                        </div>
+								                        <div  ng-if="item.id==4" class="md-card" id="random_progress" card-progress="{{project.a2per}}">
+									                        <div class="md-card-toolbar md-bg-light-green-A700">
+									                            <h3 class="md-card-toolbar-heading-text">
+									                               Аудиторын гүйцэтгэл {{project.a2per}} %
+									                            </h3>
+									                        </div>
+								                        </div>
+								                        <div ng-if="item.id==5" class="md-card" id="random_progress" card-progress="{{project.a3per}}">
+									                        <div class="md-card-toolbar md-bg-light-green-A700">
+									                            <h3 class="md-card-toolbar-heading-text">
+									                               Аудиторын гүйцэтгэл {{project.a3per}} %
+									                            </h3>
+									                        </div>
+								                        </div>
+								                    </div>
+								                    <div class="uk-width-medium-1-3">
+								                    	<div ng-if="item.id==3"  class="md-card" id="random_progress" card-progress="{{project.mper}}">
+									                        <div class="md-card-toolbar md-bg-orange-300">
+									                            <h3 class="md-card-toolbar-heading-text">
+									                               Менежерийн гүйцэтгэл {{project.mper}} %
+									                            </h3>
+									                        </div>
+								                        </div>
+								                        <div ng-if="item.id==4"  class="md-card" id="random_progress" card-progress="{{project.m2per}}">
+									                        <div class="md-card-toolbar md-bg-orange-300">
+									                            <h3 class="md-card-toolbar-heading-text">
+									                               Менежерийн гүйцэтгэл {{project.m2per}} %
+									                            </h3>
+									                        </div>
+								                        </div>
+								                        <div ng-if="item.id==5"  class="md-card" id="random_progress" card-progress="{{project.m3per}}">
+									                        <div class="md-card-toolbar md-bg-orange-300">
+									                            <h3 class="md-card-toolbar-heading-text">
+									                               Менежерийн гүйцэтгэл {{project.m3per}} %
+									                            </h3>
+									                        </div>
+								                        </div>
+								                    </div>
+								                    <div class="uk-width-medium-1-3">
+								                    	<div ng-if="item.id==3" class="md-card" id="random_progress" card-progress="{{project.tper}}">
+									                        <div class="md-card-toolbar md-bg-blue-A700">
+									                            <h3 class="md-card-toolbar-heading-text">
+									                               Тэргүүлэхийн гүйцэтгэл {{project.tper}} %
+									                            </h3>
+									                        </div>
+								                        </div>
+								                        <div ng-if="item.id==4" class="md-card" id="random_progress" card-progress="{{project.t2per}}">
+									                        <div class="md-card-toolbar md-bg-blue-A700">
+									                            <h3 class="md-card-toolbar-heading-text">
+									                               Тэргүүлэхийн гүйцэтгэл {{project.t2per}} %
+									                            </h3>
+									                        </div>
+								                        </div>
+								                        <div ng-if="item.id==5" class="md-card" id="random_progress" card-progress="{{project.t3per}}">
+									                        <div class="md-card-toolbar md-bg-blue-A700">
+									                            <h3 class="md-card-toolbar-heading-text">
+									                               Тэргүүлэхийн гүйцэтгэл {{project.t3per}} %
+									                            </h3>
+									                        </div>
+								                        </div>
+								                    </div>
+								                </div>
+				                            	<div class="uk-grid uk-grid-collapse" data-uk-grid-margin>
+									                <div class="uk-width-large-1-2 hidden-print uk-visible-large">
+									                 <div class="md-card-toolbar">
+									                        	<h3 class="md-card-toolbar-heading-text uk-text-danger"> Үе шатны хийх жагсаалт</h3>
+									                        </div>
+									                    <div id="notice" class="md-list-outside-wrapper" custom-scrollbar list-outside>
+									                        <ul class="md-list md-list-outside notes_list" data-uk-accordion>
+									                            <li ng-repeat-end ng-repeat="note in worklist" ng-if="note.levelid==item.id && note.parentid==0"
+									                            ng-class="{
+									                            'noticep notice-parent notice-green-100':(note.step==3 && note.haschild==false && note.isscore=='true'),
+									                            'noticep notice-parent notice-orange-300':(note.step==4 && note.haschild==false && note.isscore=='true'),
+									                            'noticep notice-parent notice-orange-100':(note.step==5 && note.isscore=='true'),
+									                            'noticep notice-parent ':(note.isscore=='false'),
+									                            'noticep notice-green-100':(note.allchildtrue==3 && note.haschild==true),
+									                            'noticep notice-orange-300':(note.allchildtrue==4 && note.haschild==true),
+									                            'noticep notice-orange-100 ll':(note.allchildtrue==5 && note.haschild==true),
+									                            'noticep notice-orange-400':(note.allchildtrue==1 && note.haschild==true)
+						                                        }">
+									                                <a  href="#" class="md-list-content note_link" ng-class="{'uk-accordion-title':(note.haschild==true)}" ng-click="openNote($event,$parent.$index,$index,note)">
+									                                    <span class="md-list-heading">
+									                                    	{{note.workname}}
+									                                    	<!--  <i class="md-icon material-icons md-color-red-500">&#xE80E;</i> -->
+									                                    </span>
+									                                    <span class="uk-text-small uk-text-muted">{{note.date}}</span>
+									                                   
+									                                </a>	
+									                                <ul class="md-list md-list-outside notes_list" ng-class="{'uk-accordion-content':(note.haschild==true)}" style="padding-left:40px;">
+									                                	<li ng-repeat="child in worklist" ng-if="note.id==child.parentid"  ng-class="{
+									                                        'notice notice-grey':child.step == 0,
+									                                        'notice notice-danger': child.step == 1,
+									                                        'notice notice-green-100':child.step == 3,
+									                                        'notice notice-orange-300':child.step == 4,
+									                                        'notice notice-orange-100':child.step == 5
+									                                        }">
+									                                		<a  href="#" class="md-list-content note_link" ng-click="openNote($event,$parent.$index,$index,child)">
+											                                    <span class="md-list-heading">
+											                                    	{{child.workname}}
+											                                    	<!--  <i class="md-icon material-icons md-color-red-500">&#xE80E;</i> -->
+											                                    </span>
+											                                    <span class="uk-text-small uk-text-muted">{{child.fname}}</span>
+											                                   
+											                                </a>
+											                                <ul class="md-list md-list-outside notes_list" style="padding-left:40px;">
+											                                	<li ng-repeat="last in worklist" ng-if="child.id==last.parentid"  ng-class="{
+											                                        'notice notice-grey':last.step == 0,
+											                                        'notice notice-danger':last.step == 1,
+											                                        'notice notice-green-100':last.step == 3,
+											                                        'notice notice-orange-300':last.step == 4,
+											                                        'notice notice-orange-100':last.step == 5
+											                                        }">
+											                                		<a  href="#" class="md-list-content note_link" ng-click="openNote($event,$parent.$index,$index,last)">
+													                                    <span class="md-list-heading">
+													                                    	{{last.workname}}
+													                                    	<!--  <i class="md-icon material-icons md-color-red-500">&#xE80E;</i> -->
+													                                    </span>
+													                                    <span class="uk-text-small uk-text-muted">{{last.date}}</span>
+													                                   
+													                                </a>
+											                                	</li>
+											                                </ul>
+									                                	</li>
+									                                </ul>
+									                                								                                		                                
+									                            </li>
+									                        </ul>
+									                    </div>
+									                </div>
+									                <div class="uk-width-large-1-2">
+									                    <div class="md-card md-card-single" single-card>
+									                        <div ng-if="!noteActive">
+									                            <div class="md-card-toolbar">
+									                                <h3 class="md-card-toolbar-heading-text">Notes</h3>
+									                                <a style="right: 7px; margin-top: 7px; position: absolute;" ng-click="stepUpAll(item.id)" style="margin-top:5px;" class="uk-float-right md-btn md-btn-success md-btn-mini md-btn-wave-light md-btn-icon waves-effect waves-button waves-light" href="javascript:void(0)">
+										                             	<i class="material-icons">save</i>
+										                                Хадгалах
+										                            </a>
+									                            </div>
+									                            <div class="md-card-content">
+									                            	<p class="uk-text-center uk-text-large uk-margin-large-top">			
+									                            		<img class="logo_regular" ng-src="assets/img/plschoose.png" alt="" add-image-prop="" src="assets/img/plschoose.png">
+									                            	</p>
+									                                <p class="uk-text-center uk-text-large uk-margin-large-top">									                                	
+									                                    <strong class="md-color-red-600">Өмнөх жагсаалтаас</strong><br>
+									                                    <span class="uk-text-muted">сонгож</span><br>
+									                                    ажлаа эхлүүлнэ үү
+									                                </p>
+									                            </div>
+									                        </div>
+									                        <form action="" ng-if="noteActive">
+									                            <div class="md-card-toolbar hidden-print">
+									                            	<h3 class="md-card-toolbar-heading-text" style="width:75%;">{{note_form.title}}</h3>
+									                            	<a ng-show="audit" style="right: 7px; margin-top: 7px; position: absolute;" ng-click="stepUp()" style="margin-top:5px;" class="uk-float-right md-btn md-btn-success md-btn-mini md-btn-wave-light md-btn-icon waves-effect waves-button waves-light" href="javascript:void(0)">
+										                             	<i class="material-icons">save</i>
+										                                Хадгалах
+										                            </a>
+										                            <a ng-show="manager" ng-click="stepUp()" style="margin-top:5px;" class="uk-float-right md-btn md-btn-warning md-btn-small md-btn-wave-light md-btn-icon waves-effect waves-button waves-light" href="javascript:void(0)">
+										                             	<i class="material-icons">games</i>
+										                                Батлах
+										                            </a>
+										                            <a ng-show="manager" ng-click="stepDown()" style="margin-top:5px;" class="uk-float-right md-btn md-btn-danger md-btn-small md-btn-wave-light md-btn-icon waves-effect waves-button waves-light" href="javascript:void(0)">
+										                             	<i class="material-icons">cached</i>
+										                                Буцаах
+										                            </a>
+										                            <a ng-show="terguuleh" ng-click="stepDown()" style="margin-top:5px;" class="uk-float-right md-btn md-btn-danger md-btn-small md-btn-wave-light md-btn-icon waves-effect waves-button waves-light" href="javascript:void(0)">
+										                             	<i class="material-icons">cached</i>
+										                                Буцаах
+										                            </a>
+										                            <a ng-show="terguuleh" ng-click="stepUp()" style="margin-top:5px;" class="uk-float-right md-btn md-btn-danger md-btn-small md-btn-wave-light md-btn-icon waves-effect waves-button waves-light" href="javascript:void(0)">
+										                             	<i class="material-icons">games</i>
+										                                Дуусгах
+										                            </a>
+									                            </div>
+									                            <div class="md-card-content">
+								                            	     <div class="uk-grid uk-grid-width-large-1-2 uk-grid-width-medium-1-2 uk-sortable" data-uk-grid-margin data-uk-sortable>
+         														         <div class="sortable-handler">
+														                    <div class="uk-width-small-1-1">
+																                <div class="md-card md-card-hover md-card-overlay" style="height: 200px !important; background-size: cover; background-image: url(assets/img/1.png);">
+																                	<div class="md-card-toolbar hidden-print">
+														                            	<h3 class="md-card-toolbar-heading-text ng-binding">  Ажлын гүйцэтгэлийг нэгтгэж тайлагнах, баталгаажуулах талбар</h3>
+														                            </div>
+																                    <div class="md-card-content" style="text-align:center !important;">
+																                    	<div class="epc_chart" easypiechart options="epc_orders" percent="90">																                    		
+															                                <span class="epc_chart_icon"><i class="material-icons">apps</i></span>
+															                            </div>																                        
+																                    </div>
+																                     <div class="md-card-overlay-content" style="margin-top:0px;">
+															                            <div class="uk-clearfix md-card-overlay-header">
+															                                <h3>
+															                                   Гүйцэтгэсэн ажлын тайлбар
+															                                </h3>
+															                                <div class="md-fab-wrapper md-fab-in-card" ng-show="showBtn" ng-click="showWork()">
+																	                            <div class="md-fab md-fab-primary md-btn-primary md-fab-small md-btn-wave-light waves-effect waves-button waves-light">
+																	                            	<i class="material-icons">work</i>
+																	                            </div>
+																	                        </div>	
+															                            </div>
+															                        </div>
+																                </div>
+																            </div>
+														                </div>
+														                <div class="sortable-handler">
+														                    <div class="uk-width-small-1-1">
+																                <div class="md-card md-card-hover md-card-overlay" style="height: 200px !important; background-size: cover; background-image: url(assets/img/2.png);">
+																                	<div class="md-card-toolbar hidden-print">
+														                            	<h3 class=" md-card-toolbar-heading-text">
+														                            		<span >Маягттай ажиллах талбар </span>
+														                            		<span> {{note_form.fname}}</span>  {{note_form.fileurl}}
+														                            	</h3>
+														                            	
+														                            	
+														                            </div>
+																                    <div class="md-card-content" style="text-align:center !important;">
+																                    	<div class="epc_chart" easypiechart options="epc_user_messages" percent="80">
+																                    		<span class="epc_chart_icon"><i class="material-icons">assignment</i></span>
+															                            </div>																                        
+																                    </div>
+																                     <div class="md-card-overlay-content" ng-show="showBtn" style="margin-top:0px;">
+															                            <div class="uk-clearfix md-card-overlay-header">
+															                                <h3>
+															                                
+															                                </h3>
+															                                {{note_form.isfile}}--  {{note_form.fileurl}}
+															                                <div ng-if="note_form.fileurl=='b1' || note_form.fileurl=='b11' || note_form.fileurl=='b12' || note_form.fileurl=='b13' 
+															                                || note_form.fileurl=='b14' || note_form.fileurl=='b15' || note_form.fileurl=='b24'" 
+															                                	class="uk-float-right md-fab-wrapper md-fab-in-card">
+																	                            <div class="md-fab md-fab-danger md-fab-toolbar  md-fab-small" md-fab-toolbar>
+																	                                <i class="material-icons">&#xE8BE;</i>
+																	                                <div class="md-fab-toolbar-actions">																		                                																	                                	
+																	                                    <a target="_self" download="{{item.filename}}" ng-click="exportExcelWord(note_form.fileurl,excel.sheetName,mid)" data-uk-tooltip="{pos:'bottom'}" title="{{note_form.fname}}"><i class="material-icons md-color-white">&#xE161;</i></a>
+																                                        <button ng-click="showExcelFile(note_form.fileurl,excel.sheetName,mid)" data-uk-tooltip="{pos:'bottom'}" title="Excel"><i class="material-icons md-color-white">widgets</i></button>
+																	                                </div>
+																	                            </div>
+																	                        </div>
+																	                  															                     
+																	                        <div ng-if="note_form.fileurl=='gb461' || note_form.fileurl=='gb463' ||  note_form.fileurl=='gb464'  ||  note_form.fileurl=='gb45'
+																	                        || note_form.fileurl=='gb44' 
+																	                        ||  note_form.fileurl=='gb11' || note_form.fileurl=='gb1' 
+																	                        || note_form.fileurl=='gb465' ||  note_form.fileurl=='gb72' ||  note_form.fileurl=='gb462' || note_form.fileurl=='gb46'" class="uk-float-right md-fab-wrapper md-fab-in-card">
+																	                            <a class="md-fab md-fab-primary md-fab-small md-btn-primary md-btn-wave-light waves-effect waves-button waves-light" 
+																									data-uk-tooltip="{pos:'bottom'}" title="{{note_form.fname}}" 
+																	                            	target="_self" download="{{item.filename}}" ng-click="exportExcelSheet(note_form.fileurl,excel.sheetName,mid,stepid)">
+															                   				      	<i class="material-icons">file_download</i>
+															                       				</a>
+																	                        </div>
+																	                        <div ng-if="note_form.fileurl=='b42' || note_form.fileurl=='b43' || note_form.fileurl=='b51' ||  note_form.fileurl=='b52' || note_form.fileurl=='wordPlan'" class="uk-float-right md-fab-wrapper md-fab-in-card">
+																	                              <a class="md-fab md-fab-primary md-fab-small md-btn-primary md-btn-wave-light waves-effect waves-button waves-light" 
+																										data-uk-tooltip="{pos:'bottom'}" title="{{note_form.fname}}" 
+																		                            	target="_self" download="{{item.filename}}" ng-click="exportExcelWord(note_form.fileurl,excel.sheetName,mid)"  >
+																                   				      	<i class="material-icons">file_download</i>
+																                       				</a>
+																	                        </div>
+																	                        <div ng-if="note_form.fileurl=='b22'" class="uk-float-right md-fab-wrapper md-fab-in-card" ng-click="showRisk()">
+																	                            <div class="md-fab md-fab-danger md-btn-danger md-fab-small md-btn-wave-light waves-effect waves-button waves-light">
+																	                            	<i class="material-icons">business_center</i>																	                            
+																	                            </div>
+																	                        </div>
+															                                <div ng-if="note_form.fileurl=='b241'" class="uk-float-right md-fab-wrapper md-fab-in-card" ng-click="showGrid241()">
+																	                            <div class="md-fab md-fab-primary md-btn-primary md-fab-small md-btn-wave-light waves-effect waves-button waves-light">
+																	                            	<i class="material-icons">assessment</i>
+																	                            </div>
+																	                        </div>
+																	                        <div ng-if="note_form.fileurl=='b242'" class="uk-float-right md-fab-wrapper md-fab-in-card" ng-click="showGrid242()">
+																	                            <div class="md-fab md-fab-primary md-btn-primary md-fab-small md-btn-wave-light waves-effect waves-button waves-light">
+																	                            	<i class="material-icons">assessment</i>
+																	                            </div>
+																	                        </div>
+																	                        <div ng-if="note_form.fileurl=='b243'" class="uk-float-right md-fab-wrapper md-fab-in-card" ng-click="showGrid243()">
+																	                            <div class="md-fab md-fab-primary md-btn-primary md-fab-small md-btn-wave-light waves-effect waves-button waves-light">
+																	                            	<i class="material-icons">assessment</i>
+																	                            </div>
+																	                        </div>
+																	                        <div ng-if="note_form.fileurl=='finExcel' || note_form.fileurl=='gb5155'" class="uk-float-right md-fab-wrapper md-fab-in-card" ng-click="showExcelTailan()">
+																	                            <div class="md-fab md-fab-primary md-btn-primary md-btn-wave-light md-fab-small waves-effect waves-button waves-light">
+																	                            	<i class="material-icons">extension</i>
+																	                            </div>
+																	                        </div>
+																							
+																	                        <div ng-if="note_form.fileurl=='b21'" class="uk-float-right md-fab-wrapper md-fab-in-card">
+																	                            <a class="md-fab md-fab-primary md-fab-small md-btn-primary md-btn-wave-light waves-effect waves-button waves-light" 
+																									data-uk-tooltip="{pos:'bottom'}" title="Байгууллагын мэдээлэл" 
+																	                            	target="_self" download="{{item.filename}}" ng-click="exportExcel21(note_form.fileurl,excel.sheetName,mid)">
+															                   				      	<i class="material-icons">file_download</i>
+															                       				</a>
+																	                        </div>
+																	                        
+																	                        <div ng-if="note_form.fileurl=='finalWord'" class="uk-float-right md-fab-wrapper md-fab-in-card">
+																	                            <a class="md-fab md-fab-primary md-fab-small md-btn-primary md-btn-wave-light waves-effect waves-button waves-light" 
+																									data-uk-tooltip="{pos:'bottom'}" title="Татаж авах" 
+																	                            	target="_self" download="{{item.filename}}"  href="/excel/wordReportTSHZ/Report/{{mid}}" >
+															                   				      	<i class="material-icons">file_download</i>
+															                       				</a>
+																	                        </div>
+																	                        
+																	                        <div ng-if="note_form.fileurl=='excelReport5'" class="uk-float-right md-fab-wrapper md-fab-in-card">
+																	                            <a class="md-fab md-fab-primary md-fab-small md-btn-primary md-btn-wave-light waves-effect waves-button waves-light" 
+																									data-uk-tooltip="{pos:'bottom'}" title="Татаж авах" ng-click="downloadReport5(mid)">
+															                   				      	<i class="material-icons">file_download</i>
+															                       				</a>
+																	                        </div>
+																	                        
+																	                        <div ng-if="note_form.fileurl=='b3' || note_form.fileurl=='gb6'" class="uk-float-right md-fab-wrapper md-fab-in-card" ng-click="showCompute()">
+																	                            <div class="md-fab md-fab-danger md-btn-danger md-btn-wave-light md-fab-small waves-effect waves-button waves-light">
+																	                            	<i class="material-icons">trending_up</i>																                            
+																	                            </div>
+																	                        </div>
+																	                        <div ng-if="note_form.fileurl=='b22'" class="uk-float-right md-fab-wrapper md-fab-in-card" ng-click="showRisk()">
+																	                            <div class="md-fab md-fab-danger md-btn-danger md-btn-wave-light md-fab-small waves-effect waves-button waves-light">
+																	                            	<i class="material-icons">business_center</i>																	                            
+																	                            </div>
+																	                        </div>
+																	                        
+																	                        <div ng-if="note_form.fileurl=='b23' ||  note_form.fileurl=='gb21'" class="uk-float-right md-fab-wrapper md-fab-in-card" ng-click="showUlamjlaltRisk()">
+																	                            <div class="md-fab md-fab-danger md-btn-danger md-btn-wave-light md-fab-small waves-effect waves-button waves-light">
+																	                            	<i class="material-icons">business_center</i>																	                            
+																	                            </div>
+																	                        </div>
+																	                        
+																	                        <div ng-if="note_form.fileurl=='b41'" class="uk-float-right md-fab-wrapper md-fab-in-card" ng-click="showRiskSummary()">
+																	                            <div class="md-fab md-fab-warning md-btn-warning md-btn-wave-light md-fab-small waves-effect waves-button waves-light">
+																	                            	<i class="material-icons">business_center</i>																	                            
+																	                            </div>
+																	                        </div>
+																	                        <div ng-if="note_form.fileurl=='gb31'" class="uk-float-right md-fab-wrapper md-fab-in-card" ng-click="showUlamjlaltRiskGuitsetgel()">
+																	                            <div class="md-fab md-fab-warning md-btn-warning md-btn-wave-light md-fab-small waves-effect waves-button waves-light">
+																	                            	<i class="material-icons">trending_up</i>																	                            
+																	                            </div>
+																	                        </div>
+																	                        <div ng-if="note_form.fileurl=='gb41'" class="uk-float-right md-fab-wrapper md-fab-in-card" ng-click="showGB41()">
+																	                            <div class="md-fab md-fab-warning md-btn-warning md-btn-wave-light md-fab-small waves-effect waves-button waves-light">
+																	                            	<i class="material-icons">group_work</i>																                            
+																	                            </div>
+																	                        </div>
+																	                        <div ng-if="note_form.fileurl=='gb42'" class="uk-float-right md-fab-wrapper md-fab-in-card" ng-click="showGB42()">
+																	                            <div class="md-fab md-fab-warning md-btn-warning md-btn-wave-light md-fab-small waves-effect waves-button waves-light">
+																	                            	<i class="material-icons">group_work</i>																                            
+																	                            </div>
+																	                        </div>
+																	                        <div ng-if="note_form.fileurl=='gb43'" class="uk-float-right md-fab-wrapper md-fab-in-card" ng-click="showGB43()">
+																	                            <div class="md-fab md-fab-warning md-btn-warning md-btn-wave-light md-fab-small waves-effect waves-button waves-light">
+																	                            	<i class="material-icons">group_work</i>																                            
+																	                            </div>
+																	                        </div>
+																	                         <div ng-if="note_form.fileurl=='gb44'" class="uk-float-right md-fab-wrapper md-fab-in-card" ng-click="showGB44()">
+																	                            <div class="md-fab md-fab-warning md-btn-warning md-btn-wave-light md-fab-small waves-effect waves-button waves-light">
+																	                            	<i class="material-icons">group_work</i>																                            
+																	                            </div>
+																	                        </div>
+																	                         <div ng-if="note_form.fileurl=='gb45'" class="uk-float-right md-fab-wrapper md-fab-in-card" ng-click="showGB45()">
+																	                            <div class="md-fab md-fab-warning md-btn-warning md-btn-wave-light md-fab-small waves-effect waves-button waves-light">
+																	                            	<i class="material-icons">group_work</i>																                            
+																	                            </div>
+																	                        </div>
+																	                         <div ng-if="note_form.fileurl=='gb46'" class="uk-float-right md-fab-wrapper md-fab-in-card" ng-click="showGB46()">
+																	                            <div class="md-fab md-fab-warning md-btn-warning md-btn-wave-light md-fab-small waves-effect waves-button waves-light">
+																	                            	<i class="material-icons">group_work</i>																                            
+																	                            </div>
+																	                        </div>
+																	                         <div ng-if="note_form.fileurl=='gb461'" class="uk-float-right md-fab-wrapper md-fab-in-card" ng-click="showGB461()">
+																	                            <div class="md-fab md-fab-warning md-btn-warning md-btn-wave-light md-fab-small waves-effect waves-button waves-light">
+																	                            	<i class="material-icons">group_work</i>																                            
+																	                            </div>
+																	                        </div>
+																	                         <div ng-if="note_form.fileurl=='gb462'" class="uk-float-right md-fab-wrapper md-fab-in-card" ng-click="showGB462()">
+																	                            <div class="md-fab md-fab-warning md-btn-warning md-btn-wave-light md-fab-small waves-effect waves-button waves-light">
+																	                            	<i class="material-icons">group_work</i>																                            
+																	                            </div>
+																	                        </div>
+																	                         <div ng-if="note_form.fileurl=='gb463'" class="uk-float-right md-fab-wrapper md-fab-in-card" ng-click="showGB463()">
+																	                            <div class="md-fab md-fab-warning md-btn-warning md-btn-wave-light md-fab-small waves-effect waves-button waves-light">
+																	                            	<i class="material-icons">group_work</i>																                            
+																	                            </div>
+																	                        </div>
+																	                         <div ng-if="note_form.fileurl=='gb464'" class="uk-float-right md-fab-wrapper md-fab-in-card" ng-click="showGB464()">
+																	                            <div class="md-fab md-fab-warning md-btn-warning md-btn-wave-light md-fab-small waves-effect waves-button waves-light">
+																	                            	<i class="material-icons">group_work</i>																                            
+																	                            </div>
+																	                        </div>
+																	                        <div ng-if="note_form.fileurl=='managementLetter'" class="uk-float-right md-fab-wrapper md-fab-in-card" ng-click="showGridMZ()">
+																	                            <div class="md-fab md-fab-warning md-btn-warning md-btn-wave-light md-fab-small waves-effect waves-button waves-light">
+																	                            	<i class="material-icons">group_work</i>																                            
+																	                            </div>
+																	                        </div>
+																	                         <div ng-if="note_form.fileurl=='gb465'" class="uk-float-right md-fab-wrapper md-fab-in-card" ng-click="showGB465()">
+																	                            <div class="md-fab md-fab-warning md-btn-warning md-btn-wave-light md-fab-small waves-effect waves-button waves-light">
+																	                            	<i class="material-icons">group_work</i>																                            
+																	                            </div>
+																	                        </div>
+																	                        <div ng-if="note_form.fileurl=='gg1'" class="uk-float-right md-fab-wrapper md-fab-in-card" ng-click="showGG1()">
+																	                            <div class="md-fab md-fab-warning md-btn-warning md-btn-wave-light md-fab-small waves-effect waves-button waves-light">
+																	                            	<i class="material-icons">assessment</i>																                            
+																	                            </div>
+																	                        </div>
+																	                        
+																	                        <div ng-if="note_form.fileurl=='gg2'" class="uk-float-right md-fab-wrapper md-fab-in-card" ng-click="showGG2()">
+																	                            <div class="md-fab md-fab-warning md-btn-warning md-btn-wave-light md-fab-small waves-effect waves-button waves-light">
+																	                            	<i class="material-icons">assessment</i>																                            
+																	                            </div>
+																	                        </div>
+																	                        <div ng-if="note_form.fileurl=='t1' || note_form.fileurl=='t2' || note_form.fileurl=='t3' || note_form.fileurl=='t4' || note_form.fileurl=='t5' || note_form.fileurl=='t6' || note_form.fileurl=='t7'" class="uk-float-right md-fab-wrapper md-fab-in-card" ng-click="showT1(note_form.fileurl)">
+																	                            <div class="md-fab md-fab-warning md-btn-warning md-btn-wave-light md-fab-small waves-effect waves-button waves-light">
+																	                            	<i class="material-icons">assessment</i>																                            
+																	                            </div>
+																	                        </div>
+															                            </div>
+															                        </div>
+																                </div>
+																            </div>
+														                </div>
+														                <div class="sortable-handler">
+														                    <div class="uk-width-small-1-1">
+																                <div class="md-card md-card-hover md-card-overlay" style="height: 200px !important; background-size: cover; background-image: url(assets/img/3.png);">
+																                	<div class="md-card-toolbar hidden-print">
+														                            	<h3 class="md-card-toolbar-heading-text ng-binding">Санал солилцох талбар</h3>
+														                            </div>
+																                    <div class="md-card-content" style="text-align:center !important;">
+																                    	<div class="epc_chart" easypiechart options="epc_tasks_list" percent="100">
+																                    		<span class="epc_chart_icon">
+															                                	<!-- <i class="material-icons">speaker_notes</i> -->
+															                                	<span class="epc_chart_text"><span class="countUpMe">{{mlist.length}}</span>ш</span>
+															                                	<span style="position: absolute;right:0px;" class="uk-badge uk-badge-success" data-uk-tooltip="{pos:'right'}" title="Тэргүүлэх">{{mlist_2count}}</span>
+															                                	<span style="position: absolute;right:0px;top:30px;" class="uk-badge uk-badge-danger" data-uk-tooltip="{pos:'right'}" title="Менежер">{{mlist_5count}}</span>
+															                                	
+															                                </span>															                               
+															                            </div>																                        
+																                    </div>
+																                     <div class="md-card-overlay-content" style="margin-top:0px;">
+															                            <div class="uk-clearfix md-card-overlay-header">
+															                                <h3>
+															                                    Хоорондын харилцаа 
+															                                </h3>
+															                                <div class="md-fab-wrapper md-fab-in-card" ng-show="showBtn" ng-click="showComment()">
+																	                            <div class="md-fab md-fab-primary md-fab-small md-btn-primary md-btn-wave-light waves-effect waves-button waves-light">
+																	                            	<i class="material-icons">comment</i>
+																	                            </div>
+																	                        </div>	
+															                            </div>
+															                        </div>
+																                </div>
+																            </div>
+														                </div>
+														                 <div class="sortable-handler">
+														                    <div class="uk-width-small-1-1">
+																                <div class="md-card md-card-hover md-card-overlay" style="height: 200px !important; background-size: cover; background-image: url(assets/img/4.png);">
+																                	<div class="md-card-toolbar hidden-print">
+														                            	<h3 class="md-card-toolbar-heading-text ng-binding">Холбогдох нотлох зүйл</h3>
+														                            </div>
+																                    <div class="md-card-content" style="text-align:center !important;">
+																                    	<div class="epc_chart" easypiechart options="epc_user_registrations" percent="35">
+															                                <span class="epc_chart_icon"><i class="material-icons">file_upload</i></span>	
+															                            </div>																                        
+																                    </div>
+																                     <div class="md-card-overlay-content" style="margin-top:0px;">
+															                            <div class="uk-clearfix md-card-overlay-header">
+															                                <h3>
+															                                    Бусад хавсаргах файлууд
+															                                </h3>
+															                                <div class="md-fab-wrapper md-fab-in-card " ng-show="showBtn" ng-click="showFile()">
+																	                            <div class="md-fab md-fab-primary md-fab-small md-btn-primary md-btn-wave-light waves-effect waves-button waves-light">
+																	                            	<i class="material-icons">cloud_upload</i>
+																	                            </div>
+																	                        </div>	
+															                            </div>
+															                        </div>
+																                </div>
+																            </div>
+														                </div>
+														                
+												                	</div>									                               
+									                            </div>
+									                        </form>
+									                    </div>
+									                </div>
+									            </div>
+				                            </li>                            
+				                        </ul>
+					                </div>
+				                </div>
+	                        </div>
+	                    </div>
+	                </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+<footer id="footer">
+    <span style="display:block;  text-align:right;">&copy; 2015-2017 <a href="www.staus.mn/sgt">Smart Green Technology LLC</a>, All rights reserved.</span>
+</footer>
+<div class="uk-modal uk-modal-card-fullscreen" id="modal_gb1">
+    <div class="uk-modal-dialog uk-modal-dialog-blank">
+        <div class="md-card uk-height-viewport">
+            <div class="md-card-toolbar">     
+            	 <div class="md-card-toolbar-actions">
+                      <button class="uk-modal-close uk-close" type="button"></button>
+                </div>           
+                <span class="md-icon material-icons uk-modal-close">&#xE5C4;</span>
+                <h3 class="md-card-toolbar-heading-text">
+                    Эрсдэлийн хураангуй
+                </h3>
+            </div>
+            <div class="md-card-content gb1">
+                 <kendo-grid options="gb1Grid"></kendo-grid>  			
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="uk-modal uk-modal-card-fullscreen" id="modal_gg1">
+	<form ng-submit="submitGG1(gg1)">
+    <div class="uk-modal-dialog uk-modal-dialog-blank">
+        <div class="md-card uk-height-viewport">
+            <div class="md-card-toolbar">     
+            	 <div class="md-card-toolbar-actions">
+                      <button class="md-btn md-btn-primary md-btn-wave-light md-btn-icon md-btn-mini" type="submit">
+                         <i class="material-icons">save</i>
+                         Хадгалах
+                     </button>
+                </div>           
+                <span class="md-icon material-icons uk-modal-close">&#xE5C4;</span>
+                <h3 class="md-card-toolbar-heading-text">
+                    Аудитын явцад хийсэн зарим ажлыг нэгтгэн бүртгэх маягт
+                </h3>
+            </div>
+            
+	            <div class="md-card-content gg1" style="overflow: auto;max-height:90vh;">
+	                 <table class="uk-table">
+	                 	<thead style="background: #BBDEFB;">
+	                 		<tr>
+	                 			<th style="width: 15%;">Тайлангийн дэд бүлэг</th>
+	                 			<th style="width: 25%;">Тайлангийн дэд бүлэгт хамаарах асуудал</th>
+	                 			<th>Хэрэгжүүлэхээр төлөвлөсөн горим сорил</th>
+	                 			<th>Тайлбар</th>
+	                 		</tr>
+	                 		<tr>
+	                 			<th>1</th>
+	                 			<th>2</th>
+	                 			<th>4</th>
+	                 			<th>8</th>
+	                 		</tr>
+	                 	</thead>
+	                 	<tbody>
+	                 		<tr>
+	                 			<td rowspan="3">2.1 Оршил</td>
+	                 			<td>Баталгаажуулсан санхүүгийн тайлангийн тайлант он</td>
+	                 			<td>
+	                 				<textarea cols="30" rows="1"   class="md-input" ng-model="gg1.row1_1" md-input textarea-autosize></textarea>
+	                 			</td>
+	                 			<td><textarea cols="30" rows="1"   class="md-input" ng-model="gg1.row1_2" md-input textarea-autosize></textarea></td>
+	                 		</tr>
+	                 		<tr>
+	                 			<td>Баталгаажуулсан санхүүгийн тайлангийн нэр</td>
+	                 			<td><textarea cols="30" rows="1"   class="md-input" ng-model="gg1.row2_1" md-input textarea-autosize></textarea></td>
+	                 			<td><textarea cols="30" rows="1"   class="md-input" ng-model="gg1.row2_2" md-input textarea-autosize></textarea></td>
+	                 		</tr>
+	                 		<tr>
+	                 			<td>Баталгаажуулсан санхүүгийн тайлан хүлээж авах хүний албан тушаал, овог нэр</td>
+	                 			<td><textarea cols="30" rows="1"   class="md-input" ng-model="gg1.row3_1" md-input textarea-autosize></textarea></td>
+	                 			<td><textarea cols="30" rows="1"   class="md-input" ng-model="gg1.row3_2" md-input textarea-autosize></textarea></td>
+	                 		</tr>
+	                 		<tr>
+	                 			<td rowspan="8">2.2 Аудит хийх үндэслэл, зорилго, талуудын хүлээх үүрэг, хариуцлага</td>
+	                 			<td>Аудит эхэлсэн огноо</td>
+	                 			<td><textarea cols="30" rows="1"   class="md-input" ng-model="gg1.row4_1" md-input textarea-autosize></textarea></td>
+	                 			<td><textarea cols="30" rows="1"   class="md-input" ng-model="gg1.row4_2" md-input textarea-autosize></textarea></td>
+	                 		</tr>
+	                 		<tr>
+	                 			<td>Аудит хийж дууссан огноо</td>
+               					<td><textarea cols="30" rows="1"   class="md-input" ng-model="gg1.row5_1" md-input textarea-autosize></textarea></td>
+	                 			<td><textarea cols="30" rows="1"   class="md-input" ng-model="gg1.row5_2" md-input textarea-autosize></textarea></td>
+	                 		</tr>
+	                 		<tr>
+	                 			<td>Аудитын тайланг баталгаажуулсан огноо</td>
+	                 			<td><textarea cols="30" rows="1"   class="md-input" ng-model="gg1.row6_1" md-input textarea-autosize></textarea></td>
+	                 			<td><textarea cols="30" rows="1"   class="md-input" ng-model="gg1.row6_2" md-input textarea-autosize></textarea></td>
+	                 		</tr>
+	                 		<tr>
+	                 			<td>Аудит хийсэн байгууллага, нэгжийн нэр</td>
+	                 			<td><textarea cols="30" rows="1"   class="md-input" ng-model="gg1.row7_1" md-input textarea-autosize></textarea></td>
+	                 			<td><textarea cols="30" rows="1"   class="md-input" ng-model="gg1.row7_2" md-input textarea-autosize></textarea></td>
+	                 		</tr>
+	                 		<tr>
+	                 			<td>Аудит хийсэн хүний албан тушаал, овог нэр</td>
+	                 			<td><textarea cols="30" rows="1"   class="md-input" ng-model="gg1.row8_1" md-input textarea-autosize></textarea></td>
+	                 			<td><textarea cols="30" rows="1"   class="md-input" ng-model="gg1.row8_2" md-input textarea-autosize></textarea></td>
+	                 		</tr>
+	                 		<tr>
+	                 			<td>Үйлчлүүлэгч санхүүгийн тайлангаа төрийн аудитын байгууллагад ирүүлсэн огноо</td>
+	                 			<td><textarea cols="30" rows="1"   class="md-input" ng-model="gg1.row9_1" md-input textarea-autosize></textarea></td>
+	                 			<td><textarea cols="30" rows="1"   class="md-input" ng-model="gg1.row9_2" md-input textarea-autosize></textarea></td>
+	                 		</tr>
+	                 		<tr>
+	                 			<td>Үйлчлүүлэгч байгууллага санхүүгийн тайлангаа төрийн аудитын байгууллагад ирүүлсэн албан бичгийн огноо</td>
+	                 			<td><textarea cols="30" rows="1"   class="md-input" ng-model="gg1.row10_1" md-input textarea-autosize></textarea></td>
+	                 			<td><textarea cols="30" rows="1"   class="md-input" ng-model="gg1.row10_2" md-input textarea-autosize></textarea></td>
+	                 		</tr>
+	                 		<tr>
+	                 			<td>Үйлчлүүлэгч байгууллага санхүүгийн тайлангаа төрийн аудитын байгууллагад ирүүлсэн албан бичгийн дугаар</td>
+	                 			<td><textarea cols="30" rows="1"   class="md-input" ng-model="gg1.row11_1" md-input textarea-autosize></textarea></td>
+	                 			<td><textarea cols="30" rows="1"   class="md-input" ng-model="gg1.row11_2" md-input textarea-autosize></textarea></td>
+	                 		</tr>
+	                 		<tr>
+	                 			<td rowspan="4">2.4 Байгууллагын зорилго, үйл ажиллагаа, хууль, эрх зүйн орчин</td>
+	                 			<td>Байгууллагын эрхэм зорилго</td>
+	                 			<td><textarea cols="30" rows="1"   class="md-input" ng-model="gg1.row12_1" md-input textarea-autosize></textarea></td>
+	                 			<td><textarea cols="30" rows="1"   class="md-input" ng-model="gg1.row12_2" md-input textarea-autosize></textarea></td>
+	                 		</tr>
+	                 		<tr>
+	                 			<td>Шууд харъяалах эрх бүхий дээд шатны байгууллага / албан тушаалын нэр</td>
+	                 			<td><textarea cols="30" rows="1"   class="md-input" ng-model="gg1.row13_1" md-input textarea-autosize></textarea></td>
+	                 			<td><textarea cols="30" rows="1"   class="md-input" ng-model="gg1.row13_2" md-input textarea-autosize></textarea></td>
+	                 		</tr>
+	                 		<tr>
+	                 			<td>Байгууллагын тайлант хугацаанд дэвшүүлсэн зорилт, зорилго</td>
+	                 			<td><textarea cols="30" rows="1"   class="md-input" ng-model="gg1.row14_1" md-input textarea-autosize></textarea></td>
+	                 			<td><textarea cols="30" rows="1"   class="md-input" ng-model="gg1.row14_2" md-input textarea-autosize></textarea></td>
+	                 		</tr>
+	                 		<tr>
+	                 			<td>Байгууллагын үйл ажиллагааг зохицуулж байгаа эрх зүйн орчны томоохон шинэчлэлт, өөрчлөлтийн талаар товч тодорхойлох</td>
+	                 			<td><textarea cols="30" rows="1"   class="md-input" ng-model="gg1.row15_1" md-input textarea-autosize></textarea></td>
+	                 			<td><textarea cols="30" rows="1"   class="md-input" ng-model="gg1.row15_2" md-input textarea-autosize></textarea></td>
+	                 		</tr>
+	                 		<tr>
+	                 			<td rowspan="4">2.5 Нягтлан бодох бүртгэлийн бодлого, үйл ажиллагаа болон дотоод хяналттай холбоотой хүчин зүйлсийн үнэлгээ</td>
+	                 			<td>Дотоод хяналтын үнэлгээ</td>
+	                 			<td><textarea cols="30" rows="1"   class="md-input" ng-model="gg1.row16_1" md-input textarea-autosize></textarea></td>
+	                 			<td><textarea cols="30" rows="1"   class="md-input" ng-model="gg1.row16_2" md-input textarea-autosize></textarea></td>
+	                 		</tr>
+	                 		<tr>
+	                 			<td>Мэдээллийн технологи, бүртгэл мэдээллийн системийн нарийн төвөгтэй байдлын үнэлгээ</td>
+	                 			<td><input ng-model="gg1.row17_1" type="text" class="md-input" config="gg2selectconfig" options="gg2selectersdeloptions" selectize /></td>
+	                 			<td><input ng-model="gg1.row17_2" type="text" class="md-input" md-input /></td>
+	                 		</tr>
+	                 		<tr>
+	                 			<td>Аудитад технологийн нарийн мэргэжилтэн татан оролцуулах эсэх</td>
+	                 			<td><input ng-model="gg1.row18_1" type="text" class="md-input" config="gg2selectconfig" options="gg2selectshaardlagaloptions" selectize /></td>
+	                 			<td><input ng-model="gg1.row18_2" type="text" class="md-input" md-input /></td>
+	                 		</tr>
+	                 		<tr>
+	                 			<td>Үйлчлүүлэгчийн ашиглаж байгаа санхүүгийн програм хангамжийн нэр</td>
+	                 			<td><textarea cols="30" rows="1"   class="md-input" ng-model="gg1.row19_1" md-input textarea-autosize></textarea></td>
+	                 			<td><textarea cols="30" rows="1"   class="md-input" ng-model="gg1.row19_2" md-input textarea-autosize></textarea></td>
+	                 		</tr>
+	                 		<tr>
+	                 			<td rowspan="2">2.10 Дараагийн аудитаар авч үзэх буюу анхаарал татахуйц бусад чухал асуудал</td>
+	                 			<td>Дараагийн аудитаар анхаарал хандуулах асуудал</td>
+	                 			<td><textarea cols="30" rows="1"   class="md-input" ng-model="gg1.row20_1" md-input textarea-autosize></textarea></td>
+	                 			<td><textarea cols="30" rows="1"   class="md-input" ng-model="gg1.row20_2" md-input textarea-autosize></textarea></td>
+	                 		</tr>
+	                 		<tr>
+	                 			<td>Анхаарал татахуйц бусад чухал асуудал</td>
+	                 			<td><textarea cols="30" rows="1"   class="md-input" ng-model="gg1.row21_1" md-input textarea-autosize></textarea></td>
+	                 			<td><textarea cols="30" rows="1"   class="md-input" ng-model="gg1.row21_2" md-input textarea-autosize></textarea></td>
+	                 		</tr>
+	                 		<tr>
+	                 			<td rowspan="2">2.7 Төсвийн гүйцэтгэлийн талаарх тайлбар, тодруулга</td>
+	                 			<td>Төсөвт зардлын хэтрэлт / хэмнэлтийн шалтгаан</td>
+	                 			<td><textarea cols="30" rows="1"   class="md-input" ng-model="gg1.row22_1" md-input textarea-autosize></textarea></td>
+	                 			<td><textarea cols="30" rows="1"   class="md-input" ng-model="gg1.row22_2" md-input textarea-autosize></textarea></td>
+	                 		</tr>
+	                 		<tr>
+	                 			<td>Төсөвт байгууллагын үйл ажиллагаанаас төвлөрүүлэх орлогын төлөвлөгөөний тасралт / давуулан биелүүлсэн шалтгаан</td>
+	                 			<td><textarea cols="30" rows="1"   class="md-input" ng-model="gg1.row23_1" md-input textarea-autosize></textarea></td>
+	                 			<td><textarea cols="30" rows="1"   class="md-input" ng-model="gg1.row23_2" md-input textarea-autosize></textarea></td>
+	                 		</tr>
+	                 		<tr>
+	                 			<td rowspan="3">2.13 Өмнөх зөвлөмжийн хэрэгжилтийн талаарх тайлбар, тодруулга</td>
+	                 			<td>Өмнөх зөвлөмжийн хэрэгжилтийн хувь</td>
+	                 			<td><textarea cols="30" rows="1"   class="md-input" ng-model="gg1.row24_1" md-input textarea-autosize></textarea></td>
+	                 			<td><textarea cols="30" rows="1"   class="md-input" ng-model="gg1.row24_2" md-input textarea-autosize></textarea></td>
+	                 		</tr>
+	                 		<tr>
+	                 			<td>Үйлчлүүлэгч байгууллага өмнөх зөвлөмжийн биелэлтийг төрийн аудитын байгууллагад ирүүлсэн албан бичгийн огноо</td>
+	                 			<td><textarea cols="30" rows="1"   class="md-input" ng-model="gg1.row25_1" md-input textarea-autosize></textarea></td>
+	                 			<td><textarea cols="30" rows="1"   class="md-input" ng-model="gg1.row25_2" md-input textarea-autosize></textarea></td>
+	                 		</tr>
+	                 		<tr>
+	                 			<td>Үйлчлүүлэгч байгууллага өмнөх зөвлөмжийн биелэлтийг төрийн аудитын байгууллагад ирүүлсэн албан бичгийн дугаар</td>
+	                 			<td><textarea cols="30" rows="1"   class="md-input" ng-model="gg1.row26_1" md-input textarea-autosize></textarea></td>
+	                 			<td><textarea cols="30" rows="1"   class="md-input" ng-model="gg1.row26_2" md-input textarea-autosize></textarea></td>
+	                 		</tr>
+	                 	</tbody>
+	                 </table>
+	            </div>
+            
+        </div>
+    </div>
+    </form>
+</div>
+<div class="uk-modal uk-modal-card-fullscreen" id="modal_gg2">
+	<form ng-submit="submitGG2(gg2)">
+    <div class="uk-modal-dialog uk-modal-dialog-blank">
+        <div class="md-card uk-height-viewport">
+            <div class="md-card-toolbar">     
+            	 <div class="md-card-toolbar-actions" style="min-width: 40%;">
+            	 	<div class="uk-grid">
+		            <div class="uk-width-medium-2-4">
+	                 	<input ng-model="gg2.reporttype" type="text" class="md-input" config="gg2selectreporttypeconfig" options="gg2reporttypeoptions" selectize />
+	                 </div>
+	                 <div class="uk-width-medium-1-4">
+	                 	<a href="/excel/wordReportOpinion{{gg2.reporttype}}/Gerchilgee/{{mid}}" ng-disabled="gg2.reporttype == undefined || gg2.reporttype == null" class="md-btn md-btn-primary md-btn-wave-light md-btn-icon md-btn-mini">
+	                        <i class="material-icons">file_download</i>
+	                    </a> 
+	                 </div>
+	                 <div class="uk-width-medium-1-4">
+                       <button style="float:right" class="md-btn md-btn-primary md-btn-wave-light md-btn-icon md-btn-mini" type="submit">
+	                        <i class="material-icons">save</i>
+	                        Хадгалах
+	                    </button> 
+	                    </div>
+	                    </div>
+                </div>           
+                <span class="md-icon material-icons uk-modal-close">&#xE5C4;</span>
+                <h3 class="md-card-toolbar-heading-text">Аудитын санал дүгнэлтийн хэлбэрийг сонгох маягт</h3>
+            </div>
+            
+	            <div class="md-card-content gg1" style="overflow: auto;max-height: 90vh;width: 99%;float: left;">
+	                 <table class="uk-table">
+	                 	<thead style="background: #BBDEFB;">
+	                 		<tr>
+	                 			<th>№</th>
+	                 			<th style="width: 10%;">Санал дүгнэлтийн хэлбэр</th>
+	                 			<th style="width: 40%;" colspan="2">Санал дүгнэлтийн хэлбэрийг сонгоход харгалзах нөхцөл шалгуур үзүүлэлтүүд</th>
+	                 			<th>Үзүүлэлт тус бүрд өгөх хариулт</th>
+	                 			<th>Нотлох зүйлийн ишлэл</th>
+	                 			<th>Тайлбар</th>
+	                 		</tr>
+	                 	</thead>
+	                 	<tbody>
+	                 		<tr>
+	                 			<td rowspan="6">1</td>
+	                 			<td rowspan="6">Зөрчилгүй санал дүгнэлт</td>
+	                 			<td colspan="5">Санхүүгийн тайлангууд нь бүхий л материаллаг байдлаараа харгалзах санхүүгийн тайлагналын үзэл баримтлалын дагуу бэлтгэгдсэн байна гэж аудитор үзэж байгаа үед өөрчлөлтгүй санал дүгнэлт гаргана.</td>
+	                 		</tr>
+	                 		<tr>
+	                 			<td>Залруулаагүй буруу илэрхийлэл буюу алдаа зөрчлийн дүнг материаллаг байдлын түвшинтэй харьцуулах</td>
+	                 			<td>Залруулаагүй буруу илрэхийлэл буюу алдаа зөрчлийн дүн материаллаг байдлын тогтоосон хэмжээнээс хэтрээгүй</td>
+	                 			<td><input ng-model="gg2.row1_1" type="text" class="md-input" config="gg2selectconfig" options="gg2selectoptions" selectize/></td>	                 			
+	                 			<td><textarea cols="30" rows="1"   class="md-input" ng-model="gg2.row1_2" md-input textarea-autosize></textarea></td>
+	                 			<td><textarea cols="30" rows="1"   class="md-input" ng-model="gg2.row1_3" md-input textarea-autosize></textarea></td>
+	                 		</tr>
+	                 		<tr>
+	                 			<td rowspan="4">Санхүүгийн тайлангийн аудитын журмын 2.20.1</td>
+	                 			<td>а. Нягтлан бодох бүртгэлийн хүлээн зөвшөөрөгдсөн суурь, бодлогыг тууштай хэрэглэсэн бөгөөд тэдгээрийг баримтлан санхүүгийн тайлангуудыг бэлтгэсэн</td>
+	                 			<td><input ng-model="gg2.row2_1" type="text" class="md-input" config="gg2selectconfig" options="gg2selectoptions" selectize /></td>
+	                 			<td><textarea cols="30" rows="1"   class="md-input" ng-model="gg2.row2_2" md-input textarea-autosize></textarea></td>
+	                 			<td><textarea cols="30" rows="1"   class="md-input" ng-model="gg2.row2_3" md-input textarea-autosize></textarea></td>
+	                 		</tr>
+	                 		<tr>
+	                 			<td>б. Тайлангууд стандарт, хууль ёсны шаардлага, холбогдох дүрэм журамд нийцэж байгаа</td>
+	                 			<td><input ng-model="gg2.row3_1" type="text" class="md-input" config="gg2selectconfig" options="gg2selectoptions" selectize /></td>
+	                 			<td><textarea cols="30" rows="1"   class="md-input" ng-model="gg2.row3_2" md-input textarea-autosize></textarea></td>
+	                 			<td><textarea cols="30" rows="1"   class="md-input" ng-model="gg2.row3_3" md-input textarea-autosize></textarea></td>
+	                 		</tr>
+	                 		<tr>
+	                 			<td>в. Санхүүгийн тайланд илэрхийлэгдсэн байр суурь байгууллагын талаархи аудиторын итгэл үнэмшилтэй тохирч байгаа</td>
+	                 			<td><input ng-model="gg2.row4_1" type="text" class="md-input" config="gg2selectconfig" options="gg2selectoptions" selectize /></td>
+	                 			<td><textarea cols="30" rows="1"   class="md-input" ng-model="gg2.row4_2" md-input textarea-autosize></textarea></td>
+	                 			<td><textarea cols="30" rows="1"   class="md-input" ng-model="gg2.row4_3" md-input textarea-autosize></textarea></td>
+	                 		</tr>
+	                 		<tr>
+	                 			<td>г. Санхүүгийн тайлангуудтай холбоотой бүх материаллаг асуудлыг зохистой илчилж тодруулсан</td>
+	                 			<td><input ng-model="gg2.row5_1" type="text" class="md-input" config="gg2selectconfig" options="gg2selectoptions" selectize /></td>
+	                 			<td><textarea cols="30" rows="1"   class="md-input" ng-model="gg2.row5_2" md-input textarea-autosize></textarea></td>
+	                 			<td><textarea cols="30" rows="1"   class="md-input" ng-model="gg2.row5_3" md-input textarea-autosize></textarea></td>
+	                 		</tr>
+	                 		<tr>
+	                 			<td rowspan="6">2</td>
+	                 			<td rowspan="6">Хязгаарлалттай санал дүгнэлт</td>
+	                 			<td colspan="5">Санхүүгийн тайлангууд материаллагаар буруу илэрхийлэгдсэн бөгөөд санал дүгнэлтийг өөрчлөхөд хүргэсэн асуудлын санхүүгийн тайланд үзүүлэх үр нөлөө нь бүрэн тархаагүй бол хязгаарлалттай дүгнэлт гаргана</td>
+	                 		</tr>
+	                 		
+	                 		<tr>
+	                 			<td rowspan="3">Санхүүгийн тайлангийн аудитын журмын 2.20.2</td>
+	                 			<td>а. Аудитор санхүүгийн тайлангуудын нэг буюу хэсэг зүйлсийг зөвшөөрөхгүй байх нөхцөл үүссэн</td>
+	                 			<td><input ng-model="gg2.row6_1" type="text" class="md-input" config="gg2selectconfig" options="gg2selectoptions" selectize /></td>
+	                 			<td><textarea cols="30" rows="1"   class="md-input" ng-model="gg2.row6_2" md-input textarea-autosize></textarea></td>
+	                 			<td><textarea cols="30" rows="1"   class="md-input" ng-model="gg2.row6_3" md-input textarea-autosize></textarea></td>
+	                 		</tr>
+	                 		<tr>
+	                 			<td>б. Илэрсэн алдаа, зөрчил дутагдал нь материаллаг боловч суурь шинжтэй биш байгаа</td>
+	                 			<td><input ng-model="gg2.row7_1" type="text" class="md-input" config="gg2selectconfig" options="gg2selectoptions" selectize /></td>
+	                 			<td><textarea cols="30" rows="1"   class="md-input" ng-model="gg2.row7_2" md-input textarea-autosize></textarea></td>
+	                 			<td><textarea cols="30" rows="1"   class="md-input" ng-model="gg2.row7_3" md-input textarea-autosize></textarea></td>
+	                 		</tr>
+	                 		<tr>
+	                 			<td>в. Төсвийн санхүүгийн тайлангийн хувьд төсвийн хуулиар зөвшөөрөгдсөн зардлын хэмжээг хэтрүүлсэн</td>
+	                 			<td><input ng-model="gg2.row8_1" type="text" class="md-input" config="gg2selectconfig" options="gg2selectoptions" selectize /></td>
+	                 			<td><textarea cols="30" rows="1"   class="md-input" ng-model="gg2.row8_2" md-input textarea-autosize></textarea></td>
+	                 			<td><textarea cols="30" rows="1"   class="md-input" ng-model="gg2.row8_3" md-input textarea-autosize></textarea></td>
+	                 		</tr>
+	                 		
+	                 		<tr>
+	                 			<td rowspan="2">АОУС 705</td>
+	                 			<td>а. Аудитын хангалттай ба зохистой нотолгоо олж авч буй аудитор тухайн буруу илэрхийллүүд нь дангаараа буюу эсвэл нийтээрээ санхүүгийн тайлангуудад материаллаг боловч өргөн тархаагүй гэж дүгнэсэн</td>
+	                 			<td><input ng-model="gg2.row9_1" type="text" class="md-input" config="gg2selectconfig" options="gg2selectoptions" selectize /></td>
+	                 			<td><textarea cols="30" rows="1"   class="md-input" ng-model="gg2.row9_2" md-input textarea-autosize></textarea></td>
+	                 			<td><textarea cols="30" rows="1"   class="md-input" ng-model="gg2.row9_3" md-input textarea-autosize></textarea></td>
+	                 		</tr>
+	                 		<tr>
+	                 			<td>б. Дүгнэлт гаргахад суурилах аудитын хангалттай ба зохистой нотолгоог аудитор олж авах боломжгүй боловч аудитор хэрэв илрээгүй буруу илэрхийллүүд байгаа бол санхүүгийн тайлангуудад тэдгээрийн үзүүлэх үр нөлөө нь материаллаг байх, мөн өргөн тархаагүй гэж дүгнэсэн</td>
+	                 			<td><input ng-model="gg2.row10_1" type="text" class="md-input" config="gg2selectconfig" options="gg2selectoptions" selectize /></td>
+	                 			<td><textarea cols="30" rows="1"   class="md-input" ng-model="gg2.row10_2" md-input textarea-autosize></textarea></td>
+	                 			<td><textarea cols="30" rows="1"   class="md-input" ng-model="gg2.row10_3" md-input textarea-autosize></textarea></td>
+	                 		</tr>
+	                 		<tr>
+	                 			<td rowspan="4">3</td>
+	                 			<td rowspan="4">Сөрөг санал дүгнэлт</td>
+	                 			<td colspan="5">Санхүүгийн тайлангууд материаллагаар буруу илэрхийлэгдсэн бөгөөд санал дүгнэлтийг өөрчлөхөд хүргэсэн асуудлын санхүүгийн тайланд үзүүлэх үр нөлөө нь бүрэн тархсан бол сөрөг санал дүгнэлт гаргана</td>
+	                 		</tr>
+	                 		
+	                 		<tr>
+	                 			<td rowspan="2">Санхүүгийн тайлангийн аудитын журмын 2.20.3</td>
+	                 			<td>Санхүүгийн тайлан дахь ихээхэн материаллаг буюу түгээмэл асуудалтай (зарим онцлог тохиолдолд ганц асуудалтай) Ерөнхий аудитор санал нийлэхгүй, санхүүгийн тайлан ноцтой алдаатай гэж дүгнэсэн</td>
+	                 			<td><input ng-model="gg2.row11_1" type="text" class="md-input" config="gg2selectconfig" options="gg2selectoptions" selectize /></td>
+	                 			<td><textarea cols="30" rows="1"   class="md-input" ng-model="gg2.row11_2" md-input textarea-autosize></textarea></td>
+	                 			<td><textarea cols="30" rows="1"   class="md-input" ng-model="gg2.row11_3" md-input textarea-autosize></textarea></td>
+	                 		</tr>
+	                 		
+	                 		<tr>
+	                 			<td>Хязгаарлалттай санал дүгнэлт өгөх нь зохимжгүй байх хэмжээгээр санал нийлээгүйн улмаас санхүүгийн тайлангийн талаар бүхэлд нь санал дүгнэлт гаргах боломжгүй нөхцөл байдал үүссэн</td>
+	                 			<td><input ng-model="gg2.row12_1" type="text" class="md-input" config="gg2selectconfig" options="gg2selectoptions" selectize /></td>
+	                 			<td><textarea cols="30" rows="1"   class="md-input" ng-model="gg2.row12_2" md-input textarea-autosize></textarea></td>
+	                 			<td><textarea cols="30" rows="1"   class="md-input" ng-model="gg2.row12_3" md-input textarea-autosize></textarea></td>
+	                 		</tr>
+	                 		
+	                 		<tr>
+	                 			<td>АОУС 705</td>
+	                 			<td>Аудитын хангалттай ба зохистой нотолгоо олж авч буй аудитор тухайн буруу илэрхийллүүд нь дангаараа буюу эсвэл нийтээрээ санхүүгийн тайлангуудад материаллаг бөгөөд мөн өргөн тархсан гэж дүгнэсэн</td>
+	                 			<td><input ng-model="gg2.row13_1" type="text" class="md-input" config="gg2selectconfig" options="gg2selectoptions" selectize /></td>
+	                 			<td><textarea cols="30" rows="1"   class="md-input" ng-model="gg2.row13_2" md-input textarea-autosize></textarea></td>
+	                 			<td><textarea cols="30" rows="1"   class="md-input" ng-model="gg2.row13_3" md-input textarea-autosize></textarea></td>
+	                 		</tr>
+	                 		<tr>
+	                 			<td rowspan="6">4</td>
+	                 			<td rowspan="6">Санал дүгнэлт өгөхөөс татгалзах</td>
+	                 			<td colspan="5">Санхүүгийн тайлангууд материаллагаар буруу илэрхийлэгдсэн бөгөөд санал дүгнэлтийг өөрчлөхөд хүргэсэн асуудлын санхүүгийн тайланд үзүүлэх үр нөлөө нь бүрэн тархсан, аудитын хангалттай ба зохистой нотолгоог олж авах боломжгүй байсан бол санал дүгнэлт өгөхөөс татгалзана</td>
+	                 		</tr>
+	                 		
+	                 		<tr>
+	                 			<td rowspan="3">Санхүүгийн тайлангийн аудитын журмын 2.20.4</td>
+	                 			<td>Нягтлан бодох бүртгэлийн хөтлөлтийг бүрэн хийгээгүйгээс үнэн зөв санхүүгийн тайлан бэлтгэх боломжгүй болсон</td>
+	                 			<td><input ng-model="gg2.row14_1" type="text" class="md-input" config="gg2selectconfig" options="gg2selectoptions" selectize /></td>
+	                 			<td><textarea cols="30" rows="1"   class="md-input" ng-model="gg2.row14_2" md-input textarea-autosize></textarea></td>
+	                 			<td><textarea cols="30" rows="1"   class="md-input" ng-model="gg2.row14_3" md-input textarea-autosize></textarea></td>
+	                 		</tr>
+	                 		
+	                 		<tr>
+	                 			<td>Санхүүгийн тайланд нөлөөлөхүйц аудитын нотлох зүйл байхгүй</td>
+	                 			<td><input ng-model="gg2.row15_1" type="text" class="md-input" config="gg2selectconfig" options="gg2selectoptions" selectize /></td>
+	                 			<td><textarea cols="30" rows="1"   class="md-input" ng-model="gg2.row15_2" md-input textarea-autosize></textarea></td>
+	                 			<td><textarea cols="30" rows="1"   class="md-input" ng-model="gg2.row15_3" md-input textarea-autosize></textarea></td>
+	                 		</tr>
+	                 		
+	                 		<tr>
+	                 			<td>Удирдлагын тайлбар мэдүүлэг санал удирдлагын шударга чанарт эргэлзэх ноцтой шалтгаан байгаа</td>
+	                 			<td><input ng-model="gg2.row16_1" type="text" class="md-input" config="gg2selectconfig" options="gg2selectoptions" selectize /></td>
+	                 			<td><textarea cols="30" rows="1"   class="md-input" ng-model="gg2.row16_2" md-input textarea-autosize></textarea></td>
+	                 			<td><textarea cols="30" rows="1"   class="md-input" ng-model="gg2.row16_3" md-input textarea-autosize></textarea></td>
+	                 		</tr>
+	                 		
+	                 		<tr>
+	                 			<td rowspan="2">АОУС 705</td>
+	                 			<td>Аудитор дүгнэлт гаргахад суурилах аудитын хангалттай ба зохистой нотолгоог олж авах боломжгүй бөгөөд хэрэв илрээгүй буруу илэрхийллүүүд байгаа бол аудитор санхүүгийн тайлангуудад тэдгээрийн үзүүлэх үр нөлөө нь материаллаг байх, мөн өргөн тархсан байх боломжтой гэж дүгнэсэн</td>
+	                 			<td><input ng-model="gg2.row17_1" type="text" class="md-input" config="gg2selectconfig" options="gg2selectoptions" selectize /></td>
+	                 			<td><textarea cols="30" rows="1"   class="md-input" ng-model="gg2.row17_2" md-input textarea-autosize></textarea></td>
+	                 			<td><textarea cols="30" rows="1"   class="md-input" ng-model="gg2.row17_3" md-input textarea-autosize></textarea></td>
+	                 		</tr>
+	                 		
+	                 		<tr>
+	                 			<td>Олон тооны тодорхой бус байдал бүхий туйлын ховор тохиолдолд аудитор тодорхой бус байдал бүрт харгалзах аудитын хангалттай ба зохистой нотолгоог олж авсан боловч уг тодорхой бус байдлуудын харилцан үйлчлэл болон санхүүгийн тайланд үзүүлж болзошгүй хуримтлагдах үр нөлөөнөөс шалтгаалан санхүүгийн тайлангуудад дүгнэлт гаргах боломжгүй гэж дүгнэсэн</td>
+	                 			<td><input ng-model="gg2.row18_1" type="text" class="md-input" config="gg2selectconfig" options="gg2selectoptions" selectize /></td>
+	                 			<td><textarea cols="30" rows="1"   class="md-input" ng-model="gg2.row18_2" md-input textarea-autosize></textarea></td>
+	                 			<td><textarea cols="30" rows="1"   class="md-input" ng-model="gg2.row18_3" md-input textarea-autosize></textarea></td>
+	                 		</tr>
+	                 	</tbody>
+	                 </table>
+	                 
+	            </div>
+            
+        </div>
+    </div>
+    </form>
+</div>
+ <div class="uk-modal uk-modal-card-fullscreen" id="modal_risk">
+    <div class="uk-modal-dialog uk-modal-dialog-blank">
+        <div class="md-card uk-height-viewport">
+            <div class="md-card-toolbar">                
+            	<div class="md-card-toolbar-actions">
+                      <button class="uk-modal-close uk-close" type="button"></button>
+                </div>    
+                <span class="md-icon material-icons uk-modal-close">&#xE5C4;</span>
+                <h3 class="md-card-toolbar-heading-text">
+                    Эрсдэл тодорхойлох
+                </h3>
+            </div>
+            <div class="md-card-content riskgrid">
+                    <kendo-grid options="riskGrid"></kendo-grid>  			
+            </div>
+        </div>
+    </div>
+</div>
+<div class="uk-modal uk-modal-card-fullscreen" id="modal_u_risk">
+    <div class="uk-modal-dialog uk-modal-dialog-blank">
+        <div class="md-card uk-height-viewport">
+            <div class="md-card-toolbar">                
+            	<div class="md-card-toolbar-actions">
+                      <button class="uk-modal-close uk-close" type="button"></button>
+                </div>    
+                <span class="md-icon material-icons uk-modal-close">&#xE5C4;</span>
+                <h3 class="md-card-toolbar-heading-text">
+                    Хэрэглэгчдийн санал, мэдээлэлд үндэслэн эрсдэл тодорхойлох
+                </h3>
+            </div>
+            <div class="md-card-content">
+                    <kendo-grid options="puserGrid"></kendo-grid>  			
+            </div>
+        </div>
+    </div>
+</div>
+<div class="uk-modal uk-modal-card-fullscreen" id="modal_mate">
+    <div class="uk-modal-dialog uk-modal-dialog-blank">
+        <div class="md-card uk-height-viewport">
+            <div class="md-card-toolbar">                
+                <span class="md-icon material-icons uk-modal-close">&#xE5C4;</span>
+                <h3 class="md-card-toolbar-heading-text">
+                    Материаллаг байдлыг тодорхойлох
+                </h3>
+            </div>
+            <div class="md-card-content">
+            	<div>
+                        <table class="uk-table">
+                            <tbody>
+                            <tr>
+                            	<td style="width:25%;">
+                            		<div class="uk-input-group">
+						            	<div class="parsley-row uk-form-row">
+											<input style="border-color: #ffffff !important;font-weight: bold;" ng-disabled="true" class="md-input" type="text" id="percent" value="Хувь сонгох :" md-input />
+										</div>
+			                        </div>
+                            	</td>
+                                <td>
+                                	<div class="uk-form-row">
+										<input style="border-color: #3f51b5 !important;" class="md-input" ng-change="changeee(fdata)" type="text" max="2.0" id="data2" name="data2" ng-model="fdata.percent" md-input />
+									</div>
+
+			                    </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <table class="uk-table" ng-if="selectedUzuulelt > 0">
+                            <tbody>
+                            <tr>
+                            	<td style="width:25%;">
+                            		<div class="uk-input-group">
+						            	<div class="parsley-row uk-form-row">
+											<input style="border-color: #ffffff !important;font-weight: bold;" ng-disabled="true" class="md-input" type="text" id="percent" value="Тайлбар бичих :" md-input />
+										</div>
+			                        </div>
+                            	</td>
+                            	<td style="width:25%;">
+					            	<div class="uk-form-row">
+										<label>Үнэ цэнээр материаллаг байдлын суурийг хэрхэн сонгож, тодорхойлсныг товч бичнэ</label>
+                           				<textarea cols="30" rows="4" class="md-input" ng-model="ddata.description1" md-input textarea-autosize></textarea>
+									</div>
+
+                            	</td>
+                                <td style="width:25%;">
+					            	<div class="uk-form-row">
+										<label>Хувь хэмжээг сонгосон шалтгаан</label>
+                           				<textarea cols="30" rows="4" class="md-input" ng-model="ddata.description2" md-input textarea-autosize></textarea>
+									</div>
+
+                                </td>
+                                <td style="width:25%;">
+					            	<div class="uk-form-row">
+										<label>Чанартай холбоотой асуудал</label>
+                           				<textarea cols="30" rows="4" class="md-input" ng-model="ddata.description3" md-input textarea-autosize></textarea>
+									</div>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>		
+            	<div class="uk-margin-medium-top">
+            		<kendo-grid options="pdataGrid"></kendo-grid>  	
+            	</div>
+            	
+            	
+                <a ng-disabled="ddata == undefined || ddata == null" ng-show="audit" class="md-btn md-btn-primary md-btn-wave-light md-btn-icon waves-effect waves-button waves-light" style="margin-top:15px; float:right;" ng-click="submitDescription(ddata)"><i class="material-icons">&#xE161;</i>Хадгалах</a>
+            	<a class="md-btn md-btn-primary md-btn-wave-light md-btn-icon waves-effect waves-button waves-light" style="margin-top:15px; float:right;margin-right:15px;" ng-href="/my/exportMateriallag/{{$stateParams.issueId}}/{{sstepid}}/В-5" download><i class="material-icons">&#xE2C4;</i>Татах</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+ <div class="uk-modal uk-modal-card-fullscreen" id="modal_risk_summary">
+    <div class="uk-modal-dialog uk-modal-dialog-blank">
+        <div class="md-card uk-height-viewport">
+            <div class="md-card-toolbar">     
+            	 <div class="md-card-toolbar-actions">
+                      <button class="uk-modal-close uk-close" type="button"></button>
+                </div>           
+                <span class="md-icon material-icons uk-modal-close">&#xE5C4;</span>
+                <h3 class="md-card-toolbar-heading-text">
+                    Эрсдэлийн хураангуй
+                </h3>
+            </div>
+            <div class="md-card-content risksum">
+                 <kendo-grid options="riskSummaryGrid"></kendo-grid>  			
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/x-kendo-template" id="critid">
+         <select kendo-drop-down-list
+            k-data-text-field="'ProductName'"
+            k-data-value-field="'ProductID'"
+            k-data-source="productsDataSource"
+            style="width: 100%"></select>
+</script>
+
+
+<div class="uk-modal" id="modal_tradinational">
+    <div class="uk-modal-dialog uk-modal-dialog-large">
+       <button class="uk-modal-close uk-close" type="button"></button>
+       <form id="form_work" data-ng-submit="submitWork()">
+           <div class="uk-modal-header">
+               <h3 class="uk-modal-title">Ажлын бүртгэл</h3>
+               <hr/>
+           </div>
+           <div class="uk-margin-large-bottom">
+                 <div class="uk-grid" data-uk-grid-margin>
+		             <div class="uk-width-medium-1-1 user ">    
+		             	 <kendo-grid options="puserGrid"></kendo-grid>                     	
+		                <!-- <div id="orgGrid"></div> -->
+		             </div> 			                       
+		         </div>        
+           </div>
+             <hr/>
+           <div class="uk-modal-footer">
+           	   <button type="button" class="uk-float-right md-btn md-btn-wave md-btn-wave-light waves-effect waves-button waves-light uk-modal-close">Хаах</button>
+               <button type="submit" ng-show="audit" style="margin-right:10px;" class="uk-float-right md-btn md-btn-primary md-btn-wave-light waves-effect waves-button waves-light">Хадгалах</button>
+           </div>
+       </form>
+   </div>
+</div>
+
+<div class="uk-modal" id="modal_a1">
+    <div class="uk-modal-dialog uk-modal-dialog-large">
+       <button class="uk-modal-close uk-close" type="button"></button>
+       <form id="form_work" data-ng-submit="submitWork()">
+           <div class="uk-modal-header">
+               <h3 class="uk-modal-title">Ажлын бүртгэл</h3>
+               <hr/>
+           </div>
+           <div class="uk-margin-large-bottom">
+                 <div class="uk-grid" data-uk-grid-margin>
+		             <div class="uk-width-medium-1-1 user ">    
+		             	 <kendo-grid options="puserGrid"></kendo-grid>                     	
+		                <!-- <div id="orgGrid"></div> -->
+		             </div> 			                       
+		         </div>        
+           </div>
+           <div class="uk-modal-footer">
+           	   <button type="button" class="uk-float-right md-btn md-btn-wave md-btn-wave-light waves-effect waves-button waves-light uk-modal-close">Хаах</button>
+               <button type="submit" ng-show="audit" style="margin-right:10px;" class="uk-float-right md-btn md-btn-primary md-btn-wave-light waves-effect waves-button waves-light">Хадгалах</button>
+           </div>
+       </form>
+   </div>
+</div>
+
+<div class="uk-modal" id="modal_work">
+    <div class="uk-modal-dialog uk-modal-dialog-large">
+       <button class="uk-modal-close uk-close" type="button"></button>
+       <form id="form_work" data-ng-submit="submitWork()">
+           <div class="uk-modal-header">
+               <h3 class="uk-modal-title">Ажлын бүртгэл</h3>
+               <hr/>
+           </div>
+           <div>
+                 <div ckeditor="ckeditor_options" ng-model="work.note" ready="ckeditor_onReady()"></div>
+           </div>
+           <div class="md-card">
+                <div class="md-card-content">
+                    <h3 class="heading_a">Анхааруулга</h3>
+                    <div class="uk-grid" data-uk-grid-margin>
+                        <div class="uk-width-1-1">                            
+                            <div class="uk-alert uk-alert-warning" data-uk-alert>                                
+                                {{note_form.content}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+           <div class="uk-modal-footer">
+           	   <button type="button" class="uk-float-right md-btn md-btn-wave md-btn-wave-light waves-effect waves-button waves-light uk-modal-close">Хаах</button>
+               <button type="submit" ng-show="audit" style="margin-right:10px;" class="uk-float-right md-btn md-btn-primary md-btn-wave-light waves-effect waves-button waves-light">Хадгалах</button>
+               <button type="submit" ng-show="notscored" style="margin-right:10px;" class="uk-float-right md-btn md-btn-primary md-btn-wave-light waves-effect waves-button waves-light">Хадгалах</button>
+           </div>
+       </form>
+   </div>
+</div>
+
+
+<div class="uk-modal" id="modal_excel">
+    <div class="uk-modal-dialog">
+       <button class="uk-modal-close uk-close" type="button"></button>
+       <form id="form_comment" data-ng-submit="submitExcel()">
+           <div class="uk-modal-header">
+               <h3 class="uk-modal-title">Тайлан татах (Excel)</h3>              
+           </div>
+           <hr/>
+           <div class="md-list-outside-wrapper" custom-scrollbar style="height:200px !important;" ng-if="files.length>0">
+	           <table class="uk-table uk-table-striped">
+                   <thead>
+                   <tr>
+                       <th>Файлын нэр</th>
+                       <th>Огноо</th>
+                       <th></th>
+                   </tr>
+                   </thead>
+                   <tbody>
+                   <tr  ng-repeat="item in files | orderBy: 'id' : true">
+                       <td>{{item.filename}}</td>
+                       <td>{{item.atdate}}</td>
+                       <td width="100px">
+                       		<div class="md-btn-group" style="float:right;">
+                       			<a ng-if="$index == 0" class="md-btn md-btn-warning md-btn-mini md-btn-wave waves-effect waves-button md-btn-icon "   
+                       				data-uk-tooltip="{pos:'bottom'}" title="Тулгалт" 
+                       				href="javascript:void(0)" ng-click="showTulgaltPopup()">
+                   				    <i class="material-icons no_margin">visibility</i>
+                       			</a>
+                       			<a class="md-btn md-btn-warning md-btn-mini md-btn-wave waves-effect waves-button md-btn-icon "   
+                       				data-uk-tooltip="{pos:'bottom'}" title="Харах" 
+                       				href="javascript:void(0)" ng-click="showExcelSpreadsheet(item)">
+                   				    <i class="material-icons no_margin">view_comfy</i>
+                       			</a>
+                       			<a class="md-btn md-btn-primary md-btn-mini md-btn-wave waves-effect waves-button md-btn-icon" target="_self" 
+                       				 
+                       				download="{{item.filename}}"  href="{{item.fileurl}}" >
+                   				    <i class="material-icons no_margin">file_download</i>
+                       			</a>
+                       			<a ng-show="audit" class="md-btn md-btn-danger md-btn-mini md-btn-wave waves-effect waves-button md-btn-icon" 
+                       				data-uk-tooltip="{pos:'bottom'}" title="Устгах" 
+                       				ng-click="delFile(item.id)"  href="javascript:void(0)" >
+                       				<i class="material-icons no_margin">delete</i>
+                       			</a>
+                            </div>                       		
+                       </td>
+                   </tr>                   
+                   </tbody>
+               </table>
+           </div>
+           
+           <div class="md-list-outside-wrapper" custom-scrollbar style="height:200px !important;" ng-if="files.length==0 && audit!=1">
+           		<span class="nofileIcon"><i class="material-icons md-48" >&#xE2C1;</i> <br></span>
+           		<span  class="nofileText">Файл байхгүй байна.</span>
+           </div>
+           <div class="" ng-show="audit">
+           	   <div class="parsley-row">
+	                <input type="file" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" ng-files="getTheUFiles($files)" required id="input-file-a" class="dropify-staus"  data-allowed-file-extensions="xlsx"/>
+               		<p class="uk-text-danger"><b>Санамж:</b> Зөвхөн Microsoft Excel 2007 болон түүнээс хойшхи хувилбараар үүсгэсэн буюу <b>.xlsx</b> өргөтгөлтэй файлыг хавсаргана уу!</p>
+               </div>
+           </div>
+             <hr/>
+           <div class="uk-modal-footer">
+           		
+           	   <button type="button" class="uk-float-right md-btn md-btn-wave md-btn-wave-light waves-effect waves-button waves-light uk-modal-close">Хаах</button>
+               <button type="submit" ng-if="unUpload==true"  ng-show="audit" style="margin-right:10px;" class="uk-float-right md-btn md-btn-primary md-btn-wave-light waves-effect waves-button waves-light">Илгээх</button>
+           </div>
+       </form>
+   </div>
+</div>
+
+ <div class="uk-modal uk-modal-card-fullscreen" id="modal_full">
+    <div class="uk-modal-dialog uk-modal-dialog-blank">
+        <div class="md-card uk-height-viewport">
+            <div class="md-card-toolbar">                
+                <span class="md-icon material-icons uk-modal-close">&#xE5C4;</span>
+                <h3 class="md-card-toolbar-heading-text">
+                    Card Heading
+                </h3>
+            </div>
+            <div class="md-card-content">
+                  <div id="spreadsheet" style="width: 100%; height:100%;"></div>				
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="uk-modal" id="modal_form">
+    <div class="uk-modal-dialog">
+       <button class="uk-modal-close uk-close" type="button"></button>
+       <form id="form_comment" data-ng-submit="submitForm()">
+           <div class="uk-modal-header">
+               <h3 class="uk-modal-title">Маягттай ажиллах талбар</h3>
+               <hr/>
+           </div>
+           <div class="md-list-outside-wrapper" custom-scrollbar style="height:200px !important;" ng-if="files.length>0">
+	           <table class="uk-table uk-table-hover">
+                   <thead>
+                   <tr>
+                       <th>Файлын нэр</th>
+                       <th>Огноо</th>
+                       <th></th>
+                   </tr>
+                   </thead>
+                   <tbody>
+                   <tr ng-repeat="item in files">
+                       <td>{{item.filename}}</td>
+                       <td>{{item.atdate}}</td>
+                       <!-- <td width="100px">
+                       		<a class="md-btn md-btn-primary md-btn-mini md-btn-wave-light" target="_self" download="{{item.filename}}"  href="{{item.fileurl}}" >Татах</a>
+                       </td> -->
+                       <td width="100px">
+                       		<div class="md-btn-group">
+                       			<a class="md-btn md-btn-mini md-btn-wave-light md-btn-icon" ng-click="viewFile(item.id)"   
+                       				data-uk-tooltip="{pos:'bottom'}" title="Харах" 
+                       				href="javascript:void(0)" >
+                   				    <i class="material-icons no_margin">visibility</i>
+                       			</a>
+                       			<a class="md-btn md-btn-primary md-btn-mini md-btn-wave-light md-btn-icon" 
+                       				data-uk-tooltip="{pos:'bottom'}" title="Татах" 
+                       				target="_self" download="{{item.filename}}"  href="{{item.fileurl}}" >
+                   				    <i class="material-icons no_margin">file_download</i>
+                       			</a>
+                       			<a ng-show="audit" class="md-btn md-btn-danger md-btn-mini md-btn-wave-light md-btn-icon" 
+                       				data-uk-tooltip="{pos:'bottom'}" title="Устгах" 
+                       				ng-click="delFile(item.id)"  href="javascript:void(0)" >
+                       				<i class="material-icons no_margin">delete</i>
+                       			</a>
+                            </div>                       		
+                       </td>
+                   </tr>                   
+                   </tbody>
+               </table>
+           </div>
+           <div class="md-list-outside-wrapper" custom-scrollbar style="height:200px !important;" ng-if="files.length==0 && audit!=1">
+           		<span class="nofileIcon"><i class="material-icons md-48" >&#xE2C1;</i> <br></span>
+           		<span  class="nofileText">Файл байхгүй байна.</span>
+           </div>
+           <div class="uk-margin-large-bottom" ng-show="audit">
+           	   <div class="parsley-row">
+	                <input type="file" ng-files="getTheUFiles($files)" required id="input-file-a" class="dropify-fr" />
+               </div>
+           </div>
+           <div class="uk-modal-footer">
+           	   <button type="button" class="uk-float-right md-btn md-btn-wave md-btn-wave-light waves-effect waves-button waves-light uk-modal-close">Хаах</button>
+               <button type="submit" ng-show="audit" style="margin-right:10px;" class="uk-float-right md-btn md-btn-primary md-btn-wave-light waves-effect waves-button waves-light">Илгээх</button>
+           </div>
+       </form>
+   </div>
+</div>
+
+<div class="uk-modal" id="modal_file">
+    <div class="uk-modal-dialog">
+       <button class="uk-modal-close uk-close" type="button"></button>
+       <form id="newsletterform" data-ng-submit="submitFile()">
+           <div class="uk-modal-header">
+               <h3 class="uk-modal-title">Файл</h3>
+               <hr/>
+           </div>
+            <div class="md-list-outside-wrapper" custom-scrollbar style="height:200px !important;" ng-if="files.length>0">
+	           <table class="uk-table uk-table-hover">
+                   <thead>
+                   <tr>
+                       <th width="200">Файлын нэр</th>
+                       <th>Огноо</th>
+                       <th width="100"></th>
+                   </tr>
+                   </thead>
+                   <tbody>
+                   <tr ng-repeat="item in files">
+                       <td style="width:200px;" width="200">{{item.filename}}</td>
+                       <td>{{item.atdate}}</td>
+                       <!-- <td width="100px">
+                       		<a class="md-btn md-btn-primary md-btn-mini md-btn-wave-light" target="_self" download="{{item.filename}}"  href="{{item.fileurl}}" >Татах</a>
+                       </td> -->
+                       <td width="100">
+                       		<div class="md-btn-group">
+                       			<a ng-if="picture(item.filename)" href="{{item.fileurl}}" title="Харах" data-uk-lightbox="{group:'gallery'}" class="md-btn md-btn-mini md-btn-wave-light md-btn-icon">
+                       				 <i class="material-icons no_margin">visibility</i>
+                       			</a>                       			
+                       			<a ng-if="item.filename .split('.')[1]=='pdf'" target="_self" title="Харах" ng-click="show(item.fileurl)" data-uk-modal="{target:'#modal_pdf'}" class="md-btn md-btn-mini md-btn-wave-light md-btn-icon"><i class="material-icons no_margin">visibility</i></a>
+                       			<a ng-if="excelChecker(item.filename)" target="_self" title="Харах" ng-click="showExcel(item.fileurl)" class="md-btn md-btn-mini md-btn-wave-light md-btn-icon"><i class="material-icons no_margin">visibility</i></a>
+                       			<a class="md-btn md-btn-primary md-btn-mini md-btn-wave-light md-btn-icon" target="_self" 
+                       				data-uk-tooltip="{pos:'bottom'}" title="Татах" 
+                       				download="{{item.filename}}"  href="{{item.fileurl}}" >
+                   				    <i class="material-icons no_margin">file_download</i>
+                       			</a>
+                       			<a ng-show="notscored || audit" class="md-btn md-btn-danger md-btn-mini md-btn-wave-light md-btn-icon" 
+                       				data-uk-tooltip="{pos:'bottom'}" title="Устгах" 
+                       				ng-click="delAttach(item.id)"  href="javascript:void(0)" >
+                       				<i class="material-icons no_margin">delete</i>
+                       			</a>
+                            </div>                       		
+                       </td>
+                   </tr>                   
+                   </tbody>
+               </table>
+           </div>
+           <div class="md-list-outside-wrapper" custom-scrollbar style="height:200px !important;" ng-show="!file && !audit">
+           		<div ng-if="files.length==0">
+           			<span class="nofileIcon"><i class="material-icons md-48" >&#xE2C1;</i> <br></span>
+           			<span  class="nofileText">Файл байхгүй байна.</span>
+           		</div>           		
+           </div>
+           <div class="uk-margin-large-bottom" ng-show="notscored || audit">
+           	   <div class="parsley-row">
+	                <input type="file" ng-files="getTheUFilesAttach($files)" ng-model="attachfl" name="attachfl" required id="lalar" class="dropify-fr" />
+               </div>
+           </div>
+           <div class="uk-modal-footer">
+           	   <button type="button" class="uk-float-right md-btn md-btn-wave md-btn-wave-light waves-effect waves-button waves-light uk-modal-close">Хаах</button>
+               <button type="submit" ng-show="notscored || audit" style="margin-right:10px;" class="uk-float-right md-btn md-btn-primary md-btn-wave-light waves-effect waves-button waves-light">Илгээх</button>
+            
+           </div>
+       </form>
+   </div>
+</div>
+
+<div class="uk-modal" id="modal_comment">
+    <div class="uk-modal-dialog">
+       <button class="uk-modal-close uk-close" type="button"></button>
+       <form id="form_comment" data-ng-submit="submitComment()">
+           <div class="uk-modal-header">
+               <h3 class="uk-modal-title">Санал</h3>
+               <hr/>
+           </div>
+           <div class="uk-margin-medium-bottom">
+               <label for="mail_new_to">Нэр</label>
+               <input type="text" class="md-input" disabled id="mail_new_to" md-input ng-model="message.recipient" />
+           </div>
+           <div class="uk-overflow-container">
+	           <ul class="uk-comment-list uk-margin-medium-bottom">
+	               <li ng-repeat="item in mlist">
+	                   <article class="uk-comment">
+	                       <header class="uk-comment-header">
+	                           <img class="md-user-image uk-comment-avatar" src="assets/img/avatars/avatar_05_tn.png" alt="">
+	                           <h4 class="uk-comment-title">{{item.username}}</h4>
+	                           <div class="uk-comment-meta">{{item.notedate}}</div>
+	                       </header>
+	                       <div class="uk-comment-body">
+	                           <p>{{item.note}}</p>
+	                       </div>
+	                   </article>
+	                 <!--   <ul>
+	                       <li>
+	                           <article class="uk-comment">
+	                               <header class="uk-comment-header">
+	                                   <img class="md-user-image uk-comment-avatar" src="assets/img/avatars/avatar_02_tn.png" alt="">
+	                                   <h4 class="uk-comment-title">Delfina Champlin</h4>
+	                                   <div class="uk-comment-meta">24/Jun/15 14:26</div>
+	                               </header>
+	                               <div class="uk-comment-body">
+	                                   <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</p>
+	                               </div>
+	                           </article>
+	                       </li>
+	                   </ul> -->
+	               </li>               
+	           </ul>
+           </div>
+           <div class="uk-margin-large-bottom">
+           	   <div class="parsley-row">
+	               <label for="mail_new_message">Утга</label>
+	               <textarea id="message" class="md-input" name="message" cols="10" rows="5" md-input ng-model="message.comment" required data-parsley-trigger="keyup" data-parsley-minlength="5" data-parsley-maxlength="1000" data-parsley-validation-threshold="10" data-parsley-minlength-message = "Come on! You need to enter at least a 20 caracters long comment.."></textarea>
+               </div>
+           </div>
+           <div class="uk-modal-footer">
+           	   <button type="button" class="uk-float-right md-btn md-btn-wave md-btn-wave-light waves-effect waves-button waves-light uk-modal-close">Хаах</button>
+               <button type="submit" style="margin-right:10px;" class="uk-float-right md-btn md-btn-primary md-btn-wave-light waves-effect waves-button waves-light">Хадгалах</button>
+           </div>
+       </form>
+   </div>
+</div>
+
+<div class="uk-modal uk-modal-card-fullscreen" id="modalSpreadsheet">
+    <div class="uk-modal-dialog uk-modal-dialog-blank">
+    	<div class="md-card uk-height-viewport">
+            <div class="md-card-toolbar">
+                <div class="md-card-toolbar-actions">
+					<button class="uk-modal-close uk-close" type="button" data-uk-modal="{target:'#modal_excel'}"></button>
+                </div>
+                <span class="md-icon material-icons uk-modal-close" data-uk-modal="{target:'#modal_excel'}" >&#xE5C4;</span>
+                <h3 class="md-card-toolbar-heading-text">
+                    Санхүүгийн тайлан
+                </h3>
+            </div>
+            <div class="md-card-content">
+                <div id="spreadSheetView" style="width:100%;height:100%;"></div>
+            </div>
+        </div>
+       
+           
+   </div>
+</div>
+
+<div class="uk-modal uk-modal-card-fullscreen" id="modalForm241">
+    <div class="uk-modal-dialog uk-modal-dialog-blank">
+    	<div class="md-card uk-height-viewport">
+            <div class="md-card-toolbar">
+                <div class="md-card-toolbar-actions">
+					<button class="uk-modal-close uk-close" type="button"></button>
+                </div>
+                <span class="md-icon material-icons uk-modal-close">&#xE5C4;</span>
+                <h3 class="md-card-toolbar-heading-text">
+                    Санхүүгийн тайлан дахь хөрөнгө, эх үүсвэрийн өсөлт, бууралт
+                </h3>
+            </div>
+            <div class="md-card-content">
+                <kendo-grid options="note241grid"></kendo-grid>     
+            </div>
+        </div>
+       
+           
+   </div>
+</div>
+
+<div class="uk-modal uk-modal-card-fullscreen" id="modalForm242">
+    <div class="uk-modal-dialog uk-modal-dialog-blank">
+    	<div class="md-card uk-height-viewport">
+            <div class="md-card-toolbar">
+                <div class="md-card-toolbar-actions">
+					<button class="uk-modal-close uk-close" type="button"></button>
+                </div>
+                <span class="md-icon material-icons uk-modal-close">&#xE5C4;</span>
+                <h3 class="md-card-toolbar-heading-text">
+                    Төсвийн орлогын гүйцэтгэлийг өмнөх он болон батлагдсан төсөвтэй харьцуулсан судалгаа
+                </h3>
+            </div>
+            <div class="md-card-content">
+                <kendo-grid options="note242grid"></kendo-grid>     
+            </div>
+        </div>
+       
+           
+   </div>
+</div>
+
+<div class="uk-modal uk-modal-card-fullscreen" id="modalFormTulgalt">
+    <div class="uk-modal-dialog uk-modal-dialog-blank">
+    	<div class="md-card uk-height-viewport">
+            <div class="md-card-toolbar">
+                <div class="md-card-toolbar-actions">
+					<button class="uk-modal-close uk-close" type="button"></button>
+                </div>
+                <span class="md-icon material-icons uk-modal-close">&#xE5C4;</span>
+                <h3 class="md-card-toolbar-heading-text">
+                    Санхүүгийн байдлын тайлан дахь үзүүлэлтийн тулгалт буюу уялдаа
+                </h3>
+            </div>
+            <div class="md-card-content">
+                <kendo-grid options="tulgaltGrid"></kendo-grid>     
+            </div>
+        </div>
+       
+           
+   </div>
+</div>
+
+<div class="uk-modal uk-modal-card-fullscreen" id="modalForm243">
+    <div class="uk-modal-dialog uk-modal-dialog-blank">
+    	<div class="md-card uk-height-viewport">
+            <div class="md-card-toolbar">
+                <div class="md-card-toolbar-actions">
+					<button class="uk-modal-close uk-close" type="button"></button>
+                </div>
+                <span class="md-icon material-icons uk-modal-close">&#xE5C4;</span>
+                <h3 class="md-card-toolbar-heading-text">
+                    Төсвийн зарлагын гүйцэтгэлийг өмнөх он болон батлагдсан төсөвтэй харьцуулсан судалгаа
+                </h3>
+            </div>
+            <div class="md-card-content">
+                <kendo-grid options="note243grid"></kendo-grid>     
+            </div>
+        </div>
+       
+           
+   </div>
+</div>
+
+<div class="uk-modal uk-modal-card-fullscreen" id="modal_work_gb41">
+    <div class="uk-modal-dialog uk-modal-dialog-blank">
+    	<div class="md-card uk-height-viewport">
+            <div class="md-card-toolbar">
+                <div class="md-card-toolbar-actions">
+					<button class="uk-modal-close uk-close" type="button"></button>
+                </div>
+                <span class="md-icon material-icons uk-modal-close">&#xE5C4;</span>
+                <h3 class="md-card-toolbar-heading-text">
+                    Хэрэгжүүлсэн горим сорилыг нөхцөл байдалтай харьцуулан ерөнхий үнэлэгээ өгөх 
+                </h3>
+            </div>
+            <div class="md-card-content showGBGRID41">
+                <kendo-grid options="showGBGRID41"></kendo-grid>     
+            </div>
+        </div>
+       
+           
+   </div>
+</div>
+<div class="uk-modal uk-modal-card-fullscreen" id="modal_work_gb42">
+    <div class="uk-modal-dialog uk-modal-dialog-blank">
+    	<div class="md-card uk-height-viewport">
+            <div class="md-card-toolbar">
+                <div class="md-card-toolbar-actions">
+					<button class="uk-modal-close uk-close" type="button"></button>
+                </div>
+                <span class="md-icon material-icons uk-modal-close">&#xE5C4;</span>
+                <h3 class="md-card-toolbar-heading-text">
+                   Хэрэгжүүлсэн горим сорилын ерөнхий үнэлгээний дагуу алдаа, зөрчилгүй гэж үзсэн асуудлын нэгтгэл 
+                </h3>
+            </div>
+            <div class="md-card-content showGBGRID42">
+                <kendo-grid options="showGBGRID42"></kendo-grid>     
+            </div>
+        </div>
+       
+           
+   </div>
+</div>
+<div class="uk-modal uk-modal-card-fullscreen" id="modal_work_gb43">
+    <div class="uk-modal-dialog uk-modal-dialog-blank">
+    	<div class="md-card uk-height-viewport">
+            <div class="md-card-toolbar">
+                <div class="md-card-toolbar-actions">
+					<button class="uk-modal-close uk-close" type="button"></button>
+                </div>
+                <span class="md-icon material-icons uk-modal-close">&#xE5C4;</span>
+                <h3 class="md-card-toolbar-heading-text">
+                   Буруу илэрхийллийг нэгтгэж, илрүүлсэн алдаа, зөрчилтэй асуудлыг аудитын явцад залруулах боломжтой эсэхийг тогтоох маягт
+                </h3>
+            </div>
+            <div class="md-card-content showGBGRID43">
+                <kendo-grid options="showGBGRID43"></kendo-grid>     
+            </div>
+        </div>
+       
+           
+   </div>
+</div>
+<div class="uk-modal uk-modal-card-fullscreen" id="modal_work_gb44">
+    <div class="uk-modal-dialog uk-modal-dialog-blank">
+    	<div class="md-card uk-height-viewport">
+            <div class="md-card-toolbar">
+                <div class="md-card-toolbar-actions">
+					<button class="uk-modal-close uk-close" type="button"></button>
+                </div>
+                <span class="md-icon material-icons uk-modal-close">&#xE5C4;</span>
+                <h3 class="md-card-toolbar-heading-text">
+                   Аудитын явцад хийсэн залруулгын талаарх мэдээлэл
+                </h3>
+            </div>
+            <div class="md-card-content showGBGRID44">
+                <kendo-grid options="showGBGRID44"></kendo-grid>     
+            </div>
+        </div>
+   </div>
+</div>
+<div class="uk-modal uk-modal-card-fullscreen" id="modal_work_gb45">
+    <div class="uk-modal-dialog uk-modal-dialog-blank">
+    	<div class="md-card uk-height-viewport">
+            <div class="md-card-toolbar">
+                <div class="md-card-toolbar-actions">
+					<button class="uk-modal-close uk-close" type="button"></button>
+                </div>
+                <span class="md-icon material-icons uk-modal-close">&#xE5C4;</span>
+                <h3 class="md-card-toolbar-heading-text">
+                   Аудитын явцад хийсэн залруулгын дансны бичилт
+                </h3>
+            </div>
+            <div class="md-card-content showGBGRID45">
+                <kendo-grid options="showGBGRID45"></kendo-grid>     
+            </div>
+        </div>
+   </div>
+</div>
+<div class="uk-modal uk-modal-card-fullscreen" id="modal_work_gb46">
+    <div class="uk-modal-dialog uk-modal-dialog-blank">
+    	<div class="md-card uk-height-viewport">
+            <div class="md-card-toolbar">
+                <div class="md-card-toolbar-actions">
+					<button class="uk-modal-close uk-close" type="button"></button>
+                </div>
+                <span class="md-icon material-icons uk-modal-close">&#xE5C4;</span>
+                <h3 class="md-card-toolbar-heading-text">
+                   Залруулаагүй буруу илэрхийлэл буюу алдаа, зөрчилтэй асуудлыг ангилж, шийдвэрлэх арга замыг тодорхойлох маягт
+                </h3>
+            </div>
+            <div class="md-card-content showGBGRID46">
+                <kendo-grid options="showGBGRID46"></kendo-grid>     
+            </div>
+        </div>
+   </div>
+</div>
+<div class="uk-modal uk-modal-card-fullscreen" id="modal_work_gb461">
+    <div class="uk-modal-dialog uk-modal-dialog-blank">
+    	<div class="md-card uk-height-viewport">
+            <div class="md-card-toolbar">
+                <div class="md-card-toolbar-actions">
+					<button class="uk-modal-close uk-close" type="button"></button>
+                </div>
+                <span class="md-icon material-icons uk-modal-close">&#xE5C4;</span>
+                <h3 class="md-card-toolbar-heading-text">
+                   Зөвлөмж өгөх асуудлын жагсаалт
+                </h3>
+            </div>
+            <div class="md-card-content showGBGRID461">
+                <kendo-grid options="showGBGRID461"></kendo-grid>     
+            </div>
+        </div>
+   </div>
+</div>
+
+<div class="uk-modal uk-modal-card-fullscreen" id="modal_work_managementZ">
+    <div class="uk-modal-dialog uk-modal-dialog-blank">
+    	<div class="md-card uk-height-viewport">
+            <div class="md-card-toolbar">
+                <div class="md-card-toolbar-actions">
+					<button class="uk-modal-close uk-close" type="button"></button>
+                </div>
+                <span class="md-icon material-icons uk-modal-close">&#xE5C4;</span>
+                <h3 class="md-card-toolbar-heading-text">
+                   МЕНЕЖМЕНТИЙН ЗАХИДАЛ
+                </h3>
+            </div>
+            <div class="md-card-content showGBGRID461">
+                <kendo-grid options="showMZgrid"></kendo-grid>     
+            </div>
+        </div>
+   </div>
+</div>
+
+<div class="uk-modal uk-modal-card-fullscreen" id="modal_work_gb462">
+    <div class="uk-modal-dialog uk-modal-dialog-blank">
+    	<div class="md-card uk-height-viewport">
+            <div class="md-card-toolbar">
+                <div class="md-card-toolbar-actions">
+					<button class="uk-modal-close uk-close" type="button"></button>
+                </div>
+                <span class="md-icon material-icons uk-modal-close">&#xE5C4;</span>
+                <h3 class="md-card-toolbar-heading-text">
+                  Төлбөрийн акт тогтоох асуудлын жагсаалт
+                </h3>
+            </div>
+            <div class="md-card-content showGBGRID462">
+                <kendo-grid options="showGBGRID462"></kendo-grid>     
+            </div>
+        </div>
+   </div>
+</div>
+<div class="uk-modal uk-modal-card-fullscreen" id="modal_work_gb463">
+    <div class="uk-modal-dialog uk-modal-dialog-blank">
+    	<div class="md-card uk-height-viewport">
+            <div class="md-card-toolbar">
+                <div class="md-card-toolbar-actions">
+					<button class="uk-modal-close uk-close" type="button"></button>
+                </div>
+                <span class="md-icon material-icons uk-modal-close">&#xE5C4;</span>
+                <h3 class="md-card-toolbar-heading-text">
+                  Албан шаардлага өгөх асуудлын жагсаалт
+                </h3>
+            </div>
+            <div class="md-card-content showGBGRID463">
+                <kendo-grid options="showGBGRID463"></kendo-grid>     
+            </div>
+        </div>
+   </div>
+</div>
+<div class="uk-modal uk-modal-card-fullscreen" id="modal_work_gb464">
+    <div class="uk-modal-dialog uk-modal-dialog-blank">
+    	<div class="md-card uk-height-viewport">
+            <div class="md-card-toolbar">
+                <div class="md-card-toolbar-actions">
+					<button class="uk-modal-close uk-close" type="button"></button>
+                </div>
+                <span class="md-icon material-icons uk-modal-close">&#xE5C4;</span>
+                <h3 class="md-card-toolbar-heading-text">
+                  Сахилгын шийтгэл ногдуулахаар эрх бүхий албан тушаалтанд хүргүүлэх асуудлын жагсаалт
+                </h3>
+            </div>
+            <div class="md-card-content showGBGRID464">
+                <kendo-grid options="showGBGRID464"></kendo-grid>     
+            </div>
+        </div>
+   </div>
+</div>
+<div class="uk-modal uk-modal-card-fullscreen" id="modal_work_gb465">
+    <div class="uk-modal-dialog uk-modal-dialog-blank">
+    	<div class="md-card uk-height-viewport">
+            <div class="md-card-toolbar">
+                <div class="md-card-toolbar-actions">
+					<button class="uk-modal-close uk-close" type="button"></button>
+                </div>
+                <span class="md-icon material-icons uk-modal-close">&#xE5C4;</span>
+                <h3 class="md-card-toolbar-heading-text">
+                  Хууль хяналтын байгууллагад шилжүүлэх асуудлын жагсаалт
+                </h3>
+            </div>
+            <div class="md-card-content showGBGRID465">
+                <kendo-grid options="showGBGRID465"></kendo-grid>     
+            </div>
+        </div>
+   </div>
+</div>
+<div class="uk-modal uk-modal-card-fullscreen" id="modal_work_t1">
+    <div class="uk-modal-dialog uk-modal-dialog-blank">
+    	<div class="md-card uk-height-viewport">
+            <div class="md-card-toolbar">
+                <div class="md-card-toolbar-actions">
+					<button class="uk-modal-close uk-close" type="button"></button>
+                </div>
+                <span class="md-icon material-icons uk-modal-close">&#xE5C4;</span>
+                <h3 class="md-card-toolbar-heading-text">
+                 {{tuuverTitle}}
+                </h3>
+            </div>
+            <div class="md-card-content showGBGRID465">
+                <kendo-grid options="showGBGRID465"></kendo-grid>     
+            </div>
+        </div>
+   </div>
+</div>
+
+
+<div class="uk-modal uk-modal-card-fullscreen" id="modal_b_25">
+    <div class="uk-modal-dialog uk-modal-dialog-blank">
+    	<div class="md-card uk-height-viewport">
+            <div class="md-card-toolbar">
+                <div class="md-card-toolbar-actions">
+					<button class="uk-modal-close uk-close" type="button"></button>
+                </div>
+                <span class="md-icon material-icons uk-modal-close">&#xE5C4;</span>
+                <h3 class="md-card-toolbar-heading-text">
+                 {{note_form.title}}
+                </h3>
+            </div>
+            <div class="md-card-content custisk showGBGRIDb25">
+               <kendo-grid options="puserGridM25"></kendo-grid>           
+            </div>
+        </div>
+   </div>
+</div>
+<div class="uk-modal uk-modal-card-fullscreen" id="modal_b_254">
+    <div class="uk-modal-dialog uk-modal-dialog-blank">
+    	<div class="md-card uk-height-viewport">
+            <div class="md-card-toolbar">
+                <div class="md-card-toolbar-actions">
+					<button class="uk-modal-close uk-close" type="button"></button>
+                </div>
+                <span class="md-icon material-icons uk-modal-close">&#xE5C4;</span>
+                <h3 class="md-card-toolbar-heading-text">
+                 {{note_form.title}}
+                </h3>
+            </div>
+            <div class="md-card-content custisk showGBGRIDb25">
+               <kendo-grid options="puserGridM254"></kendo-grid>           
+            </div>
+        </div>
+   </div>
+</div>
+<div class="uk-modal uk-modal-card-fullscreen" id="modal_b_25_new">
+    <div class="uk-modal-dialog uk-modal-dialog-blank">
+    	<form id="form_validation" ng-submit="submitFormB25()" class="uk-form-stacked">
+    	    <input type="hidden" ng-model="risk.levelid" name="selectize_a" />
+    	    <input type="hidden" ng-model="risk.rtype" value="1" />
+        	<div class="md-card uk-height-viewport">
+            <div class="md-card-toolbar">                
+            	<div class="md-card-toolbar-actions">
+                      <button class="uk-close" data-uk-modal="{target:'#modal_b_25'}" type="button"></button>
+                </div>    
+                <span class="md-icon material-icons uk-modal-close"  data-uk-modal="{target:'#modal_b_25'}" >&#xE5C4;</span>
+                <h3 class="md-card-toolbar-heading-text">
+                    Хэрэглэгчдийн санал, мэдээлэлд үндэслэн эрсдэл тодорхойлох
+                </h3>
+            </div>
+            <div class="md-card-content" style="max-height: 80vh;overflow-y: auto;">
+                   <div class="md-card">
+		            <div class="md-card-content">
+		                <div class="uk-grid" data-uk-grid-margin>
+		                    <div class="uk-width-medium-1-1">
+	                            <div class="uk-grid">
+	                                <div class="uk-width-medium-1-3">
+	                                	<div class="parsley-row">
+		                                    <input required type="text" config="rtype_config" options="rtype_data.options" ng-model="risk.groupid" name="selectize_a" selectize />
+                       						<span class="uk-form-help-block">Эрсдэлтэй асуудлын жагсаалтад оруулах мэдээллийн эх үүсвэрийн төрөл</span>
+	                                	</div>
+	                                </div>
+	                                <div class="uk-width-medium-1-3">
+	                                	<div class="parsley-row">		                                	 
+		                                	 <selectize required ng-change="riskChange(risk.dir)" type="text" ng-model="risk.dir" class="md-input" placeholder="Сонгоно уу..." id="mineral"
+										         position="bottom" config="dir_config" options="dir_data.options" name="mineral"></selectize>
+                       						 <span class="uk-form-help-block">Холбогдох аудитын чиглэл</span>
+                      						 </div>
+	                                </div>
+	                                <div class="uk-width-medium-1-3">
+	                                	<div class="parsley-row">
+	                                		<selectize required type="text" ng-change="treatmentChange(risk.riskid)" ng-model="risk.riskid" class="md-input" placeholder="Сонгоно уу..." id="deposidid"
+									         position="bottom" config="risk_config" options="selectize_risk_options" name="deposidid"></selectize>
+									         <span class="uk-form-help-block">Эрсдэлтэй асуудлыг товч тодорхойлох</span>
+	                                	</div>
+	                                </div>
+	                            </div>		                        
+		                    </div>			                
+		                </div>
+		              
+		                	                    
+		                
+		                <div class="uk-grid" data-uk-grid-margin>
+		                    <div class="uk-width-medium-1-2">
+		                        <div class="parsley-row">
+	                           		<selectize required type="text" ng-change="factorChange(risk.treatmentid)"  ng-model="risk.treatmentid" class="md-input" placeholder="Сонгоно уу..." 
+							         position="bottom" config="selectize_treatment_config" options="selectize_treatment_options"></selectize>
+							        <span class="uk-form-help-block">Хэрэгжүүлэхээр төлөвлөсөн горим сорил</span>
+		                        </div>			                        
+		                    </div>	
+		                    <div class="uk-width-medium-1-2">
+		                        <div class="parsley-row">
+	                           		<selectize required type="text" ng-model="risk.factorid" class="md-input" placeholder="Сонгоно уу..." 
+							         position="bottom" config="selectize_factor_config" options="selectize_factor_options"></selectize>
+							        <span class="uk-form-help-block">Хүчин зүйл</span>
+		                        </div>			                        
+		                    </div>		                
+		                </div>
+		                <div class="uk-grid" ng-show="isFactorCreated" data-uk-grid-margin>
+		                    <div class="uk-width-medium-1-1">			                        
+		                        <div class="parsley-row">
+		                            <label>Хүчин зүйлсэд хамаарах шалгуур үзүүлэлт</label>
+                           			<textarea cols="30" rows="4" class="md-input" ng-model="risk.crition" md-input textarea-autosize></textarea>
+		                        </div>			                        
+		                    </div>			                
+		                </div>
+	                    <div class="uk-grid" data-uk-grid-margin>
+		                    <div class="uk-width-medium-1-2">			                        
+		                        <div class="parsley-row">
+		                            <label>Тайлбар</label>
+                           			<textarea required cols="30" rows="4" class="md-input" ng-model="risk.description" md-input textarea-autosize></textarea>
+		                        </div>			                        
+		                    </div>	
+		                    <div class="uk-width-medium-1-2">			                        
+		                        <div class="parsley-row">
+                           			<input type="file" id="input-file-e" class="dropify" data-max-file-size="200K" />
+		                        </div>			                        
+		                    </div>			                
+		                </div>
+		                <h5 class="full_width_in_card heading_c" ng-show="isRiskCreated">Шалгуур үзүүлэлт</h5>
+		                <div class="uk-grid" data-uk-grid-margin ng-show="isRiskCreated">
+                           <div class="uk-width-medium-1-1">			                    	
+	                        <div class="uk-form-row">
+	                        	<div class="uk-grid">
+	                                <div class="uk-width-medium-1-1">
+	                                	<h3 class="heading_a">Холбогдох стандартын
+									</h3>
+	                                	<table class="uk-table uk-table-striped">
+	                                		<thead ng-show="riskstandartlist.length > 0">
+	                                			<tr>
+	                                				<th>Нэр</th>
+	                                				<th>Зүйл</th>
+	                                				<th>Заалт</th>
+	                                				<th></th>
+	                                			</tr>
+	                                		</thead>
+	                                		<tbody>
+	                                			<tr ng-repeat="item in riskstandartlist track by $index">
+	                                				<td ng-bind="item.law.text" width="30%"></td>
+	                                				
+	                                				<td ng-bind="item.zuil.text" width="30%"></td>
+	                                				<td ng-bind="item.zaalt.text" width="30%"></td>
+	                                				<td><i class="	md-icon material-icons" style="float: right;" ng-click="removeRisk($index)" width="10%">delete</i></td>
+	                                			</tr>
+	                                			<tr>
+	                                				<td width="30%"><selectize config="selectize_law_config" options="law_list" position="bottom" ng-model="risklaw.LawId" ng-change="changedStandartSelect('lawNameSelect',risklaw.LawId)"></selectize></td>
+	                                				<td width="30%"><selectize config="selectize_zuil_config" options="zuil_list" position="bottom" ng-model="risklaw.ZuilId" ng-change="changedStandartSelect('lawZuilSelect',risklaw.ZuilId)"></selectize></td>
+	                                				<td width="30%"><selectize config="selectize_zaalt_config" options="zaalt_list" position="bottom" ng-model="risklaw.ZaaltId" ng-change="changedStandartSelect('lawZaaltSelect',risklaw.ZaaltId)"></selectize></td>
+	                                				<td width="10%"><i class="	md-icon material-icons" style="float: right;" ng-click="pushRisk()">add</i></td>
+	                                			</tr>
+	                                		</tbody>
+	                                	</table>
+	                                </div>
+	                            </div>
+	                            
+	                            <div class="uk-grid" ng-show="isRiskCreated">
+	                                 <div class="uk-width-medium-1-1">
+	                                 	<h3 class="heading_a">Холбогдох хууль, тогтоомжийн</h3>
+	                                 	<table class="uk-table uk-table-striped">
+	                                		<thead ng-show="riskhuulilist > 0">
+	                                			<tr>
+	                                				<th>Нэр</th>
+	                                				<th>Зүйл</th>
+	                                				<th>Заалт</th>
+	                                				<th></th>
+	                                			</tr>
+	                                		</thead>
+	                                		<tbody>
+	                                			<tr ng-repeat="item in riskhuulilist track by $index">
+	                                				<td ng-bind="item.law.text" width="30%"></td>
+	                                				<td ng-bind="item.zuil.text" width="30%"></td>
+	                                				<td ng-bind="item.zaalt.text" width="30%"></td>
+	                                				<td width="10%"><i class="	md-icon material-icons" style="float: right;" ng-click="removeRiskHuuli($index)">delete</i></td>
+	                                			</tr>
+	                                			<tr>
+	                                				<td width="30%"><selectize config="selectize_huuli_config" options="huuli_list" position="bottom" ng-model="riskhuuli.LawId" ng-change="changedStandartSelect('lawNameSelectHuuli',riskhuuli.LawId)"></selectize></td>
+	                                				<td width="30%"><selectize config="selectize_zuilhuuli_config" options="huulizuil_list" position="bottom" ng-model="riskhuuli.ZuilId" ng-change="changedStandartSelect('lawZuilSelectHuuli',riskhuuli.ZuilId)"></selectize></td>
+	                                				<td width="30%"><selectize config="selectize_zaalthuuli_config" options="huulizaalt_list" position="bottom" ng-model="riskhuuli.ZaaltId" ng-change="changedStandartSelect('lawZaaltSelectHuuli',riskhuuli.ZaaltId)"></selectize></td>
+	                                				<td width="10%"><i class="	md-icon material-icons" style="float: right;" ng-click="pushRiskHuuli()">add</i></td>
+	                                			</tr>
+	                                		</tbody>
+	                                	</table>
+	                                </div>
+	                               </div>
+	                               <div class="uk-grid" ng-show="isRiskCreated">
+	                                 <div class="uk-width-medium-1-1">
+	                                 	<h3 class="heading_a">Бусад шалгуур үзүүлэлт</h3>
+                                 		<div class="uk-grid">
+			                                <div class="uk-width-medium-1-1">
+			                                    <label>Нэр</label>
+			                                    <textarea cols="30" rows="4" class="md-input" ng-model="risk.other" md-input textarea-autosize></textarea>
+			                                </div>
+			                            </div>
+	                                </div>
+	                                </div>
+                                </div>			                        	
+	                        </div>			                      
+	                    </div>		
+	                    <h5 ng-show="confirmation" class="full_width_in_card heading_c">Нотлох зүйл цуглуулах арга зүй</h5>
+                           <div ng-show="confirmation" class="uk-grid uk-margin-small-bottom" data-uk-grid-margin>
+                                        <div class="uk-width-large-1-2">
+                                        	<div class="uk-input-group">
+                                       <span class="uk-input-group-addon">
+                                           <i class="md-list-addon-icon md-36 material-icons">&#xE52E;</i>
+                                       </span>
+                                       <div class="parsley-row uk-form-row">
+				                    	<label class="slabel"> Нотлох зүйлийн төрөл </label>
+				                    	<selectize type="text" ng-model="risk.conftype" class="md-input"
+				                    	 placeholder="Сонгоно уу..." id="conftype"
+				                    	 data-parsley-required data-parsley-error-message="Аудитын чиглэлээ сонгоно уу."
+				                    	 data-parsley-trigger="change"
+				                    	 position="bottom" config="selectize_conftype_config" options="selectize_conftype_options" name="conftype"></selectize>
+				                    	
+			                        </div>
+                                   </div>
+                                        </div>
+                               <div class="uk-width-large-1-2">
+                                        	<div class="uk-input-group">
+                                       <span class="uk-input-group-addon">
+                                           <i class="md-list-addon-icon md-36 material-icons">&#xE52E;</i>
+                                       </span>
+                                       <div class="parsley-row uk-form-row">
+				                    	<label class="slabel"> Нотлох зүйлийг олж авах арга зам </label>
+				                    	<selectize type="text" ng-model="risk.confMethod" class="md-input"
+				                    	 placeholder="Сонгоно уу..." id="confMethod"
+				                    	 data-parsley-required data-parsley-error-message="Аудитын чиглэлээ сонгоно уу."
+				                    	 data-parsley-trigger="change"
+				                    	 position="bottom" config="selectize_confMethod_config" options="selectize_confMethod_options" name="procedures"></selectize>
+				                    	
+			                        </div>
+                                   </div>
+                                        </div>
+                           </div>
+                           <div ng-show="confirmation" class="uk-grid uk-margin-small-bottom" data-uk-grid-margin>
+                                        <div class="uk-width-large-1-2">
+                                        	<div class="uk-input-group">
+                                       <span class="uk-input-group-addon">
+                                           <i class="md-list-addon-icon md-36 material-icons">&#xE52E;</i>
+                                       </span>
+                                       <div class="parsley-row uk-form-row">
+				                    	<label class="slabel"> Гадаад эх сурвалж</label>
+				                    	<selectize type="text" ng-model="risk.confSourceO" class="md-input"
+				                    	 placeholder="Сонгоно уу..." id="confSourceO"
+				                    	 data-parsley-required data-parsley-error-message="Аудитын чиглэлээ сонгоно уу."
+				                    	 data-parsley-trigger="change"
+				                    	 position="bottom" config="selectize_confSourceO_config" options="selectize_confSourceO_options" name="confSourceO"></selectize>
+				                    	
+			                        </div>
+                                   </div>
+                                        </div>
+                               <div class="uk-width-large-1-2">
+                                        	<div class="uk-input-group">
+                                       <span class="uk-input-group-addon">
+                                           <i class="md-list-addon-icon md-36 material-icons">&#xE52E;</i>
+                                       </span>
+                                       <div class="parsley-row uk-form-row">
+				                    	<label class="slabel"> Дотоод эх сурвалж </label>
+				                    	<selectize type="text" ng-model="risk.confSourceI" class="md-input"
+				                    	 placeholder="Сонгоно уу..." id="procedures"
+				                    	 data-parsley-required data-parsley-error-message="Аудитын чиглэлээ сонгоно уу."
+				                    	 data-parsley-trigger="change"
+				                    	 position="bottom" config="selectize_confSourceI_config" options="selectize_confSourceI_options" name="procedures"></selectize>
+				                    	
+			                        </div>
+                                   </div>
+                                        </div>
+                           </div>
+		                <div class="uk-clearfix uk-margin-large-top">
+		                    <button class="md-btn md-btn-warning md-btn-wave-light waves-effect waves-button waves-light uk-float-left uk-modal-close"  data-uk-modal="{target:'#modal_b_25'}">Буцах</button>
+		                    <button class="md-btn md-btn-primary md-btn-wave-light waves-effect waves-button waves-light uk-float-right" type="submit">Илгээх</button>			                   
+		                </div>  
+		            </div>			            
+		        </div>			        
+            </div>	           
+        </div>
+        </form>
+    </div>
+</div>
+
+<div class="uk-modal" id="modal_pdf">
+    <div class="uk-modal-dialog uk-modal-dialog-large">
+        <button type="button" class="uk-modal-close uk-close"></button>
+        <p>
+        	<embed ng-src="{{purl}}" width="100%" height="800" type='application/pdf'>
+        </p>        
+    </div>
+</div>
+<div class="uk-modal" id="modal_excel_file">
+    <div class="uk-modal-dialog uk-modal-dialog-large">
+        <button type="button" class="uk-modal-close uk-close"></button>
+        <div class="md-card-content">
+            <div id="spreadSheetFileView" style="width:100%;height:800px"></div>
+        </div>
+    </div>
+</div>
+<script type="text/x-kendo-template" id="updateCustomRisk">
+<div id="details-container" style="text-align:left;">
+ 	<button class="k-button k-button-icontext" ng-click="editCustomRisk(#=dirid#, #=id#, #=riskid#)"> <span class="k-icon k-i-edit"></span> Засах</button>
+	<button class="k-button k-button-icontext" ng-click="deleteCustomRisk(#=dirid#, #=id#, #=riskid#, #=rtype#)"> <span class="k-icon k-i-delete"></span> Устгах</button>         
+</div>
+</script>
+<script type="text/x-kendo-template" id="exportCustomExport">
+    <div id="details-container" style="text-align:left;">
+ 		<button class="k-button k-button-icontext" ng-click="addNew(0)"> <span class='k-icon k-i-plus'></span> Шинээр эрсдэл, горим нэмэх</button>
+    </div>
+</script>
+
+     <script type="text/x-kendo-template" id="export25">
+         <div id="details-container" style="text-align:left;">
+ 			<button class="k-button k-button-icontext" ng-click="addNew(0)"> <span class='k-icon k-i-plus'></span> Шинээр эрсдэл, горим нэмэх</button>
+         </div>
+     </script>
+<script type="text/x-kendo-template" id="update25">
+<div id="details-container" style="text-align:left;">
+ 	<button class="k-button k-button-icontext" ng-click="editCustomRisk(#=dirid#, #=id#, #=riskid#)"> <span class="k-icon k-edit"></span> Засах</button>
+	<button class="k-button k-button-icontext" ng-click="deleteCustomRisk(#=dirid#, #=id#, #=riskid#, #=rtype#)"> <span class="k-icon k-delete"></span> Устгах</button>         
+</div>
+</script>
+<script type="text/x-kendo-template" id="exportExcel">
+         <div id="details-container" style="text-align:left;">
+			<a class="k-button k-button-icontext target="_self" download="{{maygt}}"  href="/excel/{{note_form.fileurl}}/{{excel.sheetName}}/{{mid}}"><span class="k-icon k-i-excel"></span>MS Excel-т экспортлох</a>
+		    <button class="k-button k-button-icontext" ng-click="back()"><i style="color:\\#fff;" class="material-icons">keyboard_backspace</i>Буцах</button>
+         </div>
+     </script>
+
+<script type="text/x-kendo-template" id="akt">
+	<div id="details-container" style="text-align:left;">
+		<a class="k-button k-button-icontext" target="_self" download="akt"  href="/word/akt/{{mid}}/#:id#"><span class="k-icon k-i-excel"></span>Татах</a>
+	</div>
+</script>
+
+<script type="text/x-kendo-template" id="albanshaardlaga">
+	<div id="details-container" style="text-align:left;">
+		<a class="k-button k-button-icontext" target="_self" download="akt"  href="/word/albanshaardlaga/{{mid}}/#:id#"><span class="k-icon k-i-excel"></span>Татах</a>
+	</div>
+</script>
+
+<script type="text/x-kendo-template" id="ajiltan">
+	<div id="details-container" style="text-align:left;">
+		<a class="k-button k-button-icontext" target="_self" download="akt"  href="/word/ajiltan/{{mid}}/#:id#"><span class="k-icon k-i-excel"></span>Татах</a>
+	</div>
+</script>
+<script type="text/x-kendo-template" id="eGuitsetgeh">
+	<div id="details-container" style="text-align:left;">
+		<a class="k-button k-button-icontext" target="_self" download="{{item.filename}}"  href="/excel/{{note_form.fileurl}}/{{excel.sheetName}}/{{sstepid}}/{{mid}}"><span class="k-icon k-i-excel"></span>MS Excel-т экспортлох</a>
+	</div>
+</script>
+<script type="text/x-kendo-template" id="export">
+	<div id="details-container" style="text-align:left;">
+		<a class="k-button k-button-icontext" target="_self" download="{{item.filename}}"  href="/my/exportMateriallag/{{mid}}/{{sstepid}}/{{excel.sheetName}}"><span class="k-icon k-i-excel"></span>MS Excel-т экспортлох</a>
+    </div>
+</script>
+<script type="text/x-kendo-template" id="eHuraangui">
+	<div id="details-container" style="text-align:left;">
+		<a class="k-button k-button-icontext" target="_self" download="{{item.filename}}"  href="/excel/{{note_form.fileurl}}/{{excel.sheetName}}/{{mid}}"><span class="k-icon k-i-excel"></span>MS Excel-т экспортлох</a>
+	</div>
+</script>
+<script type="text/x-kendo-template" id="b22Export">
+	<div id="details-container" style="text-align:left;">
+		<a class="k-button k-button-icontext" target="_self" download="{{item.filename}}"  href="/excel/{{note_form.fileurl}}/{{excel.sheetName}}/{{mid}}"><span class="k-icon k-i-excel"></span>MS Excel-т экспортлох</a>
+	</div>
+</script>
+<script type="text/x-kendo-template" id="example">
+	<div id="details-container" style="float:left;">
+		<p><input type="radio" name="chooseradio" id="radio_demo_#:id#" icheck ng-model="selectedUzuulelt" value="#:id#" ng-change="hi(dataItem)" ng-disabled="!(fdata.percent >= 0.2 && fdata.percent <= 2)" />
+        <label for="radio_demo_#:id#" class="inline-label">Сонгох</label></p>
+  		<!--<button class="md-btn md-btn-small md-btn-primary" ng-click='hi(#:id#)'> </span>сонгох</button>-->
+    </div>
+</script>
+	<script type="text/x-kendo-template" id="files">
+		<ul>
+        	#for (var i=0,len=lnkTryoutFiles.length; i<len; i++){#
+            	<li>
+					 <a target="_self" download href="${lnkTryoutFiles[i].fileurl}">${ lnkTryoutFiles[i].name }</a>					
+				</li>
+        	# } #
+    	</ul>
+	</script>
+
+<style>	
+	.lala{
+		float:left;
+		width:100%;
+		height:120px;
+	}
+	.uk-table.uk-table-striped td{
+		vertical-align:middle;
+	}
+	.k-filter-row th, .k-grid-header th.k-header {
+	    overflow: hidden;
+	    border-style: solid;
+	    border-width: 0 0 1px 1px;
+	    padding: .5em .6em .4em .6em;
+	    font-weight: 400;
+	    white-space: normal;
+	    text-overflow: ellipsis;
+	    text-align: center;
+	    vertical-align:middle;
+	}
+	.k-grid td {
+	    border-style: solid;
+	    border-width: 0 0 0 1px;
+	    padding: .4em .6em;
+	    overflow: hidden;
+	    line-height: 1.6em;
+	    text-align: justify;
+	    vertical-align: middle;
+	    text-overflow: ellipsis;
+	}
+	body>.content-preloader {
+	    position: fixed;
+	    z-index: 109009;
+	    top: 49% !important;
+	}
+	.uk-notify{
+		z-index:9999999999999999;
+	}
+	.epc_chart {
+	    margin-top: 35px;
+	}
+	.uk-accordion-title{
+		background:none !important;
+	}
+	#notice .md-list > li {
+	    padding: 0;
+	    margin: 2px;
+	    list-style: none;
+	}
+	
+	.iradio_md:after{
+		left:5px;
+		top:5px;
+	}
+	.col{
+		color: red !important;
+	}
+	.notice {
+	    padding: 15px;
+	    background-color: #fafafa;
+	    border-right: 10px solid #7f7f84;
+	    border-left: 3px solid #7f7f84;
+	    border-bottom: 2px solid !important;
+	    margin-bottom: 10px;
+	    -webkit-box-shadow: 0 5px 8px -6px rgba(0,0,0,.2);
+	       -moz-box-shadow: 0 5px 8px -6px rgba(0,0,0,.2);
+	            box-shadow: 0 5px 8px -6px rgba(0,0,0,.2);
+	            
+	}
+	.noticep {
+	    padding: 15px;
+	    background-color: #fafafa;
+	    border-left: 5px solid #7f7f84;
+	    border-bottom: 2px solid !important;
+	    margin-bottom: 10px;
+	/*     -webkit-box-shadow: 0 5px 8px -6px rgba(0,0,0,.2);
+	       -moz-box-shadow: 0 5px 8px -6px rgba(0,0,0,.2);
+	            box-shadow: 0 5px 8px -6px rgba(0,0,0,.2); */
+	            
+	}
+	.showGBGRID44 td{
+		height:100px;
+	}
+	.showGBGRID45 td{
+		height:100px;
+	}
+	#notice .md-list > li{
+		margin:0px 0px 2px 0px !important;
+	}
+	.notice-sm {
+	    padding: 10px;
+	    font-size: 80%;
+	}
+	.notice-lg {
+	    padding: 35px;
+	    font-size: large;
+	}
+	
+	.notice-orange-100 {
+	    border-color: #0d47a1 !important;
+	}
+	.notice-danger {
+	    border-color: #ef5350 !important;
+	}
+	.notice-orange-100>strong {
+	    color: #eaa18b;
+	}
+	
+	.notice-grey {
+	    border-color: #e6e6e6 !important;
+	}
+	.notice-parent {
+	    border-color: #ebebeb !important;
+	}
+	.notice-orange-300 {
+	    border-color: #ffb74d !important;
+	}
+	.notice-orange-400 {
+	    border-color: #ef5350 !important;
+	}
+	.notice-orange-300>strong {
+	    color: #ef9e28;
+	}
+	.notice-green-100 {
+	    border-color: #64dd17 !important;
+	}
+	.notice-green-100>strong {
+	    color: #89a766;
+	}
+	
+	.nofileIcon{
+		position: relative; top: 35%; left: 45%; 
+	}
+	.nofileText{
+		position: relative; top: 40%; left: 38%; 
+	}
+	.ll{
+		border-color: #0d47a1 !important;
+	}
+
+</style>

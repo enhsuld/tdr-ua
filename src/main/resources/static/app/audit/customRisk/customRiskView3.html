@@ -1,0 +1,239 @@
+<div class="uk-modal uk-modal-card-fullscreen" id="modal_b_25_new">
+    <div class="uk-modal-dialog uk-modal-dialog-blank" ng-controller="customRiskCtrl">
+    	<form id="form_validation" ng-submit="submitForm()" class="uk-form-stacked">
+    	 <input type="hidden" ng-model="risk.levelid" name="selectize_a" />
+    	  <input type="hidden" ng-model="risk.rtype" value="1" />
+        <div class="md-card uk-height-viewport">
+            <div class="md-card-toolbar">                
+            	<div class="md-card-toolbar-actions">
+                      <button class="uk-close" data-uk-modal="{target:'#modal_b_25'}" type="button"></button>
+                </div>    
+                <span class="md-icon material-icons uk-modal-close">&#xE5C4;</span>
+                <h3 class="md-card-toolbar-heading-text">
+                    Хэрэглэгчдийн санал, мэдээлэлд үндэслэн эрсдэл тодорхойлох
+                </h3>
+            </div>
+            <div class="md-card-content" style="max-height: 80vh;overflow-y: auto;">
+                   <div class="md-card">
+		            <div class="md-card-content">
+		                <div class="uk-grid" data-uk-grid-margin>
+		                    <div class="uk-width-medium-1-1">
+	                            <div class="uk-grid">
+	                                <div class="uk-width-medium-1-3">
+	                                	<div class="parsley-row">
+		                                    <input required type="text" config="rtype_config" options="rtype_data.options" ng-model="risk.groupid" name="selectize_a" selectize />
+                       						<span class="uk-form-help-block">Эрсдэлтэй асуудлын жагсаалтад оруулах мэдээллийн эх үүсвэрийн төрөл</span>
+	                                	</div>
+	                                </div>
+	                                <div class="uk-width-medium-1-3">
+	                                	<div class="parsley-row">
+	                                	 <input type="text"  ng-change="riskChange()" config="dir_config" options="dir_data.options" ng-model="risk.dir" name="selectize_a" selectize /> 			                                	 
+		                                	 <selectize required ng-change="riskChange(risk.dir)" type="text" ng-model="risk.dir" class="md-input" placeholder="Сонгоно уу..." id="mineral"
+										         position="bottom" config="dir_config" options="dir_data.options" name="mineral"></selectize>
+                       						 <span class="uk-form-help-block">Холбогдох аудитын чиглэл</span>
+                      						 </div>
+	                                </div>
+	                                <div class="uk-width-medium-1-3">
+	                                	<div class="parsley-row">
+	                                		<selectize required type="text" ng-change="treatmentChange(risk.riskid)" ng-model="risk.riskid" class="md-input" placeholder="Сонгоно уу..." id="deposidid"
+									         position="bottom" config="risk_config" options="selectize_risk_options" name="deposidid"></selectize>
+									         <span class="uk-form-help-block">Эрсдэлтэй асуудлыг товч тодорхойлох</span>
+	                                	</div>
+	                                </div>
+	                            </div>		                        
+		                    </div>			                
+		                </div>
+		              
+		                	                    
+		                
+		                <div class="uk-grid" data-uk-grid-margin>
+		                    <div class="uk-width-medium-1-2">
+		                        <div class="parsley-row">
+	                           		<selectize required type="text" ng-change="factorChange(risk.treatmentid)"  ng-model="risk.treatmentid" class="md-input" placeholder="Сонгоно уу..." 
+							         position="bottom" config="selectize_treatment_config" options="selectize_treatment_options"></selectize>
+							        <span class="uk-form-help-block">Хэрэгжүүлэхээр төлөвлөсөн горим сорил</span>
+		                        </div>			                        
+		                    </div>	
+		                    <div class="uk-width-medium-1-2">
+		                        <div class="parsley-row">
+	                           		<selectize required type="text" ng-model="risk.factorid" class="md-input" placeholder="Сонгоно уу..." 
+							         position="bottom" config="selectize_factor_config" options="selectize_factor_options"></selectize>
+							        <span class="uk-form-help-block">Хүчин зүйл</span>
+		                        </div>			                        
+		                    </div>		                
+		                </div>
+		                <div class="uk-grid" ng-show="isFactorCreated" data-uk-grid-margin>
+		                    <div class="uk-width-medium-1-1">			                        
+		                        <div class="parsley-row">
+		                            <label>Хүчин зүйлсэд хамаарах шалгуур үзүүлэлт</label>
+                           			<textarea cols="30" rows="4" class="md-input" ng-model="risk.crition" md-input textarea-autosize></textarea>
+		                        </div>			                        
+		                    </div>			                
+		                </div>
+	                    <div class="uk-grid" data-uk-grid-margin>
+		                    <div class="uk-width-medium-1-1">			                        
+		                        <div class="parsley-row">
+		                            <label>Тайлбар</label>
+                           			<textarea required cols="30" rows="4" class="md-input" ng-model="risk.description" md-input textarea-autosize></textarea>
+		                        </div>			                        
+		                    </div>			                
+		                </div>
+		                <h5 class="full_width_in_card heading_c" ng-show="isRiskCreated">Шалгуур үзүүлэлт</h5>
+		                <div class="uk-grid" data-uk-grid-margin ng-show="isRiskCreated">
+                           <div class="uk-width-medium-1-1">			                    	
+	                        <div class="uk-form-row">
+	                        	<div class="uk-grid">
+	                                <div class="uk-width-medium-1-1">
+	                                	<h3 class="heading_a">Холбогдох стандартын
+									</h3>
+	                                	<table class="uk-table uk-table-striped">
+	                                		<thead ng-show="riskstandartlist.length > 0">
+	                                			<tr>
+	                                				<th>Нэр</th>
+	                                				<th>Зүйл</th>
+	                                				<th>Заалт</th>
+	                                				<th></th>
+	                                			</tr>
+	                                		</thead>
+	                                		<tbody>
+	                                			<tr ng-repeat="item in riskstandartlist track by $index">
+	                                				<td ng-bind="item.law.text" width="30%"></td>
+	                                				
+	                                				<td ng-bind="item.zuil.text" width="30%"></td>
+	                                				<td ng-bind="item.zaalt.text" width="30%"></td>
+	                                				<td><i class="	md-icon material-icons" style="float: right;" ng-click="removeRisk($index)" width="10%">delete</i></td>
+	                                			</tr>
+	                                			<tr>
+	                                				<td width="30%"><selectize config="selectize_law_config" options="law_list" position="bottom" ng-model="risklaw.LawId" ng-change="changedStandartSelect('lawNameSelect',risklaw.LawId)"></selectize></td>
+	                                				<td width="30%"><selectize config="selectize_zuil_config" options="zuil_list" position="bottom" ng-model="risklaw.ZuilId" ng-change="changedStandartSelect('lawZuilSelect',risklaw.ZuilId)"></selectize></td>
+	                                				<td width="30%"><selectize config="selectize_zaalt_config" options="zaalt_list" position="bottom" ng-model="risklaw.ZaaltId" ng-change="changedStandartSelect('lawZaaltSelect',risklaw.ZaaltId)"></selectize></td>
+	                                				<td width="10%"><i class="	md-icon material-icons" style="float: right;" ng-click="pushRisk()">add</i></td>
+	                                			</tr>
+	                                		</tbody>
+	                                	</table>
+	                                </div>
+	                            </div>
+	                            
+	                            <div class="uk-grid" ng-show="isRiskCreated">
+	                                 <div class="uk-width-medium-1-1">
+	                                 	<h3 class="heading_a">Холбогдох хууль, тогтоомжийн</h3>
+	                                 	<table class="uk-table uk-table-striped">
+	                                		<thead ng-show="riskhuulilist > 0">
+	                                			<tr>
+	                                				<th>Нэр</th>
+	                                				<th>Зүйл</th>
+	                                				<th>Заалт</th>
+	                                				<th></th>
+	                                			</tr>
+	                                		</thead>
+	                                		<tbody>
+	                                			<tr ng-repeat="item in riskhuulilist track by $index">
+	                                				<td ng-bind="item.law.text" width="30%"></td>
+	                                				<td ng-bind="item.zuil.text" width="30%"></td>
+	                                				<td ng-bind="item.zaalt.text" width="30%"></td>
+	                                				<td width="10%"><i class="	md-icon material-icons" style="float: right;" ng-click="removeRiskHuuli($index)">delete</i></td>
+	                                			</tr>
+	                                			<tr>
+	                                				<td width="30%"><selectize config="selectize_huuli_config" options="huuli_list" position="bottom" ng-model="riskhuuli.LawId" ng-change="changedStandartSelect('lawNameSelectHuuli',riskhuuli.LawId)"></selectize></td>
+	                                				<td width="30%"><selectize config="selectize_zuilhuuli_config" options="huulizuil_list" position="bottom" ng-model="riskhuuli.ZuilId" ng-change="changedStandartSelect('lawZuilSelectHuuli',riskhuuli.ZuilId)"></selectize></td>
+	                                				<td width="30%"><selectize config="selectize_zaalthuuli_config" options="huulizaalt_list" position="bottom" ng-model="riskhuuli.ZaaltId" ng-change="changedStandartSelect('lawZaaltSelectHuuli',riskhuuli.ZaaltId)"></selectize></td>
+	                                				<td width="10%"><i class="	md-icon material-icons" style="float: right;" ng-click="pushRiskHuuli()">add</i></td>
+	                                			</tr>
+	                                		</tbody>
+	                                	</table>
+	                                </div>
+	                               </div>
+	                               <div class="uk-grid" ng-show="isRiskCreated">
+	                                 <div class="uk-width-medium-1-1">
+	                                 	<h3 class="heading_a">Бусад шалгуур үзүүлэлт</h3>
+                                 		<div class="uk-grid">
+			                                <div class="uk-width-medium-1-1">
+			                                    <label>Нэр</label>
+			                                    <textarea cols="30" rows="4" class="md-input" ng-model="risk.other" md-input textarea-autosize></textarea>
+			                                </div>
+			                            </div>
+	                                </div>
+	                                </div>
+                                </div>			                        	
+	                        </div>			                      
+	                    </div>		
+	                    <h5 ng-show="confirmation" class="full_width_in_card heading_c">Нотлох зүйл цуглуулах арга зүй</h5>
+                           <div ng-show="confirmation" class="uk-grid uk-margin-small-bottom" data-uk-grid-margin>
+                                        <div class="uk-width-large-1-2">
+                                        	<div class="uk-input-group">
+                                       <span class="uk-input-group-addon">
+                                           <i class="md-list-addon-icon md-36 material-icons">&#xE52E;</i>
+                                       </span>
+                                       <div class="parsley-row uk-form-row">
+				                    	<label class="slabel"> Нотлох зүйлийн төрөл </label>
+				                    	<selectize type="text" ng-model="risk.conftype" class="md-input"
+				                    	 placeholder="Сонгоно уу..." id="conftype"
+				                    	 data-parsley-required data-parsley-error-message="Аудитын чиглэлээ сонгоно уу."
+				                    	 data-parsley-trigger="change"
+				                    	 position="bottom" config="selectize_conftype_config" options="selectize_conftype_options" name="conftype"></selectize>
+				                    	
+			                        </div>
+                                   </div>
+                                        </div>
+                               <div class="uk-width-large-1-2">
+                                        	<div class="uk-input-group">
+                                       <span class="uk-input-group-addon">
+                                           <i class="md-list-addon-icon md-36 material-icons">&#xE52E;</i>
+                                       </span>
+                                       <div class="parsley-row uk-form-row">
+				                    	<label class="slabel"> Нотлох зүйлийг олж авах арга зам </label>
+				                    	<selectize type="text" ng-model="risk.confMethod" class="md-input"
+				                    	 placeholder="Сонгоно уу..." id="confMethod"
+				                    	 data-parsley-required data-parsley-error-message="Аудитын чиглэлээ сонгоно уу."
+				                    	 data-parsley-trigger="change"
+				                    	 position="bottom" config="selectize_confMethod_config" options="selectize_confMethod_options" name="procedures"></selectize>
+				                    	
+			                        </div>
+                                   </div>
+                                        </div>
+                           </div>
+                           <div ng-show="confirmation" class="uk-grid uk-margin-small-bottom" data-uk-grid-margin>
+                                        <div class="uk-width-large-1-2">
+                                        	<div class="uk-input-group">
+                                       <span class="uk-input-group-addon">
+                                           <i class="md-list-addon-icon md-36 material-icons">&#xE52E;</i>
+                                       </span>
+                                       <div class="parsley-row uk-form-row">
+				                    	<label class="slabel"> Гадаад эх сурвалж</label>
+				                    	<selectize type="text" ng-model="risk.confSourceO" class="md-input"
+				                    	 placeholder="Сонгоно уу..." id="confSourceO"
+				                    	 data-parsley-required data-parsley-error-message="Аудитын чиглэлээ сонгоно уу."
+				                    	 data-parsley-trigger="change"
+				                    	 position="bottom" config="selectize_confSourceO_config" options="selectize_confSourceO_options" name="confSourceO"></selectize>
+				                    	
+			                        </div>
+                                   </div>
+                                        </div>
+                               <div class="uk-width-large-1-2">
+                                        	<div class="uk-input-group">
+                                       <span class="uk-input-group-addon">
+                                           <i class="md-list-addon-icon md-36 material-icons">&#xE52E;</i>
+                                       </span>
+                                       <div class="parsley-row uk-form-row">
+				                    	<label class="slabel"> Дотоод эх сурвалж </label>
+				                    	<selectize type="text" ng-model="risk.confSourceI" class="md-input"
+				                    	 placeholder="Сонгоно уу..." id="procedures"
+				                    	 data-parsley-required data-parsley-error-message="Аудитын чиглэлээ сонгоно уу."
+				                    	 data-parsley-trigger="change"
+				                    	 position="bottom" config="selectize_confSourceI_config" options="selectize_confSourceI_options" name="procedures"></selectize>
+				                    	
+			                        </div>
+                                   </div>
+                                        </div>
+                           </div>
+		                <div class="uk-clearfix uk-margin-large-top">
+		                    <button class="md-btn md-btn-warning md-btn-wave-light waves-effect waves-button waves-light uk-float-left uk-modal-close">Буцах</button>
+		                    <button class="md-btn md-btn-primary md-btn-wave-light waves-effect waves-button waves-light uk-float-right" type="submit">Илгээх</button>			                   
+		                </div>  
+		            </div>			            
+		        </div>			        
+            </div>	           
+        </div>
+        </form>
+    </div>
+</div>

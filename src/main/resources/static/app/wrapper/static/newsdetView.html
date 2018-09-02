@@ -1,0 +1,133 @@
+<div id="page_content">
+    <div id="page_content_inner">
+
+        <div class="uk-grid blog_article" data-uk-grid-margin>
+            <div class="uk-width-medium-3-4">
+                <div class="md-card">
+                    <div class="md-card-content large-padding">
+                        <div class="uk-article">                            
+                            <h1 class="uk-article-title">{{newslist.newstitle}}</h1>
+                            <p class="uk-article-meta">
+                                {{newslist.newsdate}}                                
+                            </p>
+                            <p class="uk-article-lead">{{article.subtitle}}</p>
+                            <hr class="uk-article-divider">
+                            
+                             <figure class="uk-thumbnail uk-thumbnail-large thumbnail_left">
+                                    <img ng-src="{{newslist.imgurl}}" alt="">                                    
+                                </figure>
+                                <p ng-bind-html="newslist.newstext"></p>
+                                
+                            
+                        </div>
+                         <hr class="uk-article-divider"> 
+                         <div ng-show="nofile==false" class="k-widget k-upload k-header">
+					                   <ul class="k-upload-files acc k-reset" style="border-top:none; border-bottom:none;">
+						                   <li ng-repeat="item in newslist.afls" class="k-file k-file-success" data-uid="c540b190-2bc0-4e94-8a55-69c68fe6e938">
+							                   <span class="k-file-extension-wrapper">
+								                   <span class="k-file-extension">{{item.fileext}}</span>
+							                   </span>
+							                  
+							                  
+							                   <!--   {{item.fileext[0] | split(',')}} -->
+							                   <span class="k-file-name-size-wrapper">
+								                   <span class="k-file-name" title="{{item.filename}}">{{item.filename}}</span>
+								                   <span class="k-file-size">{{item.filesize}} KB</span>
+							                   </span>
+							      
+							                   <strong class="k-upload-status">
+								                   <div data-uk-button-radio="{target:'.md-btn'}">
+						                               <a ng-if="item.filename .split('.')[1]=='pdf'" target="_self" ng-click="show(item.fileurl)" data-uk-modal="{target:'#modal_default'}" class="md-btn md-btn-wave">Харах</a>
+						                               <a ng-if="picture(item.filename)" href="{{item.fileurl}}" data-uk-lightbox="{group:'gallery'}" class="md-btn md-btn-wave">Харах</a>
+						                               <a target="_self" type="button" download href="{{item.fileurl}}" class="md-btn md-btn-wave">Татах</a>
+						                           </div>								                  
+							                   </strong>
+						                   </li>					                   
+					                   </ul>
+				                   </div>
+                        <button style="margin-top: 15px;" type="submit" class="md-btn md-btn-primary md-btn-wave-light waves-effect waves-button waves-light" ng-click="back()">Буцах</button>
+                    </div>
+                </div>
+            </div>
+            <div class="uk-width-medium-1-4">
+                <h5 class="uk-margin-small-bottom uk-text-upper">Сүүлд нэмэгдсэн</h5>
+                <ul class="md-list uk-margin-remove">
+                    <li ng-repeat="item in rnlist">
+                        <div class="md-list-content">
+                            <span class="md-list-heading uk-text-truncate"><a ng-click="more(item.id)" >{{item.newstitle}}</a></span>
+                            <span class="uk-text-small uk-text-muted">{{item.newsdate}}</span>
+                        </div>
+                    </li>                    
+                </ul>
+           </div>
+           
+        </div>
+
+    </div>
+</div>
+
+<div class="uk-modal" id="modal_default">
+    <div class="uk-modal-dialog uk-modal-dialog-large">
+        <button type="button" class="uk-modal-close uk-close"></button>
+        <p>
+        	<embed ng-src="{{purl}}" width="100%" height="800" type='application/pdf'>
+        </p>
+    </div>
+</div>
+                            
+ <style>
+ 	.k-button{
+ 	padding: 5px 10px 5px 10px !important;
+ 	margin-top: 12px !important;
+ 	background-color: #7cb342;
+ 	border-radius: 5px;
+ 	font-weight: 600;
+ 	color: white; 
+ 	}
+ 	
+	.k-upload-files{
+		display:none;
+	}
+	.acc{
+		display:block;
+	} 
+	.uk-notify {
+	    z-index: 11140;
+	    width: 400px;
+	    top: 56px;
+	    max-width: 100%;
+	}
+	.uk-table.uk-table-striped td{
+		vertical-align:middle;
+	}
+	.k-filter-row th, .k-grid-header th.k-header {
+	    overflow: hidden;
+	    border-style: solid;
+	    border-width: 0 0 1px 1px;
+	    padding: .5em .6em .4em .6em;
+	    font-weight: 400;
+	    white-space: normal;
+	    text-overflow: ellipsis;
+	    text-align: center;
+	    vertical-align:middle;
+	}
+	.k-grid td {
+	    border-style: solid;
+	    border-width: 0 0 0 1px;
+	    padding: .4em .6em;
+	    overflow: hidden;
+	    line-height: 1.6em;
+	    text-align: justify;
+	    vertical-align: middle;
+	    text-overflow: ellipsis;
+	}
+	.k-file-name-size-wrapper{
+		width:70%!important;
+	}
+	.k-file-name{
+		max-width:100%!important;
+	}
+	.k-file:LAST-CHILD{
+	border-bottom: none !important;
+	}
+</style>

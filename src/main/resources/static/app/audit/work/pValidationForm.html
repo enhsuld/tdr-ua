@@ -1,0 +1,292 @@
+    <div id="page_content">
+        <div id="page_content_inner">
+             <div class="md-card">
+			     <div class="md-card-content">
+			         <div class="uk-grid" data-uk-grid-margin>
+			             <div class="uk-width-medium-1-1">    
+			             	 <kendo-grid options="puserGrid"></kendo-grid>              
+			             </div>                  
+			         </div>               
+			     </div>
+			 </div> 
+        </div>
+    </div>
+	<footer id="footer">
+	    <span style="display:block;  text-align:right;">&copy; 2015-2016 <a href="www.staus.mn/sgt">Smart Green Technology LLC</a>, All rights reserved.</span>
+	</footer>
+	
+     <script type="text/x-kendo-template" id="addValid">
+         <div id="details-container" style="text-align:left;">
+           <button class="k-button k-button-icontext" ng-click='addValid($event)'> <span class='k-icon k-add'></span>Шинээр өгөгдөл нэмэх</button>	
+		   <a class="k-button k-button-icontext k-grid-excel" href="\#\"><span class="k-icon k-i-excel"></span>MS Excel-т экспортлох</a>
+		   <a class="k-button k-button-icontext k-grid-pdf" href="\#\"><span class="k-icon k-i-pdf"></span>PDF-т экспортлох</a>
+         </div>
+     </script>
+     <script type="text/x-kendo-template" id="addVal">
+         <div id="details-container" style="text-align:left;">
+           <button class="k-button k-button-icontext" ng-click='addValid($event)'> <span class='k-icon k-add'></span> Шинээр өгөгдөл нэмэх</button>
+         </div>
+     </script>
+     <script type="text/x-kendo-template" id="validUD">
+         <div id="details-container" style="float:left;">
+           <button class="md-btn md-btn-small md-btn-primary" ng-click='edit($event,#:id#)'> </span>засах</button>
+         </div>
+		<div id="details-container1" style="float:left; margin-left: 20px;">
+           <button class="md-btn md-btn-small md-btn-danger" ng-click='deleteTry(#:id#)'> </span>устгах</button>
+         </div>
+     </script>
+     <script type="text/x-kendo-template" id="validu">
+         <div id="details-container" style="float:left;">
+           <button class="md-btn md-btn-small md-btn-primary" ng-click='edit(#:id#)'> </span>засах</button>
+         </div>
+		
+     </script>
+      <script type="text/x-kendo-template" id="validd">
+        
+		<div id="details-container1" style="float:left; margin-left: 20px;">
+           <button class="md-btn md-btn-small md-btn-danger" ng-click='deleteTry(#:id#)'> </span>устгах</button>
+         </div>
+     </script>
+     <script type="text/x-kendo-template" id="export">
+         <div id="details-container" style="text-align:left;">
+		   <a class="k-button k-button-icontext k-grid-excel" href="\#\"><span class="k-icon k-i-excel"></span>MS Excel-т экспортлох</a>
+		   <a class="k-button k-button-icontext k-grid-pdf" href="\#\"><span class="k-icon k-i-pdf"></span>PDF-т экспортлох</a>
+         </div>
+     </script>
+<style>
+	.k-textbox, .k-numerictextbox{
+		width:95%;
+	}
+</style>    
+
+
+		<div class="uk-modal" id="modal_add">
+          <div class="uk-modal-dialog uk-modal-dialog-large" data-uk-grid-margin>
+              <button type="button" id="closemodal" class="uk-modal-close uk-close uk-close-alt"></button>
+               <ul id="user_edit_tabs" class="uk-tab" data-uk-tab="{connect:'#user_edit_tabs_content'}">
+               		<li class="uk-active"><a href="#">Тулгалт</a></li>
+               </ul>
+ 			  	<form name="form_au_dir" id="form_au_dir"  data-ng-submit="submitForm($event)"> 	
+ 			  		<input type="hidden" id="{{section.id}}" class="menu" ng-model="id" value="{{id}}"/>	
+ 			  		<div class="uk-overflow-container">
+ 			  			<div class="user_content">
+                            <ul id="user_edit_tabs_content" class="uk-switcher uk-margin">
+                                <li>
+                                	<div  class="uk-grid" data-uk-grid-margin>
+                                		<div class="uk-width-large-1-1">
+                                            <div class="uk-grid" data-uk-grid-margin>
+	                                        	<div class="uk-width-medium-2-3 uk-margin-small-bottom">
+	                                            	<div class="uk-input-group">
+					                                	<span class="uk-input-group-addon">
+					                                    	<a href="#"><i class="material-icons">view_list</i></a>
+					                                    </span>
+					                                    <div class="parsley-row uk-form-row">
+										                	<label class="slabel"> Тулгалтын нэр</label>
+										                    <selectize type="text" ng-model="formdata.valid" class="md-input" placeholder="Сонгоно уу..." id="valid"
+										                    	data-parsley-required data-parsley-error-message="Тулгалтаа сонгоно уу."
+										                    	config="selectize_val_config" options="selectize_val_options" name="valid"></selectize>
+										           		 </div>
+					                                 </div>
+								                </div>
+								                <div class="uk-width-medium-1-3 uk-margin-small-bottom">
+								                	<div class="uk-input-group">
+					                                	<span class="uk-input-group-addon">
+					                                    	<a href="#"><i class="material-icons">view_list</i></a>
+					                                    </span>
+					                                    <div class="parsley-row uk-form-row">
+										                	<label class="slabel uk-margin-small-bottom"> Үлдэгдэл сонгох</label>
+										                    <selectize type="text" ng-model="formdata.balanceid" class="md-input" placeholder="Сонгоно уу..." id="work_type"
+										                    	data-parsley-required data-parsley-error-message="Үлдэгдлийн төрөлөө сонгоно уу."
+										                    	config="selectize_balance_config" options="selectize_balance_options" name="work_type"></selectize>
+										           		 </div>
+					                                </div>
+								                </div>     
+								        	</div>
+                                        </div>
+                                        <div class="uk-width-large-1-1">
+                                            <div class="uk-grid" data-uk-grid-margin>
+	                                        	<div class="uk-width-medium-1-2 uk-margin-small-bottom">
+	                                            	<div class="uk-input-group">
+					                                	<span class="uk-input-group-addon">
+					                                    	<a href="#"><i class="material-icons">view_list</i></a>
+					                                    </span>
+					                                    <div class="parsley-row uk-form-row">
+										                	<label class="slabel"> Аудитын чиглэл сонгох</label>
+										                    <selectize ng-change="loadRisks(formdata.adirid)" type="text" ng-model="formdata.adirid" class="md-input" placeholder="Сонгоно уу..." id="valid"
+										                    	data-parsley-required data-parsley-error-message="Аудитын чиглэл сонгоно уу."
+										                    	config="{maxItems: 1,minItems:1,valueField: 'value',labelField: 'text',searchField: 'text',create: false}" options="auditDirList" name="valid"></selectize>
+										           		 </div>
+					                                 </div>
+								                </div>
+								                <div class="uk-width-medium-1-2 uk-margin-small-bottom">
+								                	<div class="uk-input-group">
+					                                	<span class="uk-input-group-addon">
+					                                    	<a href="#"><i class="material-icons">view_list</i></a>
+					                                    </span>
+					                                    <div class="parsley-row uk-form-row">
+										                	<label class="slabel uk-margin-small-bottom"> Эрсдэл сонгох</label>
+										                    <selectize ng-change="loadTryouts(formdata.riskid)" type="text" ng-model="formdata.riskid" class="md-input" placeholder="Сонгоно уу..." id="work_type"
+										                    	data-parsley-required data-parsley-error-message="Эрсдэл сонгоно уу."
+										                    	config="riskdir_config" options="risks" name="work_type"></selectize>
+										           		 </div>
+					                                </div>
+								                </div>
+								                <div class="uk-width-medium-1-2 uk-margin-small-bottom">
+	                                            	<div class="uk-input-group">
+					                                	<span class="uk-input-group-addon">
+					                                    	<a href="#"><i class="material-icons">view_list</i></a>
+					                                    </span>
+					                                    <div class="parsley-row uk-form-row">
+										                	<label class="slabel"> Горим сонгох</label>
+										                    <selectize ng-change="loadFactors(formdata)" type="text" ng-model="formdata.tryoutid" class="md-input" placeholder="Сонгоно уу..." id="valid"
+										                    	data-parsley-required data-parsley-error-message="Горим сонгоно уу."
+										                    	config="riskdir_config" options="tryouts" name="valid"></selectize>
+										           		 </div>
+					                                 </div>
+								                </div>
+								                <div class="uk-width-medium-1-2 uk-margin-small-bottom">
+	                                            	<div class="uk-input-group">
+					                                	<span class="uk-input-group-addon">
+					                                    	<a href="#"><i class="material-icons">view_list</i></a>
+					                                    </span>
+					                                    <div class="parsley-row uk-form-row">
+										                	<label class="slabel"> Хүчин зүйл сонгох</label>
+										                    <selectize type="text" ng-model="formdata.factorid" class="md-input" placeholder="Сонгоно уу..." id="valid"
+										                    	data-parsley-required data-parsley-error-message="Хүчин зүйл сонгоно уу."
+										                    	config="riskdir_config" options="factors" name="valid"></selectize>
+										           		 </div>
+					                                 </div>
+								                </div>
+								        	</div>
+                                        </div>
+                                    	<div class="uk-width-large-1-2">
+                                            <h4 class="full_width_in_card heading_c" style="background-color: #e1e1e1; padding: 15px;">
+                                            	Үзүүлэлт 1
+                                            </h4>
+                                            <div class="uk-grid" data-uk-grid-margin>
+	                                            <div class="uk-width-medium-1-1 uk-margin-medium-bottom">
+				                                    <div class="uk-input-group">
+				                                        <span class="uk-input-group-addon">
+				                                            <a href="#"><i class="material-icons">subject</i></a>
+				                                        </span>
+				                                        <div class="parsley-row uk-form-row">
+					                                        <label for="lname">Үзүүлэлтийн нэр</label>
+		                                                	<input class="md-input" type="text" id="title1" name="title1" ng-model="formdata.title1" md-input 
+		                                                	data-parsley-required data-parsley-error-message="Үзүүлэлтээ оруулна уу.."/>
+				                                    	</div>
+				                                    </div>
+				                                </div>
+	                                         	<div class="uk-width-medium-1-1 uk-margin-medium-bottom">
+	                                         		<div class="uk-input-group">
+				                                        <span class="uk-input-group-addon">
+				                                            <a href="#"><i class="material-icons">subject</i></a>
+				                                        </span>
+				                                        <div class="parsley-row uk-form-row">
+					                                        <label for="code1">Дансны код</label>
+		                                                	<input class="md-input" type="text" id="code1" name="code1" ng-model="formdata.code1" md-input 
+															data-parsley-required data-parsley-error-message="Дансны кодоо оруулна уу ..." />
+	                                                	</div>
+				                                    </div>
+	                                            </div>
+	                                            <div class="uk-width-medium-1-1 uk-margin-medium-bottom">
+	                                            	<div class="uk-input-group">
+				                                        <span class="uk-input-group-addon">
+				                                            <a href="#"><i class="material-icons">subject</i></a>
+				                                        </span>
+				                                        <div class="parsley-row uk-form-row">
+					                                        <label for="position1">Байрлал</label>
+					                                        <input id="position1" name="position1" data-parsley-trigger="change" ng-model="formdata.position1" 
+					                                        data-parsley-required="true"
+					                                        data-parsley-required-message="Байрлалаа оруулна уу ..."
+					                                        class="md-input" md-input />
+				                                    	</div>
+				                                    </div>
+	                                            </div>
+	                                            <!-- <div class="uk-width-medium-1-1 uk-margin-small-bottom">
+								                 	<div class="uk-input-group">
+					                                	<span class="uk-input-group-addon">
+					                                    	<a href="#"><i class="material-icons">view_list</i></a>
+					                                    </span>
+						                                <div class="parsley-row uk-form-row">
+											            	<label class="slabel uk-margin-small-bottom"> Формула эсэх</label>
+											                <selectize type="text" ng-model="formdata.isformula1" class="md-input" placeholder="Сонгоно уу..." id="isformula"
+											                	data-parsley-required data-parsley-error-message="Сонгоно уу..."
+											                    config="selectize_source_config" options="selectize_source_options" name="isformula"></selectize>
+											           	</div>
+					                                </div>
+								                 </div> -->
+	                                        </div>
+                                        </div>
+                                        <div class="uk-width-large-1-2">
+                                            <h4 class="full_width_in_card heading_c uk-margin-medium-bottom" style="background-color: #e1e1e1; padding: 15px;">
+                                            	Үзүүлэлт 2
+                                            </h4>
+                                            <div class="uk-grid" data-uk-grid-margin>
+	                                            	<div class="uk-width-medium-1-1 uk-margin-medium-bottom">
+	                                            		<div class="uk-input-group">
+					                                        <span class="uk-input-group-addon">
+					                                            <a href="#"><i class="material-icons">subject</i></a>
+					                                        </span>
+					                                        <div class="parsley-row uk-form-row">
+						                                        <label for="title2">Үзүүлэлтийн нэр</label>
+			                                                	<input name="title2" id="title2" class="md-input" md-input ng-model="formdata.title2"
+			                                                	data-parsley-required="true" data-parsley-error-message="Үзүүлэлтээ оруулна уу ..."/>
+					                                    	</div>
+					                                    </div>
+								                    </div>
+								                    <div class="uk-width-medium-1-1 uk-margin-medium-bottom">
+								                    	<div class="uk-input-group">
+					                                        <span class="uk-input-group-addon">
+					                                            <a href="#"><i class="material-icons">subject</i></a>
+					                                        </span>
+					                                        <div class="parsley-row uk-form-row" >
+						                                        <label for="code2">Дансны код</label>
+			                                                	<input name="code2" type="text" id="code2" class="md-input" ng-model="formdata.code2"
+			                                                	data-parsley-required="true"
+						                                        data-parsley-error-message="Дансны кодоо оруулна уу ..." md-input/>
+		                                                	</div>
+					                                    </div>
+								                    </div>
+								                    <div class="uk-width-medium-1-1 uk-margin-medium-bottom">
+								                    	<div class="uk-input-group">
+					                                        <span class="uk-input-group-addon">
+					                                            <a href="#"><i class="material-icons">subject</i></a>
+					                                        </span>
+					                                        <div class="parsley-row uk-form-row">
+						                                        <label for="position2">Байрлал</label>
+			                                                	<input name="position2" id="position2" type="text" class="md-input" 
+			                                                		data-parsley-required="true"
+			                                                		data-parsley-trigger="change"
+			                                                		data-parsley-required-message="Байрлалаа оруулна уу ..."
+			                                                		ng-model="formdata.position2" md-input/>
+		                                                	</div>
+					                                    </div>
+								                    </div>
+								                    <!-- <div class="uk-width-medium-1-1 uk-margin-small-bottom">
+								                    	<div class="uk-input-group">
+					                                        <span class="uk-input-group-addon">
+					                                            <a href="#"><i class="material-icons">view_list</i></a>
+					                                        </span>
+					                                        <div class="parsley-row uk-form-row">
+										                    	<label class="slabel uk-margin-small-bottom"> Формула эсэх</label>
+										                    	<selectize type="text" ng-model="formdata.isformula2" class="md-input" placeholder="Сонгоно уу..." id="isformula2"
+										                    	 data-parsley-required data-parsley-error-message="Ангилаа сонгоно уу."
+										                    	 config="selectize_source_config" options="selectize_source_options" name="isformula2"></selectize>
+										           			 </div>
+					                                    </div>
+								                    </div> -->
+								        	</div>
+                                        </div>
+                                        
+                                </li>
+                            </ul>
+                        </div>
+			        </div>        	  
+					<hr>
+	                <div class="uk-modal-footer uk-text-right">
+	                	 <button type="submit" class="md-btn md-btn-primary md-btn-wave-light waves-effect waves-button waves-light">Хадгалах</button>
+                         <button type="button" class="md-btn md-btn-flat uk-modal-close">Хаах</button>                         
+                     </div>  
+                 </form> 
+              </div>
+          </div> 

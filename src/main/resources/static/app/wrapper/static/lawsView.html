@@ -1,0 +1,214 @@
+    <div id="page_content">
+        <div id="page_content_inner">         
+             <div class="md-card">
+             
+            <!--  
+             <div class="uk-modal" id="modal_risk">
+                                <div style="width: 450px;" class="uk-modal-dialog" data-uk-grid-margin> 
+                                    <button type="button" class="uk-modal-close uk-close"></button>
+                                    <h3 class="heading_a">Эрсдэл</h3>
+                                   <form name="form_signin" > 	
+ 			  		<input type="hidden"  class="menu" ng-model="risk.id" />	
+ 			  		<hr style="margin-bottom:20px;">
+	  			    <div class="uk-grid" data-uk-grid-margin>	                   
+	                    <div class="uk-width-medium-1-1" style="margin-bottom:10px;">	                    	
+	                        <label>Нэр</label>
+	                        <input type="text" ng-model="risk.riskname" class="md-input" md-input />	                    	
+	                    </div> 
+	                    <div class="uk-width-medium-1-1" style="margin-bottom:10px;">	                    	
+	                        <label>Төрөл</label>
+	                        <input type="text" ng-model="risk.risktype" class="md-input" md-input />	                    	
+	                    </div>       
+	                    <div class="uk-width-medium-1-1" style="margin-bottom:10px;">	                    	
+	                        <label>Албан тушаал</label>
+	                        <input type="text" ng-model="ud.pos" config="selectize_a_config" options="selectize_b_data" ng-model="selectize_a" name="selectize_a" selectize />                    	
+	                    </div>      
+	                    <div class="uk-width-medium-1-1" style="margin-bottom:10px;">	                    	
+	                        <label>Хууль</label>
+	                         <input type="text" config="selectize_a_config" options="selectize_z_data" ng-model="risk.law" name="selectize_a" selectize />	                  	
+	                    </div>                     
+	                    <div class="uk-width-medium-1-1" style="margin-bottom:10px;">	                    	
+	                        <label>Чиглэл</label>
+	                        <selectize  style="margin-top: 10px;" id="selec_adv_2" ng-model="risk.dir" config="selectize_planets_config" options="selectize_dir" position="bottom"></selectize>                    	
+	                    </div>                      
+	                    
+	                </div>	  	
+   	                <div class="uk-modal-footer uk-text-right">
+	                	 <button ng-click="addRisk()" type="submit" class="md-btn md-btn-primary md-btn-wave-light waves-effect waves-button waves-light">Хадгалах</button>
+                         <button type="button" class="md-btn md-btn-flat uk-modal-close">Хаах</button>                         
+                     </div>         
+                 </form>
+                          </div>
+                          </div>
+             
+             
+             
+			     <div class="md-card-content">
+			     	<div class="uk-modal" id="modal_large">
+                    	<div class="uk-modal-dialog uk-modal-dialog-large">
+                          <button type="button" ng-click="reset()" id="closemodal" class="uk-modal-close uk-close uk-close-alt"></button>
+			              <h3 class="heading_a">Хууль</h3>  
+			 			  	
+			 			  	 <input class="md-input" type="hidden" ng-model="law.id"  md-input />
+			 			  		<hr style="margin-bottom:20px;">
+			 			  		
+				  			    <div  class="uk-grid" data-uk-grid-margin>
+					  			    <div ng-show="addnew==true" class="uk-width-medium-1-1">
+					  			    	<div style="margin-top: 24px;" class="uk-form-row uk-input-group uk-width-medium-1-4 uk-float-left">
+						  			    	<span class="uk-input-group-addon"><input type="checkbox" ng-change="newhuuli()" ng-model="newlaw" icheck/></span>
+		                           			<label>Шинэ хууль нэмэх</label>
+					  			    	</div>
+					  			    	<div class="uk-form-row uk-input-group uk-width-medium-1-4 uk-float-left">
+						  			    	<span class="uk-input-group-addon"><input type="checkbox" ng-change="newzuil()" ng-model="newzuil1" icheck/></span>
+		                           			<label>Шинэ зүйл нэмэх</label>
+					  			    	</div>				  			    	
+					  			    	<div class="uk-form-row uk-input-group uk-width-medium-1-4 uk-float-left">
+						  			    	<span class="uk-input-group-addon"><input type="checkbox" ng-change="newzaalt()" ng-model="newzaalt1" icheck/></span>
+		                           			<label>Шинэ заалт нэмэх</label>
+					  			    	</div>
+					  			    </div>				  			    	
+				  			    	
+				  			    	<div class="uk-width-medium-1-1" ng-if="addhuuli==true">
+				  			    	<form name="form_signin" id="lawform" class="uk-form" data-ng-submit="lawadd()">
+					  			    	<div class="uk-form-row uk-width-medium-1-1 uk-margin-large-top">
+					  			    	  <label style="margin-top:-10px;">Хуулийн нэр</label>
+				                          <input type="text" class="md-input"  ng-model="law.lawname" md-input/>                                               	                        
+				                        </div>
+				                        <div class="uk-grid uk-margin-large-left" data-uk-grid-margin>		                              
+						                    <div class="uk-width-medium-1-1" style="text-align:right; margin-top:20px;">
+						                     	<button type="submit"  class="md-btn md-btn-primary" >Хадгалах</button>
+						                     </div>
+					                	</div> 
+					                	</form>
+				  			    	</div>
+				  			    	
+				  			    	
+				  			    	<div class="uk-width-medium-1-1" ng-if="addzuil==true">
+				  			    	<form name="form_signin" id="lawform1" class="uk-form" data-ng-submit="lawadd()">
+					  			    	<div class="uk-width-medium-1-1 uk-margin-top">
+					                        <label>Хууль сонгох</label>
+					                         <input type="text" config="selectize_a_config" options="selectize_a_data" ng-model="law.parentid" name="selectize_a" selectize />	                        
+				                        </div> 
+				                        <div class="uk-form-row uk-width-medium-1-1 uk-margin-large-top">
+					  			    	  <label style="margin-top:-10px;">Зүйлийн нэр</label>
+				                          <input type="text" class="md-input"  ng-model="law.lawname" md-input/>                                               	                        
+				                        </div>
+				                        <div class="uk-grid uk-margin-large-left" data-uk-grid-margin>		                              
+						                    <div class="uk-width-medium-1-1" style="text-align:right; margin-top:20px;">
+						                     	<button type="submit"  class="md-btn md-btn-primary" >Хадгалах</button>
+						                     </div>
+					                	</div> 
+					                	</form> 
+				  			    	</div>    	
+				  			    	<div class="uk-width-medium-1-1" ng-if="addzaalt==true">
+				  			    	 <form name="form_signin" id="lawform2" class="uk-form" data-ng-submit="lawadd()">
+				  			    		<div class="uk-width-medium-1-1 uk-margin-top">
+					                        <label>Хууль сонгох</label>
+					                         <input type="text" config="selectize_a_config" ng-change="changezuil()" options="selectize_a_data" ng-model="law.parentid" name="selectize_a" selectize />	                        
+				                        </div> 
+				                        <div class="uk-width-medium-1-1 uk-margin-top">
+					                        <label>Зүйл сонгох</label>
+					                         <input type="text" config="selectize_a_config" ng-change="changezaalt11()" options="selectize_z_data" ng-model="law.parentid1" name="selectize_a" selectize />	                        
+			                        	</div> 
+			                        	 <div ng-if="zaalt==true" class="uk-width-medium-1-1 uk-margin-top">
+					                        <label>Агуулагч заалт</label>
+					                         <input type="text" config="selectize_a_config" ng-change="changezaalt12()" options="selectize_y_data" ng-model="law.parentid2" name="selectize_a" selectize />	                        
+				                        </div> 
+				                        <div ng-if="zaalt1==true" class="uk-width-medium-1-1 uk-margin-top">
+					                        <label>Агуулагч заалт2</label>
+					                         <input type="text" config="selectize_a_config" options="selectize_x_data" ng-model="law.parentid3" name="selectize_a" selectize />	                        
+				                        </div> 
+				                         	<div class="uk-form-row uk-width-medium-1-10 uk-margin-large-top">
+					                        	<label style="margin-top:-10px;">Хуулийн Заалт</label>
+					                        	 <input type="text" class="md-input"  ng-model="law.zaalt" md-input/> 	                        
+			                     		    </div>
+			                     		    <div class="uk-form-row uk-width-medium-1-1 uk-margin-large-top">
+						  			    	 	 <label style="margin-top:-10px;">Агуулга</label>
+					                          	<input type="text" class="md-input"  ng-model="law.lawname" md-input/>     
+					                          	<textarea cols="30" rows="4" class="md-input" ng-model="law.lawname" md-input textarea-autosize></textarea>                                          	                        
+				                        </div>				                        
+				                         <div class="uk-grid uk-margin-large-left" data-uk-grid-margin>		                              
+						                    <div class="uk-width-medium-1-1" style="text-align:right; margin-top:20px;">
+						                     	<button type="submit"  class="md-btn md-btn-primary" >Хадгалах</button>
+						                     </div>
+					                	</div> 
+					                	</form>
+				  			    	</div>   
+				  			    	                                                  
+				                </div>              
+		               </div>
+		               
+		          </div>   --> 
+
+			         <div class="uk-grid" data-uk-grid-margin>
+			             <div class="uk-width-medium-1-1">  			             	    
+					         <kendo-tree-list k-options="treelistOptions"></kendo-tree-list>  
+					         <kendo-grid options="puserGrid"></kendo-grid>  
+			             </div>                  
+			         </div>               
+			     </div>
+			 </div> 
+        </div>
+    </div>
+	<footer id="footer">
+	    <span style="display:block;  text-align:right;">&copy; 2015-2016 <a href="www.staus.mn/sgt">Smart Green Technology LLC</a>, All rights reserved.</span>
+	</footer>
+	<style>
+	.bold{font-weight: bold;}
+	.back{background-color: gray;}
+	</style>
+	<script type="text/x-kendo-template" id="lol">
+         <div id="details-container" style="text-align:center;">
+           <button class="k-button k-button-icontext" ng-click="update(#:id#)" data-uk-modal="{target:'\\#modal_large'}"><span class="k-icon k-edit"></span>Засах</button>
+		   <button class="k-button k-button-icontext" ng-click="delet(#:id#)"}"><span class="k-icon k-delete"></span>устгах</button>
+         </div>
+ 		
+     </script>
+     <script type="text/x-kendo-template" id="lolu">
+         <div id="details-container" style="text-align:center;">
+           <button class="k-button k-button-icontext" ng-click="update(#:id#)" data-uk-modal="{target:'\\#modal_large'}"><span class="k-icon k-edit"></span>Засах</button>		   
+         </div> 		
+     </script>
+     <script type="text/x-kendo-template" id="lold">
+         <div id="details-container" style="text-align:center;">          
+		   <button class="k-button k-button-icontext" ng-click="delet(#:id#)"}"><span class="k-icon k-delete"></span>устгах</button>
+         </div> 		
+     </script>
+     <script type="text/x-kendo-template" id="add">
+         <div id="details-container" style="text-align:left;">
+          <button class="k-button k-button-icontext k-grid-add" ng-click="add()" data-uk-modal="{target:'\\#modal_large'}"><span class="k-icon k-add"></span>Шинээр өгөгдөл нэмэх</button>
+         </div>
+     </script>
+
+     
+     <script type="text/x-kendo-template" id="RUD">         
+           <button class="k-button k-button-icontext" ng-click='update(dataItem)' data-uk-modal="{target:'\\#modal_risk'}"><span class="k-icon k-edit"></span>Засах</button>
+		   <button class="k-button k-button-icontext  k-grid-delete" ><span class="k-icon k-delete"></span>Устгах</button>         
+     </script>
+     <script type="text/x-kendo-template" id="RU">
+         <button class="k-button k-button-icontext" ng-click='update(dataItem)' data-uk-modal="{target:'\\#modal_risk'}"><span class="k-icon k-edit"></span>Засах</button>		   
+        		
+     </script>
+     <script type="text/x-kendo-template" id="RD">
+         <button class="k-button k-button-icontext  k-grid-delete" ><span class="k-icon k-delete"></span>Устгах</button>		
+     </script>
+     <script type="text/x-kendo-template" id="Radd">
+         <div style="width: 250px; float: left;" id="details-container" style="text-align:left;">
+          <button class="k-button k-button-icontext k-grid-add" ng-click="res()" data-uk-modal="{target:'\\#modal_risk'}"><span class="k-icon k-add"></span>Шинээр өгөгдөл нэмэх</button>
+         </div>
+     </script>
+     <script type="text/x-kendo-template" id="dirs">
+        <div id="details-container" style="text-align:center;">          
+		   #for (var i=0,len=lnkRiskdirs.length; i<len; i++){#
+            <li  style="float:left;" ng-repeat="item in selectize_dir" ng-if="item.value==${ lnkRiskdirs[i].dirid }">{{item.text}},&nbsp;				
+			</li>			
+        # } #
+			
+         </div>
+     </script>
+     
+     <script type="text/x-kendo-template" id="update">
+        <button class="k-button k-button-icontext" ng-click='update(dataItem)'  data-uk-modal="{target:'\\#modal_update_user'}"><span class="k-icon k-edit"></span>Засах</button>
+    	<button class="k-button k-button-icontext  k-grid-delete" ><span class="k-icon k-delete"></span>Устгах</button>
+	</script>
+

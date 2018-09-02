@@ -1,0 +1,28 @@
+    <div id="page_content">
+        <div id="page_content_inner">
+        	  <div class="md-card">
+	               <div class="md-card-content">
+	                   <div class="uk-grid" data-uk-grid-margin>
+               	   			<div  class="uk-width-medium-1-1">
+               	   				<input name="files" type="file" kendo-upload
+				                   k-async="{ saveUrl: '/file/salary/upload', removeUrl: 'remove', autoUpload: true}"						                   
+				                   k-success="onSuccess"
+				                   />
+               	   			</div>	
+               	   			<div  class="uk-width-medium-1-1" ng-if="files.length>0">{{files[0].fileurl}}
+               	   				<a href="{{files[0].fileurl}}" class="md-btn md-btn-wave">download</a>
+               	   			</div>		                    
+		                </div>                
+	               </div>
+	         </div>
+             <div class="md-card">
+			     <div class="md-card-content">
+			          <div id="spreadSheetView" style="width:100%; height:700px"></div>                  
+			     </div>
+			 </div> 
+        </div>
+    </div>
+	<footer id="footer">
+	    <span style="display:block;  text-align:right;">&copy; 2015-2016 <a href="www.staus.mn/sgt">Smart Green Technology LLC</a>, All rights reserved.</span>
+	</footer>
+

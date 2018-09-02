@@ -1,0 +1,142 @@
+    <div id="page_content">
+        <div id="page_content_inner">   
+        
+        <div class="uk-grid" data-uk-grid-margin>
+            <div class="uk-width-medium-1-1">
+                <div class="md-card">
+                    <div class="md-card-content">
+                        <h3 class="heading_a uk-margin-small-bottom">
+                            Эрсдэл
+                        </h3>
+                    <form name="form_signin" ng-submit="addRisk()"> 	
+ 			  		<input type="hidden"  class="menu" ng-model="risk.id" />	
+ 			  		<hr style="margin-bottom:20px;">
+	  			    <div class="uk-grid" data-uk-grid-margin>	                   
+	                    <div class="uk-width-medium-7-10" style="margin-bottom:10px; margin-top:10px;">	                    	
+	                        <label>Нэр</label>
+	                        <input type="text" required ng-model="risk.riskname" class="md-input" md-input />	                    	
+	                    </div> 
+	                    <div class="uk-width-medium-3-10" style="margin-bottom:10px; margin-top:-10px;">	                    	
+	                        <label>Төрөл</label>
+	                        <input type="text" required config="selectize_a_config" options="selectize_a_data" ng-model="risk.type" name="selectize_a" selectize />		                        	                    	
+	                    </div>       
+	                    <div class="uk-width-medium-1-1" style="margin-bottom:10px;">	                    	
+	                        <label>Чиглэл</label>
+	                        <selectize   style="margin-top: 10px;" id="selec_adv_2" ng-model="risk.dir" config="selectize_planets_config" options="selectize_dir" position="bottom"></selectize>                    	
+	                    </div>
+	                    <h5 class="uk-width-medium-1-1">Холбогдох хууль</h5>
+	                    
+	                    <div class="uk-width-medium-1-1" >	 
+	                    	<div class="uk-grid" ng-if="risk.risklaws.length>0" ng-repeat="item in risk.risklaws  track by $index">
+	                    		<div class="uk-width-medium-2-5">
+                           			{{item.lname}}   
+						         	<span class="uk-form-help-block">Нэр</span>          
+                        		</div>
+                        		<div class="uk-width-medium-2-5">
+                     				{{item.lzuil}}     
+						         	<span class="uk-form-help-block">Зүйл</span>                   
+                        		</div>
+                        		<div class="uk-input-group uk-width-medium-1-5">
+		                            {{item.lzaalt}}
+		                            <span class="uk-form-help-block">Заалт</span>         
+		                            <span class="uk-input-group-addon" style="padding:0 16px; vertical-align:bottom;">		                            	
+	                          			<a style="padding:0;" ng-click="removexb($index)" class="md-btn md-btn-danger md-btn-mini md-btn-wave-light md-btn-icon"><i style="margin-right:0;" class="material-icons">remove</i></a>
+		                            </span>
+		                        </div>
+	                    	</div> 
+	                    	<div class="uk-grid">
+	                    		<div class="uk-width-medium-2-5">
+                           			<input type="text" ng-change="stlChange(la.lname)" ng-model="la.lname" class="md-input" placeholder="Сонгоно уу..." id="deposidid"
+						         	position="bottom" config="risk_config" options="selectize_plaw_data" name="deposidid" selectize/>     
+						         	<span class="uk-form-help-block">Нэр</span>          
+                        		</div>
+                        		<div class="uk-width-medium-2-5">
+                     				<input type="number" ng-change="stlzChange(la.lzuil)" ng-model="la.lzuil" class="md-input" placeholder="Сонгоно уу..." id="deposidid"
+						         	position="bottom" config="risk_config" options="selectize_law_zuil_data" name="deposidid" selectize/>     
+						         	<span class="uk-form-help-block">Зүйл</span>                   
+                        		</div>
+                        		<div class="uk-input-group uk-width-medium-1-5">
+		                            <input type="number" ng-model="la.lzaalt" class="md-input" placeholder="Сонгоно уу..." id="deposidid"
+						         	position="bottom" config="zaalt_config" options="selectize_law_zaalt_data" name="deposidid" selectize/>     
+						         	<span class="uk-form-help-block">Заалт</span>        
+		                            <span class="uk-input-group-addon" style="padding:0 16px; vertical-align:middle;">
+		                            	<a style="padding:0;" ng-click="addxb()" class="md-btn md-btn-primary md-btn-mini md-btn-wave-light md-btn-icon"><i style="margin-right:0;" class="material-icons">add</i></a>
+	                          			<!-- <a style="padding:0;" ng-click="removexb($index)" class="md-btn md-btn-danger md-btn-mini md-btn-wave-light md-btn-icon"><i style="margin-right:0;" class="material-icons">remove</i></a> -->
+		                            </span>
+		                        </div>
+	                    	</div> 	   
+	                    </div>	
+	                    <h5 class="uk-width-medium-1-1">Холбогдох стандарт</h5>	  
+	                    <div class="uk-width-medium-1-1" >	 
+	                    	<div class="uk-grid" ng-if="risk.riskstandarts.length>0" ng-repeat="item in risk.riskstandarts  track by $index">
+	                    		<div class="uk-width-medium-2-5">
+                           			{{item.lname}}   
+						         	<span class="uk-form-help-block">Нэр</span>          
+                        		</div>
+                        		<div class="uk-width-medium-2-5">
+                     				{{item.lzuil}}     
+						         	<span class="uk-form-help-block">Зүйл</span>                   
+                        		</div>
+                        		<div class="uk-input-group uk-width-medium-1-5">
+		                            {{item.lzaalt}} 
+		                            <span class="uk-form-help-block">Заалт</span>         
+		                            <span class="uk-input-group-addon" style="padding:0 16px; vertical-align:bottom;">		                            	
+	                          			<a style="padding:0;" ng-click="removest($index)" class="md-btn md-btn-danger md-btn-mini md-btn-wave-light md-btn-icon"><i style="margin-right:0;" class="material-icons">remove</i></a>
+		                            </span>
+		                        </div>
+	                    	</div> 
+	                    	<div class="uk-grid">
+	                    		<div class="uk-width-medium-2-5">
+                           			<input type="text" ng-change="stnChange(st.lname)" ng-model="st.lname" class="md-input" placeholder="Сонгоно уу..." id="deposidid"
+						         	position="bottom" config="risk_config" options="selectize_slaw_data" name="deposidid" selectize/>     
+						         	<span class="uk-form-help-block">Нэр</span>          
+                        		</div>
+                        		<div class="uk-width-medium-2-5">
+                     				<input type="number" ng-change="stzChange(st.lzuil)" ng-model="st.lzuil" class="md-input" placeholder="Сонгоно уу..." id="deposidid"
+						         	position="bottom" config="risk_config" options="selectize_zuil_data" name="deposidid" selectize/>     
+						         	<span class="uk-form-help-block">Зүйл</span>                   
+                        		</div>
+                        		<div class="uk-input-group uk-width-medium-1-5">
+                        			<input type="number" ng-model="st.lzaalt" class="md-input" placeholder="Сонгоно уу..." id="deposidid"
+						         	position="bottom" config="zaalt_config" options="selectize_zaalt_data" name="deposidid" selectize/>  
+						 			<span class="uk-form-help-block">Заалт</span>        
+		                            <span class="uk-input-group-addon" style="padding:0 16px; vertical-align:middle;">
+		                            	<a style="padding:0;" ng-click="addst()" class="md-btn md-btn-primary md-btn-mini md-btn-wave-light md-btn-icon"><i style="margin-right:0;" class="material-icons">add</i></a>
+	                          			<!-- <a style="padding:0;" ng-click="removest($index)" class="md-btn md-btn-danger md-btn-mini md-btn-wave-light md-btn-icon"><i style="margin-right:0;" class="material-icons">remove</i></a> -->
+		                            </span>
+		                        </div>
+	                    	</div> 	   
+	                    </div>                    
+	                    <h5 class="uk-width-medium-1-1">Холбогдох бусад зүйл</h5>	
+	                    <div class="uk-width-medium-1-1" style="margin-bottom:10px;">	                    	
+	                        <label></label>      
+	                        <textarea cols="30" rows="4" class="md-input" ng-model="risk.othertext" md-input textarea-autosize></textarea>        
+	                    <!--     <input type="text" required ng-model="risk.other" class="md-input" placeholder="Сонгоно уу..." id="deposidid"
+						         	position="bottom" config="risk_config" options="otherrisk" name="deposidid" selectize/>  -->            	
+	                    </div>
+	                                                  	            
+	                </div>	  
+	               <div class="uk-grid" data-uk-grid-margin>	 
+		               	 <div class="uk-width-medium-1-2 uk-text-left">
+	   	                	 <button ng-click="backRisk()" class="md-btn md-btn-warning md-btn-wave-light waves-effect waves-button waves-light" style="float:left;">Буцах</button>                                                 
+	                     </div> 
+	                     <div class="uk-width-medium-1-2 uk-text-right"> 
+		                	 <button type="submit" class="md-btn md-btn-primary md-btn-wave-light waves-effect waves-button waves-light" style="float:right;">Хадгалах</button>                                                 
+	                     </div>       
+	               </div> 	
+   	                    
+                 </form>                        
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>             
+        </div>
+    
+	<footer id="footer">
+	    <span style="display:block;  text-align:right;">&copy; 2015-2016 <a href="www.staus.mn/sgt">Smart Green Technology LLC</a>, All rights reserved.</span>
+	</footer>
+	<style>
+	.bold{font-weight: bold;}
+	.back{background-color: gray;}
+	</style>	

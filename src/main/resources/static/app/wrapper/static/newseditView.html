@@ -1,0 +1,167 @@
+    <div id="page_content">
+        <div id="page_content_inner">         
+             <div class="md-card">
+             <div class="uk-modal" id="modal_large">
+                 <div class="uk-modal-dialog uk-modal-dialog-large" data-uk-grid-margin> 
+                    <button type="button" class="uk-modal-close uk-close"></button>
+                    <h3 class="heading_a">Мэдээ</h3>
+                    <form name="form_signin" ng-submit="addNews($event)"> 	
+ 			  		<input type="hidden"  class="menu" ng-model="formdata.id"/>	
+ 			  		<hr style="margin-bottom:20px;">
+	  			    <div class="uk-grid" data-uk-grid-margin>	                   
+	                    <div class="uk-width-medium-1-1" style="margin-bottom:10px;">	                    	
+	                        <label>Мэдээний гарчиг</label>
+	                        <input type="text" ng-model="formdata.newstitle" class="md-input" required md-input />	                    	
+	                    </div> 
+	                    <div  style="padding-left: 35px;" class="md-card-content uk-float-left uk-width-medium-1-3">
+                        <h3 class="heading_a uk-margin-small-bottom">
+                            Зураг сонгох
+                        </h3>
+                         <input ng-show="formdata.imgurl==null" background-size: 100% 100%;" type="file" ng-files="getTheFiles($files)" class="dropify" data-max-file-size="30720K" />
+                         <input ng-show="formdata.imgurl!=null" style="background-image: url('{{formdata.imgurl}}'); background-size: 100% 100%;" type="file"  ng-files="getTheFiles($files)" class="dropify" data-max-file-size="30720K" />
+                    	</div>                    
+                     	<div class="uk-width-medium-2-3" style="margin-bottom:10px; float:left;" >
+	                    	 <div style="margin: 50px 0 0 0;" class="icheck-inline uk-float-left uk-width-medium-2-10">
+			                        <input type="checkbox" name="checkbox_demo_inline" id="checkbox_demo_inline_1" icheck ng-model="formdata.ishighlight"/>
+			                        <label for="checkbox_demo_inline_1" class="inline-label">Онцлох эсэх</label>
+	                       	 </div>  	                       	 
+	                       	 <div style="margin: 50px 0 0 0;" class="icheck-inline uk-float-left uk-width-medium-3-10">
+			                        <input type="checkbox" name="checkbox_demo_inline" id="checkbox_demo_inline_2" icheck ng-model="formdata.isfiles"/>
+			                        <label for="checkbox_demo_inline_2" class="inline-label">Хавсаргах файлтай эсэх</label>
+	                       	 </div> 
+	                       	 <div style="margin: 50px 0 0 0;" class="icheck-inline uk-float-left uk-width-medium-4-10">
+			                        <input type="checkbox" name="checkbox_demo_inline" id="checkbox_demo_inline_3" icheck ng-model="formdata.showid"/>
+			                        <label for="checkbox_demo_inline_3" class="inline-label">Хувийн аудитад харуулахгүй</label>
+	                       	 </div>  
+	                       	 <div style="margin-top:20px;" class="uk-width-medium-1-1 uk-float-left">	                    	
+		                        <label>Мэдээний төрөл</label>
+		                        <selectize required style="margin-top: 10px;" id="selec_adv_2" ng-model="formdata.cats" config="selectize_planets_config" options="selectize_cat" position="bottom"></selectize>                    	
+	                   		 </div> 
+                    	</div>
+	                    <div class="uk-width-medium-1-1">
+	                    	<h4>Мэдээний текст</h4>
+			         	  	<div ckeditor="ckeditor_options" ng-model="formdata.newstext" ready="ckeditor_onReady()"></div>      
+	                    </div>
+	                    <div  class="uk-width-medium-1-1"  ng-if="formdata.isfiles==true">	                    	 
+						        <div>
+						            <h4 style="margin-top: 15px;">Хавсаргах файлууд</h4>
+						            <input name="files"
+						                   type="file"
+						                   id="fileList"
+						                   kendo-upload
+						                   k-success="onSuccess"
+						                   k-async="{ saveUrl: '/file/upload/nafiles', removeUrl: '/file/remove', autoUpload: true }"
+						                   k-select="onSelect"
+						                   />
+						                   
+						                   <div class="k-widget k-upload k-header" style="border-top:none;">
+					                   <ul class="k-upload-files acc k-reset" style="border-top:none;">
+						                   <li ng-repeat="item in currentInitialFiles" class="k-file k-file-success" data-uid="c540b190-2bc0-4e94-8a55-69c68fe6e938">
+							                   <span class="k-progress" style="width: 0%; display: none;"></span>
+							                   <span class="k-file-extension-wrapper">
+								                   <span class="k-file-extension">{{item.extension}}</span>
+								                   <span class="k-file-state">Байршуулсан</span>
+							                   </span>
+							                   <span class="k-file-name-size-wrapper">
+								                   <span class="k-file-name" title="{{item.name}}">{{item.name}}</span>
+								                   <span class="k-file-size">{{item.size}} KB</span>
+							                   </span>
+							                   <strong class="k-upload-status"><span class="k-upload-pct">100%</span>
+								                   <button type="button" class="k-button k-button-bare k-upload-action" ng-click="fileRemove(item.id)">
+								                   		<span class="k-icon k-i-close k-i-delete" title="Устгах" aria-label="Устгах"></span>
+								                   </button>
+							                   </strong>
+						                   </li>					                   
+					                   </ul>
+				                   </div>
+						        </div>						    
+		                    <!-- <div class="md-card-content uk-float-left uk-width-medium-1-3" ng-repeat="item in afiles">
+		                    	<div style="padding-right: 20px;" class="uk-width-medium-7-10 uk-float-left">
+		                    		<input type="file" id="file1" ng-model="item.fileurl" class="dropify" data-max-file-size="30720K" />               					   
+                              	</div>
+		                    	<div style="margin-top: 20px;" class="uk-width-medium-3-10 uk-float-left">   
+		                    	 	<a style="padding:0;" ng-click="addfile()" class="md-btn md-btn-primary md-btn-mini md-btn-wave-light md-btn-icon"><i style="margin-right:0;" class="material-icons">add</i></a>
+                           			<a style="padding:0;" ng-click="removefile(item.file)" class="md-btn md-btn-danger md-btn-mini md-btn-wave-light md-btn-icon"><i style="margin-right:0;" class="material-icons">remove</i></a>   
+                       			</div> 	                  
+		                    </div>	 -->	                   	
+	                    </div> 
+	                </div>	  	
+   	                <div class="uk-modal-footer uk-text-right">
+	                	 <button type="submit" class="md-btn md-btn-primary md-btn-wave-light waves-effect waves-button waves-light">Хадгалах</button>
+                         <button type="button" class="md-btn md-btn-flat uk-modal-close">Хаах</button>                         
+                     </div>  
+                 </form>
+                                </div>
+                            </div>
+			     <div class="md-card-content"> 	
+			         <div class="uk-grid" data-uk-grid-margin>
+			             <div class="uk-width-medium-1-1">      
+					         <kendo-grid options="puserGrid"></kendo-grid>  
+			             </div>                  
+			         </div>               
+			     </div>
+			 </div> 
+        </div>
+    </div>
+	<footer id="footer">
+	    <span style="display:block;  text-align:right;">&copy; 2015-2016 <a href="www.staus.mn/sgt">Smart Green Technology LLC</a>, All rights reserved.</span>
+	</footer>	
+   <style>
+	.k-upload-files{
+		display:none;
+	}
+	.acc{
+		display:block;
+	} 
+	.uk-notify {
+	    z-index: 11140;
+	    width: 400px;
+	    top: 56px;
+	    max-width: 100%;
+	}
+	.uk-table.uk-table-striped td{
+		vertical-align:middle;
+	}
+	.k-filter-row th, .k-grid-header th.k-header {
+	    overflow: hidden;
+	    border-style: solid;
+	    border-width: 0 0 1px 1px;
+	    padding: .5em .6em .4em .6em;
+	    font-weight: 400;
+	    white-space: normal;
+	    text-overflow: ellipsis;
+	    text-align: center;
+	    vertical-align:middle;
+	}
+	.k-grid td {
+	    border-style: solid;
+	    border-width: 0 0 0 1px;
+	    padding: .4em .6em;
+	    overflow: hidden;
+	    line-height: 1.6em;
+	    text-align: justify;
+	    vertical-align: middle;
+	    text-overflow: ellipsis;
+	}
+	.k-file-name-size-wrapper{
+		width:70%!important;
+	}
+	.k-file-name{
+		max-width:100%!important;
+	}
+</style>
+     <script type="text/x-kendo-template" id="NUD">         
+           <button class="k-button k-button-icontext" ng-click='update(dataItem)' data-uk-modal="{target:'\\#modal_large'}"><span class="k-icon k-edit"></span>Засах</button>
+		   <button class="k-button k-button-icontext  k-grid-delete" ng-click='delMe(#:id#)' ><span class="k-icon k-delete"></span>Устгах</button>         
+     </script>
+     <script type="text/x-kendo-template" id="NU">
+           <button class="k-button k-button-icontext" ng-click='update(dataItem)' data-uk-modal="{target:'\\#modal_large'}"><span class="k-icon k-edit"></span>Засах</button>      		
+     </script>
+     <script type="text/x-kendo-template" id="ND">
+           <button class="k-button k-button-icontext  k-grid-delete" ng-click='delMe(#:id#)' ><span class="k-icon k-delete"></span>Устгах</button>		
+     </script>
+     <script type="text/x-kendo-template" id="Nadd">
+         <div style="width: 250px; float: left;" id="details-container" style="text-align:left;">
+         	<button class="k-button k-button-icontext" ng-click="res()" data-uk-modal="{target:'\\#modal_large'}"><span class="k-icon k-add"></span>Шинээр өгөгдөл нэмэх</button>
+         </div>
+     </script>

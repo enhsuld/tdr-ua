@@ -1,0 +1,160 @@
+<div id="page_content">
+    <div id="page_content_inner">
+
+        <h3 class="heading_b uk-margin-bottom">Маягт</h3>
+
+        <div class="md-card">
+            <div class="md-card-content large-padding">
+                <form id="form_validation" class="uk-form-stacked" ng-submit="mainSubmit()">
+                    <div class="uk-grid" data-uk-grid-margin>
+                        <div class="uk-width-medium-2-4">
+                            <div class="parsley-row">
+                                <label for="fullname">Ажлын нэр<span class="req">*</span></label>
+                                <input id="fullname" type="text" name="fullname" ng-model="form.formname" required class="md-input" md-input />
+                            </div>
+                        </div>
+                        <div class="uk-width-medium-1-4">
+                            <div class="parsley-row">
+                                <label for="fullname">Icon<span class="req">*</span></label>
+                                <input id="fullname" type="text" name="fullname" ng-model="form.icon" required class="md-input" md-input />
+                            </div>
+                        </div>
+                         <div class="uk-width-medium-1-4">
+                            <div class="parsley-row">
+                                <input config="selectize_val_config" options="selectize_val_options" ng-model="form.appid" required name="val_select" selectize />
+                            </div>
+                        </div>
+                    </div>
+                   	<div class="uk-grid" data-uk-grid-margin>
+                        <div class="uk-width-large-1-2 uk-width-medium-1-1">
+                            <div class="uk-input-group">
+                                <span class="uk-input-group-addon"><i class="uk-input-group-icon uk-icon-calendar"></i></span>
+                                <label for="uk_dp_start">Эхлэх хугацаа</label>
+                                <input class="md-input" type="text" id="uk_dp_start" md-input ng-model="form.startdate">
+                            </div>
+                        </div>
+                        <div class="uk-width-large-1-2 uk-width-medium-1-1">
+                            <div class="uk-input-group">
+                                <span class="uk-input-group-addon"><i class="uk-input-group-icon uk-icon-calendar"></i></span>
+                                <label for="uk_dp_end">Дуусах хугацаа</label>
+                                <input class="md-input" type="text" id="uk_dp_end" md-input ng-model="form.enddate">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="uk-grid" ng-if="form.ceduFormTabs.length>0">
+                        <div class="uk-width-1-1">
+                        	 <div class="uk-overflow-container">
+		                        <table class="uk-table uk-table-striped">
+		                            <thead>
+		                            <tr>
+		                                <th>Ажилбарын жагсаалт</th>
+		                                <th></th>
+		                                <th></th>
+		                                <th></th>
+		                            </tr>
+		                            </thead>
+		                            <tbody>
+		                            <tr ng-repeat="item in form.ceduFormTabs">
+		                                <td>{{ item.tabname }}</td>
+		                                 <td>{{ item.ceduFormNotes.length }}</td>
+		                                <td style="width:100px; text-align:center;"><button type="button" data-uk-modal="{target:'#modal_default'}" class="md-btn md-btn-primary md-btn-small md-btn-wave-light" ng-click="addOpen($index)">Нэмэх</button></td>
+		                                <td style="width:100px; text-align:center;"><button type="button" class="md-btn md-btn-danger md-btn-small md-btn-wave-light" ng-click="remove($index)">Устгах</button></td>
+		                            </tr>
+		                            </tbody>
+		                        </table>
+		                    </div>
+                        </div>
+                    </div>
+                    <div class="uk-grid">
+                        <div class="uk-width-1-1">
+                        	<div class="uk-input-group">
+	                            <label>Ажилбарын нэр</label>
+	                            <input type="text" class="md-input" ng-model="input.tabname" md-input />
+	                            <span class="uk-input-group-addon" style="padding:0 24px 0 16px;" ><button type="button" class="md-btn md-btn-success md-btn-small md-btn-wave-light waves-effect waves-button waves-light" ng-click="add()">Нэмэх</button></span>
+	                        </div>
+					    </div>
+                    </div>
+                    <div class="uk-grid">
+                    	<div class="uk-width-1-2 uk-text-left">
+                            <a href="/izr/#/pages/form" class="md-btn md-btn-danger">Буцах</a>
+                        </div>
+                        <div class="uk-width-1-2 uk-text-right">
+                            <button type="submit" class="md-btn md-btn-primary">Хадгалах</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+		<div class="uk-modal" id="modal_default">
+           <div class="uk-modal-dialog">
+               <button type="button" class="uk-modal-close uk-close"></button>
+               <div class="uk-grid" data-uk-grid-margin>
+               		<div class="uk-width-1-1">
+                      	 <div class="uk-overflow-container">
+	                        <table class="uk-table uk-table-striped">
+	                            <thead>
+	                            <tr>
+	                                <th style="padding:0px 0 20px 0;">
+                                	</th>
+	                                <th></th>
+	                                <th></th>
+	                                <th></th>
+	                                <th></th>
+	                                <th></th>
+	                            </tr>
+	                            </thead>
+	                            <tbody>
+	                            <tr ng-repeat="item in form.ceduFormTabs[vs].ceduFormNotes">
+	                                <td>{{ item.title }}</td>
+	                                <td>{{ item.approve }}</td>
+	                                <td>{{ item.isfile }}</td>
+	                                <td>{{ item.isform }}</td>
+	                                <td>{{ item.filesize }}</td>	                               
+	                                <td style="width:100px; text-align:center;"><button type="button" class="md-btn md-btn-danger md-btn-small md-btn-wave-light" ng-click="removeNote($index)">Устгах</button></td>
+	                            </tr>
+	                            </tbody>
+	                        </table>
+	                    </div>
+                    </div>
+               </div>
+               <form id="form_validation" class="uk-form-stacked" ng-submit="addFormNote(vs)">
+	               <div class="uk-grid" data-uk-grid-margin>
+	                    <div class="uk-width-medium-1-1">
+	                        <div class="uk-form-row">
+	                            <label>Нэр</label>
+	                            <input type="text" class="md-input" required ng-model="note.title" md-input />
+	                        </div>
+	                        <div class="uk-form-row">
+	                        	 <div class="uk-grid">
+	                                <div class="uk-width-medium-1-3">
+	                                	 <input type="checkbox" class="switchery switchery-small" ui-switch ng-model="note.approve" color="#1e88e5" checked id="switch_demo_primary" />
+	                       				 <label for="switch_demo_primary" class="inline-label">Шийдвэрлэх эсэх</label>                                    
+	                                </div>
+	                                <div class="uk-width-medium-1-3">
+	                                	<input type="checkbox" class="switchery switchery-small" ui-switch ng-model="note.isfile" color="#ffb300" checked id="switch_demo_warning" />
+	                       				<label for="switch_demo_warning" class="inline-label">Файлтай эсэх</label>                                   
+	                                </div>
+	                                <div class="uk-width-medium-1-3">
+	                                	<input type="checkbox" class="switchery switchery-small" ui-switch ng-model="note.isform" color="#7cb342" checked id="switch_demo_success" />
+	                        			<label for="switch_demo_success" class="inline-label">Маягттай эсэх</label>                                   
+	                                </div>
+	                            </div>
+	                            
+	                        </div>
+	                        <div class="uk-form-row">
+	                            <label>Файлын хэмжээ (КБ)</label>
+	                            <input type="number" class="md-input" ng-model="note.filesize" md-input />
+	                        </div>
+	                        <div class="uk-form-row uk-text-right">
+	                            <button type="submit" class="md-btn md-btn-primary md-btn-small md-btn-wave-light">Хадгалах</button>
+	                        </div>
+	                    </div>
+	               </div>
+	               <div class="uk-modal-footer uk-text-right">
+	                   <button type="button" class="md-btn md-btn-flat uk-modal-close">Хаах</button>
+	               </div>
+               </form>
+           </div>
+       </div>
+    </div>
+</div>

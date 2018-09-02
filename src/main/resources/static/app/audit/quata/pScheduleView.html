@@ -1,0 +1,176 @@
+    <div id="page_content">
+        <div id="page_content_inner">
+        	<div class="md-card">
+               <div class="md-card-content">
+                   <div class="uk-grid" data-uk-grid-margin> 
+                   	   <div class="uk-width-medium-10-10"> 
+                   	   		<div class="uk-modal" id="modal_default">
+                                <div class="uk-modal-dialog">
+                                    <button type="button" class="uk-modal-close uk-close"></button>
+                                    <div class="uk-modal-header">
+                                        <h3 class="uk-modal-title">Байгууллагын жагсаалт буцаах</h3>                                
+                                    </div>
+                                    <form id="form_validation" class="uk-form-stacked" ng-submit="loadOnback()">                                   
+					                <div class="uk-grid">
+					                    <div class="uk-width-1-1">
+					                        <div class="uk-form-row">
+					                            <label>Буцаах шалтгаан</label>
+					                            <textarea cols="30" rows="4" class="md-input" ng-model="back.text" md-input textarea-autosize></textarea>
+					                        </div>
+					                    </div>
+					                </div>
+					                <div class="uk-modal-footer uk-text-right">
+                                        <button type="button" class="md-btn md-btn-flat uk-modal-close">Хаах</button><button type="button" ng-click="loadOnBack()" type="submit" class="md-btn md-btn-flat md-btn-flat-primary">Буцаах</button>
+                                    </div>
+                                    </form>
+                                 </div>
+                            </div>
+                            <div class="uk-modal" id="modal_default1">
+                                <div class="uk-modal-dialog">
+                                    <button type="button" class="uk-modal-close uk-close"></button>
+                                    <div class="uk-modal-header">
+                                        <h3 class="uk-modal-title">Байгууллагын жагсаалт буцаасан шалтгаан</h3>                                
+                                    </div>                                                                  
+					                <div class="uk-grid">
+					                    <div class="uk-width-1-1">
+					                        <p style="border-bottom: 1px solid #444; padding-bottom: 5px;" ng-repeat="item in breason">Огноо: {{item.date}}</br>Аудитор: {{item.name}}</br>
+					                        {{item.text}}
+					                        </p>
+					                    </div>
+					                </div>
+					                <div class="uk-modal-footer uk-text-right">
+                                        <button type="button" class="md-btn md-btn-flat uk-modal-close">Хаах</button>
+                                    </div>
+                                 </div>
+                            </div>
+                	   		<div class="uk-grid" data-uk-grid-margin>
+                	   			<div  class="uk-width-medium-5-10">
+                	   				<h3 style="margin-top:5px;"> {{quata.orgname}} - Ангилал : {{quata.catname}} Тайлант он : {{quata.year}} </h3>
+                	   			</div>
+			                    <div class="uk-width-medium-5-10" >
+			                    	<div class="uk-input-group">
+		                                <div class="md-input-wrapper">			                                
+		                                	<span class="md-input-bar "></span>
+		                                </div>			                                
+		                                <div class="uk-input-group-addon uk-text-right">		
+		                                	 <button ng-show="all" ng-click="loadOnSend()" class="md-btn md-btn-success md-btn-wave-light"  type="submit">Батлах</button>
+		                                	 <button ng-show="all" data-uk-modal="{target:'#modal_default'}" class="md-btn md-btn-danger md-btn-wave-light">Буцаах</button>
+		                                	 <button ng-show="terguuleh" ng-click="loadOnSend()" class="md-btn md-btn-success md-btn-wave-light"  type="submit">Хянах</button>
+		                                	 <button ng-show="terguuleh" data-uk-modal="{target:'#modal_default'}" class="md-btn md-btn-danger md-btn-wave-light">Буцаах</button>	
+		                                	 <button ng-show="backed" data-uk-modal="{target:'#modal_default1'}" class="md-btn md-btn-primary md-btn-wave-light">Шалтгаан</button>			                    		
+		                           			 <button ng-show="manager" ng-click="loadOnSend()" class="md-btn md-btn-success md-btn-wave-light"  type="submit">Үүсгэх</button>
+		                           			 <button ng-show="request" ng-click="loadOnRequest()"  class="md-btn md-btn-success md-btn-wave-light"  type="submit">Хүсэлт</button>
+		                           			 
+				                    	</div>		
+		                            </div>			                    	
+			                    		                          
+		                       </div>
+			                </div>
+                   	   </div>    
+                   </div>                    
+               </div>
+        </div>
+             <div class="md-card">
+			     <div class="md-card-content">
+			        <!--  <h3 class="heading_a">Input fields</h3> -->
+			         <div class="uk-grid" data-uk-grid-margin>
+			             <div class="uk-width-medium-1-1 user ">    
+			             	 <kendo-grid options="puserGrid"></kendo-grid>                     	
+			                <!-- <div id="orgGrid"></div> -->
+			             </div> 			                       
+			         </div>               
+			     </div>
+			 </div> 
+        </div>
+    </div>
+	<footer id="footer">
+	    <span style="display:block;  text-align:right;">&copy; 2015-2018 <a href="www.staus.mn/sgt">Smart Green Technology LLC</a>, All rights reserved.</span>
+	</footer>
+	
+	<script type="x/kendo-template" id="page-template">
+      <div class="page-template">
+        <div class="header">
+          <div style="float: right">Page #: pageNum # of #: totalPages #</div>
+          Multi-page grid with automatic page breaking
+        </div>
+        <div class="watermark">KENDO UI</div>
+        <div class="footer">
+          Page #: pageNum # of #: totalPages #
+        </div>
+      </div>
+    </script>
+     <script type="text/x-kendo-template" id="export">
+         <div id="details-container" style="text-align:left;">
+ 			<button class="k-button k-button-icontext" ng-click="addNew()"> <span class='k-icon k-add'></span> Шинээр байгууллага нэмэх</button>
+		   <a class="k-button k-button-icontext k-grid-excel" href="\#\"><span class="k-icon k-i-excel"></span>MS Excel-т экспортлох</a>
+		   <a class="k-button k-button-icontext k-grid-pdf" href="\#\"><span class="k-icon k-i-pdf"></span>PDF-т экспортлох</a>
+         </div>
+     </script>
+     <script type="text/x-kendo-template" id="extendd">
+         <div id="details-container1" style="float:left; margin-left: 10px;">
+           <button class="md-btn md-btn-small md-btn-danger" ng-click='config(dataItem)'  data-uk-modal="{target:'\\#modal_config'}"> </span>тохиргоо</button>
+         </div>
+     </script>
+    
+        <div class="uk-modal" id="modal_config">
+        	<form id="form_validation_config" class="uk-form-stacked"  data-ng-submit="submitForm($event)">
+              <div class="uk-modal-dialog">
+              	  <button type="button" class="uk-modal-close uk-close"></button>
+                  <div class="uk-modal-header">
+                      <h3 class="uk-modal-title">{{item.orgname}}</h3>
+                      <hr/>
+                  </div>
+                  <div class="uk-grid" data-uk-grid-margin>
+					<div class="uk-width-medium-1-1">
+					    <div class="uk-form-row parsley-row">
+						    <input type="text" config="selectize_a_config" required options="selectize_a_data.options" ng-model="conf.decision" name="selectize_a" selectize />
+						   <!--  <span class="uk-form-help-block">Default</span> -->
+					    </div>
+					    <div class="uk-form-row">
+						    <input type="text" ng-if="conf.decision==1" required config="selectize_b_config" options="selectize_b_data.options" ng-model="conf.division" name="selectize_b" selectize />
+					    </div>
+					    <div class="uk-form-row parsley-row">
+                            <label>Тайлбар</label>
+                            <textarea cols="30" rows="4" class="md-input" required ng-model="conf.description" md-input textarea-autosize></textarea>
+                        </div>
+					</div>
+                  </div>                  
+                  <div class="uk-modal-footer uk-text-right">
+               <!--    data-uk-modal="{target:'#modal_new'}" -->
+                 	  <button  type="submit" class="md-btn md-btn-flat md-btn-flat-primary">Хадгалах</button>
+                      <button type="button" class="md-btn md-btn-flat uk-modal-close">Хаах</button>
+                  </div>
+              </div>
+             </form>
+          </div>
+               <div class="uk-modal" id="modal_config_new">
+        	<form id="form_validation_config_new" class="uk-form-stacked"  data-ng-submit="submitFormNew($event)">
+              <div class="uk-modal-dialog">
+              	  <button type="button" class="uk-modal-close uk-close"></button>
+                  <div class="uk-modal-header">
+                      <h3 class="uk-modal-title"> Шинээр байгууллага нэмэх</h3>
+                      <hr/>
+                  </div>
+                  <div class="uk-grid" data-uk-grid-margin>
+					<div class="uk-width-medium-1-1">
+					    <div class="uk-form-row parsley-row">
+						    <input type="text" config="selectize_a_config" required options="selectize_new_data.options" ng-model="nw.orgid" name="selectize_a" selectize />
+						   <!--  <span class="uk-form-help-block">Default</span> -->
+					    </div>
+					    <div class="uk-form-row">
+						    <input type="text" required config="selectize_b_config" options="selectize_b_data.options" ng-model="nw.division" name="selectize_b" selectize />
+					    </div>
+					    <div class="uk-form-row parsley-row">
+                            <label>Тайлбар</label>
+                            <textarea cols="30" rows="4" class="md-input" required ng-model="nw.description" md-input textarea-autosize></textarea>
+                        </div>
+					</div>
+                  </div>                  
+                  <div class="uk-modal-footer uk-text-right">
+               <!--    data-uk-modal="{target:'#modal_new'}" -->
+                 	  <button  type="submit" class="md-btn md-btn-flat md-btn-flat-primary">Хадгалах</button>
+                      <button type="button" class="md-btn md-btn-flat uk-modal-close">Хаах</button>
+                  </div>
+              </div>
+             </form>
+          </div>

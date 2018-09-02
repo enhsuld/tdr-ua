@@ -1,0 +1,391 @@
+    <div id="page_content">
+    	<!-- <webcam channel="myChannel" on-stream="onStream(stream)"
+		        on-access-denied="onError(err)"
+		        on-streaming="onSuccess()">
+		</webcam> -->
+        <div id="page_content_inner">
+			<!-- <video id="video" width="640" height="480" autoplay></video>
+			<button id="snap">Snap Photo</button>
+			<canvas id="canvas" width="640" height="480"></canvas> -->
+
+            <!-- statistics (small charts) -->
+           <!--  <div class="uk-grid uk-grid-width-large-1-4 uk-grid-width-medium-1-2 uk-grid-medium uk-sortable sortable-handler hierarchical_show" data-uk-sortable data-uk-grid-margin hierarchical-show>
+                <div ng-repeat="stat in dynamicStats" on-last-repeat>
+                    <div class="md-card" id="stat_{{$index+1}}">
+                        <div class="md-card-content">
+                            <div class="uk-float-right uk-margin-top uk-margin-small-right">
+                                <peity-bar-chart data="stat.chart_data" options="stat.chart_options" ng-if="stat.id == '1'" ></peity-bar-chart>
+                                <peity-line-chart data="stat.chart_data" options="stat.chart_options" ng-if="stat.id == '2'"></peity-line-chart>
+                                <peity-donut-chart data="stat.chart_data" options="stat.chart_options" ng-if="stat.id == '3'"></peity-donut-chart>
+                                <peity-line-chart data="stat.chart_data" options="stat.chart_options" ng-if="stat.id == '4'"></peity-line-chart>
+                            </div>
+                            <span class="uk-text-muted uk-text-small">{{ stat.title }}</span>
+                            <h2 class="uk-margin-remove">
+                                <span ng-if="stat.id == '1'" count-up id="count_1" separator="." ng-model="stat.count">0</span>
+                                <span ng-if="stat.id == '2'" count-up prefix="$" id="count_2" ng-model="stat.count">0</span>
+                                <span ng-if="stat.id == '3'" count-up suffix="%" id="count_3" ng-model="stat.count">0</span>
+                                <span ng-if="stat.id == '4'" count-up id="count_4" ng-model="stat.count">0</span>
+                            </h2>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+ 			<!-- large chart -->
+            <div class="uk-grid">
+                <div class="uk-width-1-1">
+                    <div class="md-card">
+                    	  <div class="md-card-toolbar">
+                            <div class="md-card-toolbar-actions">
+                                <card-fullscreen-activate></card-fullscreen-activate>
+                                <i class="md-icon material-icons">&#xE5D5;</i>                                
+                            </div>
+                            <card-fullscreen-deactivate></card-fullscreen-deactivate>
+                            <h3 class="md-card-toolbar-heading-text">
+                                Албан тушаалаар багцласан ажлын  гүйцэтгэлийн хувь. (2018)
+                            </h3>
+                         </div>
+                    	 <div class="md-card-content">
+                    	 	<div kendo-chart
+                    	 		 k-options="chartConfig"
+				                 k-legend="{ position: 'bottom' }"
+				                 k-series-defaults="{ type: 'column' }"
+				                 k-series="[
+				                                 { field: 'auditor', name: 'Аудитор', color:'#64dd17' },
+				                                 { field: 'manager', name: 'Менежер', color:'#ffb74d'},
+				                                 { field: 'terguuleh', name: 'Тэргүүлэх аудитор', color:'#2962ff'}
+				                             ]"
+				                 k-data-source="electricity"
+				                 style="max-width: 1550px; height: 400px; "></div>
+                    	 </div>
+                    </div>
+                </div>
+            </div>
+            <div class="uk-grid" data-uk-grid-margin data-uk-grid-match="{target:'.md-card-content'}">
+                <div class="uk-width-medium-1-2">
+                    <div class="md-card">
+                        <div class="md-card-content">
+                            <div class="uk-overflow-container" custom-scrollbar style="height:500px;">
+                                <table class="uk-table">
+                                    <thead>
+                                    <tr>
+                                        <th class="uk-text-nowrap">Байгууллагын нэр</th>
+                                        <th class="uk-text-nowrap uk-width-2-10">Аудитын үе шат</th>
+                                        <th class="uk-text-nowrap uk-width-2-10">Төлөвлөх үе шат</th>
+                                        <th class="uk-text-nowrap uk-width-2-10">Гүйцэтгэх үе шат</th>
+                                        <th class="uk-text-nowrap uk-width-2-10">Тайлагналын үе шат</th>
+                                        <th class="uk-text-nowrap uk-width-2-10 uk-text-right">Дундаж &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr ng-repeat="item in userStat" class="uk-table-middle">
+                                        <td class="uk-width-3-10 uk-text-nowrap">
+                                        	<a href="scrum_board.html">{{item.orgname}}</a>
+                                       	</td>
+                                        <td class="uk-width-2-10 uk-text-nowrap">
+                                        	<span ng-if="item.stepid==3"  ng-class="{
+									                            'uk-badge uk-badge-primary':(item.stepid==3),
+									                            'uk-badge uk-badge-warning':(item.stepid==4),
+									                            'uk-badge uk-badge-success':(item.stepid==5)
+						                                        }">
+		                                        Төлөвлөлт
+	                                        </span>
+	                                        <span ng-if="item.stepid==4"  ng-class="{
+									                            'uk-badge uk-badge-primary':(item.stepid==3),
+									                            'uk-badge uk-badge-warning':(item.stepid==4),
+									                            'uk-badge uk-badge-success':(item.stepid==5)
+						                                        }">
+		                                        Гүйцэтгэл
+	                                        </span>
+	                                        <span ng-if="item.stepid==5"  ng-class="{
+									                            'uk-badge uk-badge-primary':(item.stepid==3),
+									                            'uk-badge uk-badge-warning':(item.stepid==4),
+									                            'uk-badge uk-badge-success':(item.stepid==5)
+						                                        }">
+		                                        Тайлагнал
+	                                        </span>
+                                       	</td>
+                                        <td class="uk-width-2-10">
+                                        	<div class="timeline_content ng-binding" style="padding: 5px 4px 0px !important;">
+                                                Аудитор 
+                                                <a href="javascript:void(0)"  class="ng-scope"><strong class="ng-binding">{{item.aper}}%</strong></a>
+                                            </div>
+                                            <div class="timeline_content ng-binding" style="padding: 5px 4px 0px !important;">
+                                                Менежер 
+                                                <a href="javascript:void(0)"  class="ng-scope"><strong class="ng-binding">{{item.mper}}%</strong></a>
+                                            </div>
+                                            <div class="timeline_content ng-binding" style="padding: 5px 4px 0px !important;">
+                                                Тэргүүлэх 
+                                                <a href="javascript:void(0)"  class="ng-scope"><strong class="ng-binding">{{item.tper}}%</strong></a>
+                                            </div>                                           
+                                        </td>
+                                        <td class="uk-width-2-10">
+                                        	<div class="timeline_content ng-binding" style="padding: 5px 4px 0px !important;">
+                                                Аудитор 
+                                                <a href="javascript:void(0)"  class="ng-scope"><strong class="ng-binding">{{item.a2per}}%</strong></a>
+                                            </div>
+                                            <div class="timeline_content ng-binding" style="padding: 5px 4px 0px !important;">
+                                                Менежер 
+                                                <a href="javascript:void(0)"  class="ng-scope"><strong class="ng-binding">{{item.m2per}}%</strong></a>
+                                            </div>
+                                            <div class="timeline_content ng-binding" style="padding: 5px 4px 0px !important;">
+                                                Тэргүүлэх 
+                                                <a href="javascript:void(0)"  class="ng-scope"><strong class="ng-binding">{{item.t2per}}%</strong></a>
+                                            </div>                                           
+                                        </td>
+                                        <td class="uk-width-2-10">
+                                        	<div class="timeline_content ng-binding" style="padding: 5px 4px 0px !important;">
+                                                Аудитор 
+                                                <a href="javascript:void(0)"  class="ng-scope"><strong class="ng-binding">{{item.a3per}}%</strong></a>
+                                            </div>
+                                            <div class="timeline_content ng-binding" style="padding: 5px 4px 0px !important;">
+                                                Менежер 
+                                                <a href="javascript:void(0)"  class="ng-scope"><strong class="ng-binding">{{item.m3per}}%</strong></a>
+                                            </div>
+                                            <div class="timeline_content ng-binding" style="padding: 5px 4px 0px !important;">
+                                                Тэргүүлэх 
+                                                <a href="javascript:void(0)"  class="ng-scope"><strong class="ng-binding">{{item.t3per}}%</strong></a>
+                                            </div>                                           
+                                        </td>        
+                                        <td class="uk-width-2-10">
+                                        	<div class="timeline_content ng-binding" style="padding: 5px 4px 0px !important;">
+                                                Аудитор 
+                                                <a href="javascript:void(0)"  class="ng-scope"><strong class="ng-binding">{{item.auditor}}%</strong></a>
+                                            </div>
+                                            <div class="timeline_content ng-binding" style="padding: 5px 4px 0px !important;">
+                                                Менежер 
+                                                <a href="javascript:void(0)"  class="ng-scope"><strong class="ng-binding">{{item.manager}}%</strong></a>
+                                            </div>
+                                            <div class="timeline_content ng-binding" style="padding: 5px 4px 0px !important;">
+                                                Тэргүүлэх 
+                                                <a href="javascript:void(0)"  class="ng-scope"><strong class="ng-binding">{{item.terguuleh}}%</strong></a>
+                                            </div>                                           
+                                        </td>                                        
+                                        <!-- <td class="uk-width-2-10 uk-text-right uk-text-muted uk-text-small">24.11.2015</td> -->
+                                    </tr>
+                                    
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="uk-width-medium-1-2">
+                    <div class="md-card">
+                        <div class="md-card-content">
+                            <echart id="container" style="max-width: 85%;" data="user_option_data" options="user_option" class="echart-large"></echart>
+                        </div>
+                    </div>
+                </div>               
+            </div>
+          <!--   <div class="uk-grid" data-uk-grid-margin>
+             	 <div class="uk-width-medium-1-1">
+                    <div class="md-card">
+                        <div class="md-card-content">
+                            <echart data="ttztez_data" style="max-width: 85%;" id="long-chart" options="ttztez_option" class="echart-large"></echart>
+                        </div>
+                    </div>
+                </div>
+             </div> -->
+            <!-- large chart -->
+          
+        </div>
+    </div>
+
+    <!-- secondary sidebar -->
+    <aside id="sidebar_secondary" sidebar-secondary class="tabbed_sidebar">
+        <ul class="uk-tab uk-tab-icons uk-tab-grid" data-uk-tab="{connect:'#dashboard_sidebar_tabs', animation:'slide-horizontal'}">
+            <li class="uk-active uk-width-1-3"><a href="#"><i class="material-icons">&#xE422;</i></a></li>
+            <li class="uk-width-1-3 chat_sidebar_tab"><a href="#"><i class="material-icons">&#xE0B7;</i></a></li>
+            <li class="uk-width-1-3"><a href="#"><i class="material-icons">&#xE8B9;</i></a></li>
+        </ul>
+
+        <div custom-scrollbar>
+            <ul id="dashboard_sidebar_tabs" class="uk-switcher">
+                <li>
+                    <div class="timeline timeline_small uk-margin-bottom">
+                        <div class="timeline_item" ng-repeat="event in user_data.timeline">
+                            <div class="timeline_icon timeline_icon_danger" ng-if="event.status == 'danger'"><i class="material-icons" ng-bind-html="event.icon"></i></div>
+                            <div class="timeline_icon timeline_icon_success" ng-if="event.status == 'success'"><i class="material-icons" ng-bind-html="event.icon"></i></div>
+                            <div class="timeline_icon timeline_icon_warning" ng-if="event.status == 'warning'"><i class="material-icons" ng-bind-html="event.icon"></i></div>
+                            <div class="timeline_icon timeline_icon_primary" ng-if="event.status == 'primary'"><i class="material-icons" ng-bind-html="event.icon"></i></div>
+                            <div class="timeline_icon" ng-if="!event.status"><i class="material-icons" ng-bind-html="event.icon"></i></div>
+                            <div class="timeline_date">
+                                {{ event.date | momentDate:'MM-DD-YYYY':'DD' }}
+                                <span>{{ event.date | momentDate:'MM-DD-YYYY':'MMM' }}</span>
+                            </div>
+                            <div class="timeline_content">
+                                {{event.description}} <a href="#" ng-if="event.link_text"><strong>{{event.link_text}}</strong></a>
+                                <div class="timeline_content_addon" ng-if="event.image || event.post_excerpt || event.user_name">
+                                    <img ng-src="{{event.image}}" alt="" ng-if="event.image"/>
+                                    <blockquote ng-if="event.post_excerpt">
+                                        {{event.post_excerpt}}&hellip;
+                                    </blockquote>
+                                    <ul class="md-list md-list-addon" ng-if="event.user_name">
+                                        <li>
+                                            <div class="md-list-addon-element" ng-if="event.user_avatar">
+                                                <img class="md-user-image md-list-addon-avatar" ng-src="{{event.user_avatar}}" alt=""/>
+                                            </div>
+                                            <div class="md-list-content">
+                                                <span class="md-list-heading" ng-if="event.user_name">{{event.user_name}}</span>
+                                                <span class="uk-text-small uk-text-muted" ng-if="event.user_status">{{event.user_status}}</span>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <ul class="md-list md-list-addon chat_users">
+                        <li ng-repeat="user in sSidebar_users">
+                            <div class="md-list-addon-element">
+                                <img class="md-user-image md-list-addon-avatar" ng-src="assets/img/avatars/{{ user.avatar }}_tn.png" alt=""/>
+                            </div>
+                            <div class="md-list-content">
+                                <span class="md-list-heading">{{user.name}}</span>
+                                <span class="uk-text-small uk-text-muted">
+                                    <span class="uk-text-small uk-text-muted">
+                                        Lorem ipsumm...
+                                    </span>
+                                </span>
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="chat_box_wrapper chat_box_small" id="chat">
+                        <div class="chat_box touchscroll chat_box_colors_a">
+                            <div class="chat_message_wrapper">
+                                <div class="chat_user_avatar">
+                                    <img class="md-user-image" src="assets/img/avatars/avatar_11_tn.png" alt=""/>
+                                </div>
+                                <ul class="chat_message">
+                                    <li>
+                                        <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio, eum? </p>
+                                    </li>
+                                    <li>
+                                        <p> Lorem ipsum dolor sit amet.<span class="chat_message_time">13:38</span> </p>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="chat_message_wrapper chat_message_right">
+                                <div class="chat_user_avatar">
+                                    <img class="md-user-image" src="assets/img/avatars/avatar_03_tn.png" alt=""/>
+                                </div>
+                                <ul class="chat_message">
+                                    <li>
+                                        <p>
+                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem delectus distinctio dolor earum est hic id impedit ipsum minima mollitia natus nulla perspiciatis quae quasi, quis recusandae, saepe, sunt totam.
+                                            <span class="chat_message_time">13:34</span>
+                                        </p>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="chat_message_wrapper">
+                                <div class="chat_user_avatar">
+                                    <img class="md-user-image" src="assets/img/avatars/avatar_11_tn.png" alt=""/>
+                                </div>
+                                <ul class="chat_message">
+                                    <li>
+                                        <p>
+                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque ea mollitia pariatur porro quae sed sequi sint tenetur ut veritatis.
+                                            <span class="chat_message_time">23 Jun 1:10am</span>
+                                        </p>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="chat_message_wrapper chat_message_right">
+                                <div class="chat_user_avatar">
+                                    <img class="md-user-image" src="assets/img/avatars/avatar_03_tn.png" alt=""/>
+                                </div>
+                                <ul class="chat_message">
+                                    <li>
+                                        <p> Lorem ipsum dolor sit amet, consectetur. </p>
+                                    </li>
+                                    <li>
+                                        <p>
+                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                                            <span class="chat_message_time">Friday 13:34</span>
+                                        </p>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <h4 class="heading_c uk-margin-small-bottom uk-margin-top">General Settings</h4>
+                    <ul class="md-list">
+                        <li>
+                            <div class="md-list-content">
+                                <div class="uk-float-right">
+                                    <input type="checkbox" class="switchery switchery-small" ui-switch id="settings_site_online" name="settings_site_online" ng-model="sSidebar.site_online" />
+                                </div>
+                                <span class="md-list-heading">Site Online</span>
+                                <span class="uk-text-muted uk-text-small">Lorem ipsum dolor sit amet&hellip;</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="md-list-content">
+                                <div class="uk-float-right">
+                                    <input type="checkbox" class="switchery switchery-small" ui-switch id="settings_seo" name="settings_seo" ng-model="sSidebar.seo" />
+                                </div>
+                                <span class="md-list-heading">Search Engine Friendly URLs</span>
+                                <span class="uk-text-muted uk-text-small">Lorem ipsum dolor sit amet&hellip;</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="md-list-content">
+                                <div class="uk-float-right">
+                                    <input type="checkbox" class="switchery switchery-small" ui-switch id="settings_url_rewrite" name="settings_url_rewrite" ng-model="sSidebar.url_rewrite" />
+                                </div>
+                                <span class="md-list-heading">Use URL rewriting</span>
+                                <span class="uk-text-muted uk-text-small">Lorem ipsum dolor sit amet&hellip;</span>
+                            </div>
+                        </li>
+                    </ul>
+                    <hr class="md-hr">
+                    <h4 class="heading_c uk-margin-small-bottom uk-margin-top">Other Settings</h4>
+                    <ul class="md-list">
+                        <li>
+                            <div class="md-list-content">
+                                <div class="uk-float-right">
+                                    <input type="checkbox" class="switchery switchery-small" ui-switch color="#7cb342" id="settings_top_bar" name="settings_top_bar" ng-model="sSidebar.top_bar" />
+                                </div>
+                                <span class="md-list-heading">Top Bar Enabled</span>
+                                <span class="uk-text-muted uk-text-small">Lorem ipsum dolor sit amet&hellip;</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="md-list-content">
+                                <div class="uk-float-right">
+                                    <input type="checkbox" class="switchery switchery-small" ui-switch color="#7cb342" id="settings_api" name="settings_api" ng-model="sSidebar.api" />
+                                </div>
+                                <span class="md-list-heading">Api Enabled</span>
+                                <span class="uk-text-muted uk-text-small">Lorem ipsum dolor sit amet&hellip;</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="md-list-content">
+                                <div class="uk-float-right">
+                                    <input type="checkbox" class="switchery switchery-small" ui-switch color="#d32f2f" id="settings_minify_static" name="settings_minify_static" ng-model="sSidebar.minify_assets" />
+                                </div>
+                                <span class="md-list-heading">Minify JS files automatically</span>
+                                <span class="uk-text-muted uk-text-small">Lorem ipsum dolor sit amet&hellip;</span>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+        <button type="button" class="chat_sidebar_close uk-close"></button>
+        <div class="chat_submit_box">
+            <div class="uk-input-group">
+                <input type="text" class="md-input" name="submit_message" id="submit_message" placeholder="Send message">
+                <span class="uk-input-group-addon">
+                    <a href="#"><i class="material-icons md-24">&#xE163;</i></a>
+                </span>
+            </div>
+        </div>
+
+    </aside><!-- secondary sidebar end -->

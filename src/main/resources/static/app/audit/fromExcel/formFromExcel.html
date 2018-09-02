@@ -1,0 +1,62 @@
+    <div id="page_content">
+        <div id="page_content_inner">
+        
+         <form class="uk-form-stacked" id="user_add_form" name="user_add_form" ng-submit="uploadExcel($event)">
+             <div class="md-card">
+	            <div class="uk-margin">
+	            	<div class="user_content">
+                           
+                           <div class="uk-grid uk-margin-large-bottom">
+	                    	<div class="uk-width-medium-1-2">
+               					<div class="md-card-toolbar">
+						       		<h3 class="md-card-toolbar-heading-text">Өгөгдлийн файл сонгоход анхаарах зүйлс</h3>
+						       		<span style='float:right'> 
+						       			<a class="md-btn md-btn-flat md-btn-flat-primary md-btn-wave" 
+						       			target="_blank" download="assets/img/zagvarfile.xlsx" href="assets/img/zagvarfile/zagvarfile.xlsx">Файл татах</a>
+						       		</span>
+						        </div>
+						        <div class="md-card-content">
+						        	<ul class="uk-text-large uk-margin-large-top uk-margin-large-bottom">	
+						            	<li>						                                	
+						                	Систем зөвхөн загварын дагуу файлаас мэдээлэл уншина.
+						                </li>
+						                <li>						                                	
+						                	Байх шаардлагатай мэдээллийг бүрэн оруулхыг анхаарна уу.
+						                </li>
+						                
+						                <li>						                                	
+						                	Файлыг заавал <strong class="md-color-red-600">EXCEL</strong>  файлаар оруулна.
+						                </li>
+						                <li>						                                	
+						                	Файлаа сонгож <strong class="md-color-indigo-A700">ХАДГАЛАХ</strong> товчийг дарж хариу иртэл хүлээнэ үү.
+						                </li>
+						             </ul>
+						        </div>
+						                    
+		            		</div>
+		            		<div class="uk-width-medium-1-2">
+	               				<div class="md-card-toolbar uk-margin-large-bottom">
+			                    	<div class="uk-grid uk-margin-large-bottom">
+	                    				<div class="uk-width-medium-1-2">
+	                    					<h3 class="md-card-toolbar-heading-text">Маягт : {{formname.formname}}</h3>
+	                    				</div>
+	                    				
+	                    				<div class="uk-width-medium-1-2">
+	                    					<span style='float:right'> <button type="submit" class="md-btn md-btn-primary md-btn-small md-btn-wave-light">ХАДГАЛАХ</button></span>
+	                    				</div>
+	                    			</div>
+	                    		</div>
+			                    <div class="uk-width-1-1 uk-margin-large-bottom">
+									<input type="file" ng-files="getTheUFiles($files)"  id="input-file-b" class="dropify-fr"
+									 accept=".xlsx,.xls"  data-parsley-required data-parsley-error-message="Файлаа сонгоно уу." />
+								</div>
+			                    
+		                    </div>
+		            	</div>
+                   </div>
+	            </div>
+	        </div>
+	      </form>
+        </div>
+    </div>
+
